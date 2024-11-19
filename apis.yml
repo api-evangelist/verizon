@@ -54,6 +54,13 @@ apis:
     description: >-
       ThingSpace gives organizations of all sizes all the tools to build IoT
       solutions or use end-to-end solutions to solve business problems.
+  - name: Verizon Communications Platform as a Service (CPaaS)
+    description: ''
+    humanURL: >-
+      https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/
+    tags: []
+    properties: []
+    aid: undefined:verizon-communications-platform-as-a-service-cpaas-
 name: Verizon
 tags:
   - Wireless
