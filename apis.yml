@@ -9,55 +9,58 @@ apis:
     properties:
       - url: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
         type: Documentation
-      - name: Portal
-        url: https://www.verizon.com/business/5g-edge-portal/index.html
+      - url: https://www.verizon.com/business/5g-edge-portal/index.html
+        name: Portal
         type: Portal
-      - name: Partners
-        url: https://www.verizon.com/business/5g-edge-portal/partners.html
+      - url: https://www.verizon.com/business/5g-edge-portal/partners.html
+        name: Partners
         type: Partners
-      - name: FAQ
-        url: https://www.verizon.com/business/5g-edge-portal/faq.html
+      - url: https://www.verizon.com/business/5g-edge-portal/faq.html
+        name: FAQ
         type: FAQ
-      - name: Developer Form | Verizon
-        url: >-
+      - url: >-
           https://www.verizon.com/business/solutions/5g/edge-computing/developer-form/
+        name: Developer Form | Verizon
         type: Newsletter
-      - name: Legal
-        url: https://www.verizon.com/business/5g-edge-portal/legal.html
+      - url: https://www.verizon.com/business/5g-edge-portal/legal.html
+        name: Legal
         type: TermsOfService
-      - name: Privacy Policy Home Page | About Verizon
-        url: https://www.verizon.com/about/privacy/
+      - url: https://www.verizon.com/about/privacy/
+        name: Privacy Policy Home Page | About Verizon
         type: PrivacyPolicy
-      - name: Verizon Business Account Login
-        url: >-
+      - url: >-
           https://mblogin.verizonwireless.com/account/business/login?appGroup=TSD&goto=https%3A%2F%2Fmblogin.verizonwireless.com%2Fvzauth%2Foauth2%2Fauthorize%3Fscope%3Dopenid%26response_type%3Did_token%26realm%3D%2Fvzwmb%26redirect_uri%3Dhttps%3A%2F%2Fwww.verizon.com%2Fbusiness%2F5g-edge-portal%2Fredirect%26nonce%3DYmMyOWFhNjItZDU0ZS00Mzg1LTg2NzYtYTYyMjYzYWU4ZWFiLTIxNTA0MCxodHRwczovL3d3dy52ZXJpem9uLmNvbS9idXNpbmVzcy81Zy1lZGdlLXBvcnRhbC9hY2NvdW50L2xvZ2luP2E9MC41NTIyNzE1NDg0MTc3OTk4%26client_id%3Dmdp_agent%26response_mode%3Dform_post&realm=%2Fvzwmb
+        name: Verizon Business Account Login
         type: Login
-      - name: Sign up
-        url: >-
+      - url: >-
           https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
+        name: Sign up
         type: SignUp
-      - name: 'Voice APIs: Communication Platform as a Service | Verizon'
-        url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
+      - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
+        name: 'Voice APIs: Communication Platform as a Service | Verizon'
         type: Documentation
     description: >-
       Software Management Services API lets customers manage, schedule and
       distribute software updates to eligible 4G and 5G Internet of Things
       devices.
-  - name: new
-    description: ''
-    humanURL: https://thingspace.verizon.com
+  - aid: undefined:new
+    name: Verizon ThingSpace
     tags: []
+    humanURL: https://thingspace.verizon.com
     properties:
-      - name: Verizon ThingSpace
-        url: https://thingspace.verizon.com
+      - url: https://thingspace.verizon.com
+        name: Verizon ThingSpace
         type: Documentation
-    aid: undefined:new
+    description: >-
+      ThingSpace gives organizations of all sizes all the tools to build IoT
+      solutions or use end-to-end solutions to solve business problems.
 name: Verizon
 tags:
   - Wireless
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
+common: []
 created: '2024-11-19'
 modified: '2024-11-19'
 position: Consumer
@@ -68,4 +71,3 @@ maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
 specificationVersion: '0.19'
-common: []
