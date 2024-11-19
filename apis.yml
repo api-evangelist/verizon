@@ -1,0 +1,31 @@
+aid: verizon
+name: Verizon
+description: >-
+  Software Management Services API lets customers manage, schedule and
+  distribute software updates to eligible 4G and 5G Internet of Things devices.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+created: '2024-11-19'
+modified: '2024-11-19'
+url: https://raw.githubusercontent.com/api-search/verizon/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: verizon:verizon
+    name: Verizon
+    description: >-
+      Software Management Services API lets customers manage, schedule and
+      distribute software updates to eligible 4G and 5G Internet of Things
+      devices.
+    humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+    tags:
+      - API
+    properties:
+      - type: Documentation
+        url: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
