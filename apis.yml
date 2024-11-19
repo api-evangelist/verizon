@@ -1,5 +1,21 @@
+specificationVersion: '0.19'
 aid: verizon
+name: Verizon
+description: >-
+  Software Management Services API lets customers manage, schedule and
+  distribute software updates to eligible 4G and 5G Internet of Things devices.
+tags:
+  - Wireless
 url: https://raw.githubusercontent.com/api-search/verizon/refs/heads/main/apis.yml
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+type: Index
+access: 3rd-Party
+position: Consumer
+created: '2024-11-19'
+modified: '2024-11-19'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
 apis:
   - aid: verizon:verizon-5g-edge
     name: Verizon 5G Edge
@@ -43,7 +59,7 @@ apis:
       Software Management Services API lets customers manage, schedule and
       distribute software updates to eligible 4G and 5G Internet of Things
       devices.
-  - aid: undefined:new
+  - aid: verizon:thingspace
     name: Verizon ThingSpace
     tags: []
     humanURL: https://thingspace.verizon.com
@@ -54,31 +70,19 @@ apis:
     description: >-
       ThingSpace gives organizations of all sizes all the tools to build IoT
       solutions or use end-to-end solutions to solve business problems.
-  - name: Verizon Communications Platform as a Service (CPaaS)
-    description: ''
+  - aid: verizon:communications-platform-as-a-service
+    name: Verizon Communications Platform as a Service (CPaaS)
+    tags: []
     humanURL: >-
       https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/
-    tags: []
     properties: []
-    aid: undefined:verizon-communications-platform-as-a-service-cpaas-
-name: Verizon
-tags:
-  - Wireless
-type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-access: 3rd-Party
+    description: >-
+      Available exclusively for IP Contact Center (IPCC) customers, our
+      Communications Platform as a Service (CPaaS) offering provides a set of
+      APIs that you can leverage to build customized solutions for inbound and
+      outbound IP interactive voice response (IPIVR) and call detail reporting.
 common:
-  - name: Portal
-    description: This is the cleanest central portal.
-    url: https://developers.verizon.com/
+  - url: https://developers.verizon.com/
+    name: Portal
     type: Portal
-created: '2024-11-19'
-modified: '2024-11-19'
-position: Consumer
-description: >-
-  Software Management Services API lets customers manage, schedule and
-  distribute software updates to eligible 4G and 5G Internet of Things devices.
-maintainers:
-  - FN: Kin Lane
-    email: info@apievangelist.com
-specificationVersion: '0.19'
+    description: This is the cleanest central portal.
