@@ -81,6 +81,168 @@ apis:
       Communications Platform as a Service (CPaaS) offering provides a set of
       APIs that you can leverage to build customized solutions for inbound and
       outbound IP interactive voice response (IPIVR) and call detail reporting.
+  - name: Verizon Inventory Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-inventory-management
+  - name: Verizon Incident Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-incident-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-incident-management
+  - name: Verizon Change Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-change-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-change-management
+  - name: Verizon Event Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-event-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-event-management
+  - name: Verizon Problem Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-problem-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-problem-management
+  - name: Verizon Order Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-order-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-order-management
+  - name: Verizon Billing Management
+    description: >-
+      Verizon provides customers a suite of TM Forum certified service
+      management APIs and associated documentation that expose Verizons ITIL
+      (Information Technology Infrastructure Library) functions. These APIs are
+      bi-directional, helping to keep the information accessed from both Verizon
+      and customer systems synchronized.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-billing-management-tmf
+    tags: []
+    properties: []
+    aid: undefined:verizon-billing-management
+  - name: Verizon Dynamic Bandwidth APIs
+    description: >-
+      These innovative network provisioning API solutions can be deployed in the
+      enterprises network eco-system to drive real-time network adjustments
+      according to their changing business needs. Taking an agile approach to
+      network provisioning, it can aid in dynamically allocating/de-allocating
+      and scaling the bandwidth requirements as the need arises
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-bandwidth-apis
+    tags: []
+    properties: []
+    aid: undefined:verizon-dynamic-bandwidth-apis
+  - name: Dynamic Network Manager (DNM) Standardized APIs
+    description: >-
+      MEF API Standards distinguish between Envelope APIs and related Payload
+      schemas. The Envelope APIs can work with multiple Payload Schemas, in this
+      case the Private IP Payload Schema. The MEF-76 Specification describes
+      APIs for service control functions (e.g. inventory, parameter change
+      requests, notifications etc.).
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1
+    tags: []
+    properties: []
+    aid: undefined:dynamic-network-manager-dnm-standardized-apis
+  - name: Secure Cloud Interconnect APIs Utilization
+    description: >-
+      SCI supports APIs to fetch data consumption and bandwidth utilization
+      measurements for the SCI connection to the cloud.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Utilization-API
+    tags: []
+    properties: []
+    aid: undefined:secure-cloud-interconnect-apis-utilization
+  - name: Secure Cloud Interconnect APIs Billing Usage
+    description: >-
+      SCI supports APIs to fetch data consumption and bandwidth utilization
+      measurements for the SCI connection to the cloud.
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Billing-Usage-API
+    tags: []
+    properties: []
+    aid: undefined:secure-cloud-interconnect-apis-billing-usage
+  - name: Dynamic Network Manager (DNM) Standardized APIs
+    description: >-
+      MEF API Standards distinguish between Envelope APIs and related Payload
+      schemas. The Envelope APIs can work with multiple Payload Schemas, in this
+      case the DNM APIs to support IDS. The MEF-76 Specification describes APIs
+      for service control functions (e.g. inventory, parameter change requests,
+      notifications etc.).
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/internet-dedicated-services-apis/dynamic-network-manager-mef-2
+    tags: []
+    properties: []
+    aid: undefined:dynamic-network-manager-dnm-standardized-apis
+  - name: Dynamic Network Manager (DNM) Standardized APIs
+    description: >-
+      MEF API Standards distinguish between Envelope APIs and related Payload
+      schemas. The Envelope APIs can work with multiple Payload Schemas, in this
+      case the DNM APIs to support E-Line. The MEF-76 Specification describes
+      APIs for service control functions (e.g. inventory, parameter change
+      requests, notifications etc.).
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/e-line-services-apis/dynamic-network-manager-mef-3
+    tags: []
+    properties: []
+    aid: undefined:dynamic-network-manager-dnm-standardized-apis
+  - name: Dynamic Network Manager (DNM) Standardized APIs
+    description: >-
+      MEF API Standards distinguish between Envelope APIs and related Payload
+      schemas. The Envelope APIs can work with multiple Payload Schemas, in this
+      case the DNM APIs to support E-LAN. The MEF-76 Specification describes
+      APIs for service control functions (e.g. inventory, parameter change
+      requests, notifications etc.).
+    humanURL: >-
+      https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4
+    tags: []
+    properties: []
+    aid: undefined:dynamic-network-manager-dnm-standardized-apis
 common:
   - url: https://developers.verizon.com/
     name: Portal
