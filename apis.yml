@@ -67,7 +67,11 @@ tags:
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
-common: []
+common:
+  - name: Portal
+    description: This is the cleanest central portal.
+    url: https://developers.verizon.com/
+    type: Portal
 created: '2024-11-19'
 modified: '2024-11-19'
 position: Consumer
