@@ -1,13 +1,16 @@
 aid: verizon
-url: https://raw.githubusercontent.com/api-search/verizon/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-search/verizon/refs/heads/main/apis.yml
 apis:
   - aid: verizon:verizon-5g-edge
     name: Verizon 5G Edge
     tags:
       - Wireless
-    humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+    humanURL: 
+      https://www.verizon.com/business/5g-edge-portal/api-documentation.html
     properties:
-      - url: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+      - url: 
+          https://www.verizon.com/business/5g-edge-portal/api-documentation.html
         type: Documentation
       - url: https://www.verizon.com/business/5g-edge-portal/index.html
         name: Portal
@@ -36,7 +39,8 @@ apis:
           https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
         name: Sign up
         type: SignUp
-      - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
+      - url: 
+          https://www.verizon.com/business/products/contact-center-cx/voice-api/
         name: 'Voice APIs: Communication Platform as a Service | Verizon'
         type: Documentation
     description: >-
@@ -159,11 +163,11 @@ apis:
       https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-bandwidth-apis
     properties: []
     description: >-
-      These innovative network provisioning API solutions can be deployed in the
-      enterprises network eco-system to drive real-time network adjustments
-      according to their changing business needs. Taking an agile approach to
-      network provisioning, it can aid in dynamically allocating/de-allocating
-      and scaling the bandwidth requirements as the need arises
+      These innovative network provisioning API solutions can be deployed in the enterprises
+      network eco-system to drive real-time network adjustments according to their
+      changing business needs. Taking an agile approach to network provisioning, it
+      can aid in dynamically allocating/de-allocating and scaling the bandwidth requirements
+      as the need arises.
   - aid: undefined:dynamic-network-manager-dnm-standardized-apis
     name: Dynamic Network Manager (DNM) Standardized APIs
     tags: []
@@ -224,7 +228,12 @@ apis:
     humanURL: >-
       https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4
     properties: []
-    description: "MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs can work with multiple Payload Schemas, in this case the DNM APIs to support \x1CE-LAN\x1D. The MEF-76 Specification describes APIs for service control functions (e.g. inventory, parameter change requests, notifications etc.)."
+    description: >-
+      MEF API Standards distinguish between Envelope APIs and related Payload schemas.
+      The Envelope APIs can work with multiple Payload Schemas, in this case the DNM
+      APIs to support E-LAN . The MEF-76 Specification describes APIs for service
+      control functions (e.g. inventory, parameter change requests, notifications
+      etc.).
 name: Verizon
 tags:
   - Wireless
@@ -255,15 +264,13 @@ created: '2024-11-19T00:00:00.000Z'
 modified: '2025-01-04'
 position: Consuming
 description: >-
-  Verizon is a telecommunications company that provides a wide range of services
-  to customers, including wireless communication, fiber-optic internet, and
-  digital TV. They offer mobile phone plans, home internet packages, and
-  entertainment options to meet the needs of individuals and businesses.
-  Additionally, Verizon is known for its strong commitment to network
-  reliability and customer service, ensuring that their customers have access to
-  fast and dependable communication services at all times. With a focus on
-  innovation and technology, Verizon continues to evolve and expand its
-  offerings to stay ahead in the rapidly changing telecommunications industry.
+  Verizon is a telecommunications company that provides a wide range of services to
+  customers, including wireless communication, fiber-optic internet, and digital TV.
+  They offer mobile phone plans, home internet packages, and entertainment options
+  to meet the needs of individuals and businesses. Additionally, Verizon is known
+  for its strong commitment to network reliability and customer service, ensuring
+  that their customers have access to fast and dependable communication services at
+  all times.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
