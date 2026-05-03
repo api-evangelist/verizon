@@ -1,0 +1,8 @@
+{
+  "deviceIds": [],
+  "filter": {
+    "servicePlans": [],
+    "states": [],
+    "maxNumberOfDevices": 100
+  }
+}

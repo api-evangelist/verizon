@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-feature-structure.json",
+  "description": "Account feature",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Feature name",
+      "example": "Callback"
+    },
+    "description": {
+      "type": "string",
+      "description": "Feature description",
+      "example": "Callback enabled"
+    }
+  },
+  "name": "Feature"
+}

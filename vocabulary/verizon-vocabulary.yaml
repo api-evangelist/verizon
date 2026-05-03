@@ -1,0 +1,260 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Verizon"
+  description: "Unified vocabulary for Verizon ThingSpace IoT Connectivity Management API covering device lifecycle, account management, SMS messaging, and callback subscriptions."
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - namespace: verizon-thingspace-connectivity
+      version: "2.0"
+      baseUrl: https://thingspace.verizon.com/api/m2m/v2
+      status: active
+
+  resources:
+    - name: accounts
+      description: "ThingSpace account information and settings"
+      apis:
+        - verizon-thingspace-connectivity
+      actions:
+        - get-account-information
+
+    - name: devices
+      description: "IoT devices connected to Verizon wireless network"
+      apis:
+        - verizon-thingspace-connectivity
+      actions:
+        - list-devices
+        - activate-devices
+        - deactivate-devices
+
+    - name: sms
+      description: "SMS messages sent to IoT devices"
+      apis:
+        - verizon-thingspace-connectivity
+      actions:
+        - send-sms
+
+    - name: callbacks
+      description: "Webhook callback registrations for device event notifications"
+      apis:
+        - verizon-thingspace-connectivity
+      actions:
+        - list-callbacks
+        - register-callback
+
+  actions:
+    - name: get-account-information
+      method: GET
+      pattern: read
+      description: "Retrieve account information"
+
+    - name: list-devices
+      method: POST
+      pattern: query
+      description: "List devices in account with filtering"
+
+    - name: activate-devices
+      method: POST
+      pattern: write
+      description: "Activate devices on service plan"
+
+    - name: deactivate-devices
+      method: POST
+      pattern: write
+      description: "Deactivate devices from network"
+
+    - name: send-sms
+      method: POST
+      pattern: write
+      description: "Send SMS to devices"
+
+    - name: list-callbacks
+      method: GET
+      pattern: read
+      description: "List registered callbacks"
+
+    - name: register-callback
+      method: POST
+      pattern: write
+      description: "Register callback endpoint"
+
+  schemas:
+    core:
+      - name: AccountInformation
+        description: "Account information including carrier, features, and IP pools"
+      - name: DeviceInformation
+        description: "IoT device with identifiers, state, service plan, and MDN"
+      - name: DeviceId
+        description: "Device identifier with kind (imei, iccid, etc.) and value"
+    requests:
+      - name: ActivateDevicesRequest
+        description: "Request to activate devices with service plan and MDN zip"
+      - name: DeactivateDevicesRequest
+        description: "Request to deactivate devices with reason code"
+      - name: DeviceListRequest
+        description: "Request to list devices with optional filters"
+      - name: SendSmsRequest
+        description: "Request to send SMS to devices"
+      - name: RegisterCallbackRequest
+        description: "Request to register a callback URL"
+    responses:
+      - name: DeviceListResponse
+        description: "Response with list of devices and pagination"
+      - name: DeviceRequestResponse
+        description: "Async operation response with request ID"
+      - name: CallbackSummary
+        description: "Callback registration summary with service name and URL"
+
+  parameters:
+    identifiers:
+      - name: accountName
+        description: "32-character account name"
+        type: string
+    filters:
+      - name: servicePlans
+        description: "Filter devices by service plan"
+        type: array
+      - name: states
+        description: "Filter devices by state"
+        type: array
+      - name: maxNumberOfDevices
+        description: "Maximum devices to return"
+        type: integer
+
+  enums:
+    device-id-kinds:
+      - imei
+      - meid
+      - esn
+      - iccid
+      - min
+      - mdn
+      - otaid
+    device-states:
+      - active
+      - inactive
+      - ready
+      - deactivated
+    ip-pool-types:
+      - IPV4
+      - IPV6
+    sms-encoding:
+      - TEXT
+      - UNICODE
+      - BINARY
+
+  authentication:
+    schemes:
+      - name: OAuth2ClientCredentials
+        type: oauth2
+        flow: clientCredentials
+        tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+        scopes:
+          - DISCOVERYREAD
+          - SERVICEPROFILEREAD
+          - EVENTSREAD
+
+capability:
+  workflows:
+    - name: iot-device-management
+      file: capabilities/iot-device-management.yaml
+      description: "IoT device lifecycle management workflow for Verizon ThingSpace"
+      apis:
+        - verizon-thingspace-connectivity
+      tools: 7
+      personas:
+        - IoT Platform Engineer
+        - Device Operations Manager
+        - Network Administrator
+      domains:
+        - IoT Device Management
+        - Connectivity
+        - Wireless Operations
+
+  personas:
+    - id: iot-platform-engineer
+      name: IoT Platform Engineer
+      description: "Engineers who build and maintain IoT platforms using Verizon ThingSpace APIs"
+      workflows:
+        - iot-device-management
+
+    - id: device-operations-manager
+      name: Device Operations Manager
+      description: "Operations managers overseeing large-scale IoT device fleet management"
+      workflows:
+        - iot-device-management
+
+    - id: network-administrator
+      name: Network Administrator
+      description: "Administrators managing device connectivity and account settings"
+      workflows:
+        - iot-device-management
+
+  domains:
+    - name: IoT Device Management
+      description: "Lifecycle management of IoT devices including activation and deactivation"
+    - name: Connectivity
+      description: "Device connectivity management on Verizon wireless network"
+    - name: Wireless Operations
+      description: "Operational management of wireless IoT deployments"
+
+  namespaces:
+    consumed:
+      - name: verizon-thingspace-connectivity
+        baseUri: https://thingspace.verizon.com/api/m2m/v2
+    rest:
+      - name: verizon-iot-management-api
+        port: 8080
+    mcp:
+      - name: verizon-iot-management-mcp
+        port: 9080
+
+  binds:
+    - name: VERIZON_CLIENT_ID
+      description: "Verizon ThingSpace OAuth2 client ID"
+      workflows:
+        - iot-device-management
+    - name: VERIZON_CLIENT_SECRET
+      description: "Verizon ThingSpace OAuth2 client secret"
+      workflows:
+        - iot-device-management
+
+crossReference:
+  - resource: accounts
+    operations:
+      - get-account-information
+    workflows:
+      - iot-device-management
+    personas:
+      - Network Administrator
+
+  - resource: devices
+    operations:
+      - list-devices
+      - activate-devices
+      - deactivate-devices
+    workflows:
+      - iot-device-management
+    personas:
+      - IoT Platform Engineer
+      - Device Operations Manager
+
+  - resource: sms
+    operations:
+      - send-sms
+    workflows:
+      - iot-device-management
+    personas:
+      - IoT Platform Engineer
+
+  - resource: callbacks
+    operations:
+      - list-callbacks
+      - register-callback
+    workflows:
+      - iot-device-management
+    personas:
+      - IoT Platform Engineer

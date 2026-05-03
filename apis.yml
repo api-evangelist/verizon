@@ -1,6 +1,5 @@
 aid: verizon
-url: 
-  https://raw.githubusercontent.com/api-search/verizon/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/apis.yml
 apis:
   - aid: verizon:verizon-5g-edge
     name: Verizon 5G Edge
@@ -49,12 +48,52 @@ apis:
       devices.
   - aid: verizon:thingspace
     name: Verizon ThingSpace
-    tags: []
+    tags:
+      - IoT
+      - Device Management
+      - Connectivity
+      - Wireless
     humanURL: https://thingspace.verizon.com
     properties:
       - url: https://thingspace.verizon.com
         name: Verizon ThingSpace
         type: Documentation
+      - type: APIReference
+        url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/openapi/verizon-thingspace-connectivity-openapi.yml
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+      - type: JSONSchema
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+      - type: JSONStructure
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+      - type: JSONStructure
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+      - type: JSON-LD
+        url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+      - type: SDK
+        url: https://github.com/sdks-io/verizon-apis-python-sdk
+        title: Python SDK
+      - type: SDK
+        url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+        title: PHP SDK
     description: >-
       ThingSpace gives organizations of all sizes all the tools to build IoT
       solutions or use end-to-end solutions to solve business problems.
@@ -237,14 +276,19 @@ apis:
 name: Verizon
 tags:
   - Wireless
-type: Contract
+  - Telecommunications
+  - IoT
+  - 5G
+  - Enterprise
+  - Network APIs
+type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-access: 3rd-Party
 common:
+  - url: https://www.verizon.com
+    type: Website
   - url: https://developers.verizon.com/
     name: Portal
     type: Portal
-    description: This is the cleanest central portal.
   - url: https://developers.verizon.com/#/apis/ns/documentation/help
     name: Help - Verizon API Marketplace
     type: Support
@@ -260,17 +304,65 @@ common:
       https://secure.verizon.com/account/register/start?goto=https%3A%2F%2Fdevelopers.verizon.com%2Fapis%2Fsec%2Fv1%2Flogin
     name: Register a service
     type: SignUp
-created: '2024-11-19T00:00:00.000Z'
-modified: '2025-01-04'
-position: Consuming
+  - url: https://www.verizon.com/about/privacy/
+    type: PrivacyPolicy
+  - url: https://www.verizon.com/about/terms-conditions/
+    type: TermsOfService
+  - type: SpectralRules
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/rules/verizon-spectral-rules.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/vocabulary/verizon-vocabulary.yaml
+  - type: NaftikoCapability
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/capabilities/iot-device-management.yaml
+  - type: Features
+    data:
+      - name: IoT Device Lifecycle Management
+        description: Activate, deactivate, and manage IoT devices on Verizon's wireless network via ThingSpace APIs.
+      - name: 5G Software Management
+        description: Manage, schedule, and distribute software updates to 4G and 5G IoT devices.
+      - name: Device Diagnostics
+        description: Remote device diagnostics, observations, and factory reset capabilities for IoT deployments.
+      - name: Device Location Services
+        description: Real-time and historical device location tracking with hyper-precise location support.
+      - name: TM Forum Service Management
+        description: TM Forum-certified ITIL APIs for inventory, incident, change, order, and billing management.
+      - name: Dynamic Bandwidth APIs
+        description: Real-time network bandwidth provisioning and scaling for enterprise private IP networks.
+      - name: Secure Cloud Interconnect
+        description: APIs for data consumption and bandwidth utilization measurements for cloud interconnect connections.
+      - name: SMS Messaging to Devices
+        description: Send and receive SMS messages to/from IoT devices for remote management and alerts.
+      - name: Callback Subscriptions
+        description: Subscribe to device event notifications via webhooks for real-time IoT event processing.
+  - type: UseCases
+    data:
+      - name: IoT Fleet Management
+        description: Manage large-scale IoT device fleets with activation, deactivation, and status monitoring.
+      - name: Remote Device Management
+        description: Remotely diagnose, configure, and update IoT devices over Verizon's wireless network.
+      - name: Enterprise Network Automation
+        description: Automate network bandwidth provisioning and IT service management with TM Forum APIs.
+      - name: 5G Edge Applications
+        description: Build ultra-low-latency applications on Verizon's 5G edge computing infrastructure.
+      - name: Contact Center Modernization
+        description: Build customized IVR and call routing solutions with Verizon's CPaaS Voice API.
+  - type: Integrations
+    data:
+      - name: AWS Wavelength
+        description: Deploy 5G Edge applications on Verizon MEC nodes through AWS Wavelength partnership.
+      - name: Google Cloud MEC
+        description: Build edge-native applications through Verizon and Google Cloud edge computing integration.
+      - name: ITSM Platforms
+        description: Connect TM Forum service management APIs to ServiceNow and other ITSM platforms.
+      - name: IoT Platforms
+        description: Integrate ThingSpace device management with enterprise IoT platforms and data lakes.
+created: '2024-11-19'
+modified: '2026-05-03'
 description: >-
-  Verizon is a telecommunications company that provides a wide range of services to
-  customers, including wireless communication, fiber-optic internet, and digital TV.
-  They offer mobile phone plans, home internet packages, and entertainment options
-  to meet the needs of individuals and businesses. Additionally, Verizon is known
-  for its strong commitment to network reliability and customer service, ensuring
-  that their customers have access to fast and dependable communication services at
-  all times.
+  Verizon is a leading telecommunications company providing wireless, wireline, broadband,
+  and global enterprise services. Verizon offers developer APIs for IoT device management
+  via ThingSpace, 5G edge computing, TM Forum service management, dynamic network bandwidth,
+  and communications platform APIs for contact center and SMS solutions.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

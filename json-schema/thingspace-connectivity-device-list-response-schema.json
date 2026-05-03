@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json",
+  "title": "DeviceListResponse",
+  "description": "Response containing list of devices",
+  "type": "object",
+  "properties": {
+    "devices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeviceInformation"
+      }
+    },
+    "hasMoreData": {
+      "type": "boolean",
+      "description": "Whether there are more devices to retrieve",
+      "example": false
+    },
+    "lastSeenDeviceId": {
+      "type": "string",
+      "description": "ID of the last device returned for pagination",
+      "example": "990013907835573"
+    }
+  }
+}

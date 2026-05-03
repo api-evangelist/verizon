@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json",
+  "title": "DeviceId",
+  "description": "Device identifier",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "imei",
+        "meid",
+        "esn",
+        "iccid",
+        "min",
+        "mdn",
+        "otaid"
+      ],
+      "description": "Type of device identifier",
+      "example": "imei"
+    },
+    "id": {
+      "type": "string",
+      "description": "Device identifier value",
+      "example": "990013907835573"
+    }
+  }
+}

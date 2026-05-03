@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-list-request-structure.json",
+  "description": "Request to list devices with optional filtering",
+  "type": "object",
+  "properties": {
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeviceId"
+      }
+    },
+    "filter": {
+      "type": "object",
+      "description": "Filter criteria",
+      "properties": {
+        "servicePlans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by service plans",
+          "example": [
+            "ThingSpace"
+          ]
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by device states"
+        },
+        "maxNumberOfDevices": {
+          "type": "int32",
+          "description": "Maximum number of devices to return",
+          "example": 100
+        }
+      }
+    }
+  },
+  "name": "DeviceListRequest"
+}

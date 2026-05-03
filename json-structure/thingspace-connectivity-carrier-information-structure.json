@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-carrier-information-structure.json",
+  "description": "Carrier network information",
+  "type": "object",
+  "properties": {
+    "carrierName": {
+      "type": "string",
+      "description": "Name of the carrier",
+      "example": "Verizon Wireless"
+    },
+    "state": {
+      "type": "string",
+      "description": "Account state on this carrier",
+      "example": "REGISTERED"
+    }
+  },
+  "name": "CarrierInformation"
+}

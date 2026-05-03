@@ -1,0 +1,791 @@
+openapi: 3.0.3
+info:
+  title: Verizon ThingSpace Connectivity Management API
+  description: >-
+    Verizon ThingSpace Connectivity Management API provides device lifecycle management,
+    account administration, session management, SMS messaging, and callback subscription
+    services for IoT device deployments on Verizon's wireless network. Manage device
+    activations, deactivations, SIM changes, service plan changes, and usage reporting
+    for connected IoT devices at scale.
+  version: "1.0"
+  contact:
+    name: Verizon ThingSpace Support
+    url: https://thingspace.verizon.com/
+  license:
+    name: Verizon Terms of Service
+    url: https://www.verizon.com/about/terms-conditions/
+  x-generated-from: documentation
+servers:
+  - url: https://thingspace.verizon.com/api/m2m/v2
+    description: Verizon ThingSpace Connectivity Management API v2
+
+security:
+  - OAuth2ClientCredentials: []
+
+tags:
+  - name: Accounts
+    description: Account information and management
+  - name: Devices
+    description: Device activation, deactivation, and management
+  - name: Session
+    description: Session management and authentication
+  - name: SMS
+    description: SMS messaging to devices
+  - name: Callbacks
+    description: Callback subscription management
+
+paths:
+  /accounts/{accountName}:
+    get:
+      operationId: getAccountInformation
+      summary: Verizon Get Account Information
+      description: >-
+        Returns information about a specified account. The information returned
+        includes account type, billing cycle information, number of devices,
+        and status.
+      tags:
+        - Accounts
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name (32-character numeric value)
+          schema:
+            type: string
+          example: "0000123456-00001"
+      responses:
+        '200':
+          description: Account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInformation'
+              examples:
+                GetAccountInformation200Example:
+                  summary: Default getAccountInformation 200 response
+                  x-microcks-default: true
+                  value:
+                    accountName: "0000123456-00001"
+                    accountNumber: "0000123456"
+                    organizationName: "Acme Corporation"
+                    isProvisioningAllowed: true
+                    carrierInformation:
+                      - carrierName: "Verizon Wireless"
+                        state: "REGISTERED"
+                    features:
+                      - name: "Callback"
+                        description: "Callback enabled"
+                    ipPools:
+                      - poolName: "ACME_POOL"
+                        poolType: "IPV4"
+                        isDefaultPool: true
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /accounts/{accountName}/devices/actions/list:
+    post:
+      operationId: listDevicesInAccount
+      summary: Verizon List Devices in Account
+      description: >-
+        Returns a list of devices in an account and their associated account,
+        service plan, MDN, and IP address information.
+      tags:
+        - Devices
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+            type: string
+          example: "0000123456-00001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceListRequest'
+            examples:
+              ListDevicesInAccountRequestExample:
+                summary: Default listDevicesInAccount request
+                x-microcks-default: true
+                value:
+                  deviceIds:
+                    - kind: "imei"
+                      id: "990013907835573"
+                  filter:
+                    servicePlans:
+                      - "ThingSpace"
+      responses:
+        '200':
+          description: Device list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceListResponse'
+              examples:
+                ListDevicesInAccount200Example:
+                  summary: Default listDevicesInAccount 200 response
+                  x-microcks-default: true
+                  value:
+                    devices:
+                      - accountName: "0000123456-00001"
+                        deviceIds:
+                          - kind: "imei"
+                            id: "990013907835573"
+                        state: "active"
+                        servicePlan: "ThingSpace"
+                        mdn: "19085551234"
+                    hasMoreData: false
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /accounts/{accountName}/devices/actions/activate:
+    post:
+      operationId: activateDevices
+      summary: Verizon Activate Devices
+      description: >-
+        Activate one or more devices to a specified service plan, and optionally
+        set a MDN, service address, custom fields, and device group assignments.
+      tags:
+        - Devices
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+            type: string
+          example: "0000123456-00001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateDevicesRequest'
+            examples:
+              ActivateDevicesRequestExample:
+                summary: Default activateDevices request
+                x-microcks-default: true
+                value:
+                  devices:
+                    - deviceIds:
+                        - kind: "imei"
+                          id: "990013907835573"
+                      servicePlan: "ThingSpace"
+                      mdnZipCode: "08540"
+      responses:
+        '200':
+          description: Device activation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRequestResponse'
+              examples:
+                ActivateDevices200Example:
+                  summary: Default activateDevices 200 response
+                  x-microcks-default: true
+                  value:
+                    requestId: "595f5c44-c31c-4552-8670-020a1545a959"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /accounts/{accountName}/devices/actions/deactivate:
+    post:
+      operationId: deactivateDevices
+      summary: Verizon Deactivate Devices
+      description: >-
+        Deactivate one or more devices from the Verizon wireless network.
+        Deactivated devices are billed for the remainder of their billing cycle.
+      tags:
+        - Devices
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+          schema:
+            type: string
+          example: "0000123456-00001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeactivateDevicesRequest'
+            examples:
+              DeactivateDevicesRequestExample:
+                summary: Default deactivateDevices request
+                x-microcks-default: true
+                value:
+                  devices:
+                    - deviceIds:
+                        - kind: "imei"
+                          id: "990013907835573"
+                  reasonCode: "FF"
+      responses:
+        '200':
+          description: Device deactivation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRequestResponse'
+              examples:
+                DeactivateDevices200Example:
+                  summary: Default deactivateDevices 200 response
+                  x-microcks-default: true
+                  value:
+                    requestId: "595f5c44-c31c-4552-8670-020a1545a959"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /session/login:
+    post:
+      operationId: loginSession
+      summary: Verizon Login Session
+      description: >-
+        Establishes an API session using a username and password. Returns an
+        access token and session expiration time.
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionLoginRequest'
+            examples:
+              LoginSessionRequestExample:
+                summary: Default loginSession request
+                x-microcks-default: true
+                value:
+                  username: "thingspace-user@example.com"
+                  password: "secret-password"
+      responses:
+        '200':
+          description: Session login response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionLoginResponse'
+              examples:
+                LoginSession200Example:
+                  summary: Default loginSession 200 response
+                  x-microcks-default: true
+                  value:
+                    sessionToken: "bcce3ea6-fe4f-4952-bacb-56e4639936a0"
+                    expiresIn: 3600
+        '400':
+          description: Bad request
+        '401':
+          description: Authentication failed
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /sms/{accountName}/actions/send:
+    post:
+      operationId: sendSmsToDevices
+      summary: Verizon Send SMS to Devices
+      description: >-
+        Sends an SMS message to one or more devices. Messages can be up to 160
+        characters. Delivery of the SMS message can be confirmed through a
+        callback subscription.
+      tags:
+        - SMS
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+            type: string
+          example: "0000123456-00001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+            examples:
+              SendSmsToDevicesRequestExample:
+                summary: Default sendSmsToDevices request
+                x-microcks-default: true
+                value:
+                  deviceIds:
+                    - kind: "imei"
+                      id: "990013907835573"
+                  smsMessage: "Hello IoT Device"
+      responses:
+        '200':
+          description: SMS send response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRequestResponse'
+              examples:
+                SendSmsToDevices200Example:
+                  summary: Default sendSmsToDevices 200 response
+                  x-microcks-default: true
+                  value:
+                    requestId: "595f5c44-c31c-4552-8670-020a1545a959"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /callbacks/{accountName}:
+    get:
+      operationId: listRegisteredCallbacks
+      summary: Verizon List Registered Callbacks
+      description: >-
+        Returns a list of all registered callback endpoints for the account
+        including service name and URL for each registered callback.
+      tags:
+        - Callbacks
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+            type: string
+          example: "0000123456-00001"
+      responses:
+        '200':
+          description: List of registered callbacks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CallbackSummary'
+              examples:
+                ListRegisteredCallbacks200Example:
+                  summary: Default listRegisteredCallbacks 200 response
+                  x-microcks-default: true
+                  value:
+                    - name: "CarrierService"
+                      url: "https://your-callback.example.com/carrier"
+                    - name: "SMS"
+                      url: "https://your-callback.example.com/sms"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+    post:
+      operationId: registerCallback
+      summary: Verizon Register Callback
+      description: >-
+        Registers a URL to receive callback messages for a specified service.
+        Callbacks notify your system of device status changes and events.
+      tags:
+        - Callbacks
+      parameters:
+        - name: accountName
+          in: path
+          required: true
+          description: Account name
+          schema:
+            type: string
+          example: "0000123456-00001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterCallbackRequest'
+            examples:
+              RegisterCallbackRequestExample:
+                summary: Default registerCallback request
+                x-microcks-default: true
+                value:
+                  name: "CarrierService"
+                  url: "https://your-callback.example.com/carrier"
+      responses:
+        '200':
+          description: Callback registration response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallbackSummary'
+              examples:
+                RegisterCallback200Example:
+                  summary: Default registerCallback 200 response
+                  x-microcks-default: true
+                  value:
+                    name: "CarrierService"
+                    url: "https://your-callback.example.com/carrier"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+          scopes:
+            DISCOVERYREAD: Read discovery information
+            SERVICEPROFILEREAD: Read service profiles
+            EVENTSREAD: Read device events
+
+  schemas:
+    AccountInformation:
+      type: object
+      description: Account information and settings
+      properties:
+        accountName:
+          type: string
+          description: The account name
+          example: "0000123456-00001"
+        accountNumber:
+          type: string
+          description: The account number
+          example: "0000123456"
+        organizationName:
+          type: string
+          description: The organization name on the account
+          example: "Acme Corporation"
+        isProvisioningAllowed:
+          type: boolean
+          description: Whether the account allows device provisioning
+          example: true
+        carrierInformation:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarrierInformation'
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        ipPools:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPool'
+
+    CarrierInformation:
+      type: object
+      description: Carrier network information
+      properties:
+        carrierName:
+          type: string
+          description: Name of the carrier
+          example: "Verizon Wireless"
+        state:
+          type: string
+          description: Account state on this carrier
+          example: "REGISTERED"
+
+    Feature:
+      type: object
+      description: Account feature
+      properties:
+        name:
+          type: string
+          description: Feature name
+          example: "Callback"
+        description:
+          type: string
+          description: Feature description
+          example: "Callback enabled"
+
+    IpPool:
+      type: object
+      description: IP address pool
+      properties:
+        poolName:
+          type: string
+          description: Name of the IP pool
+          example: "ACME_POOL"
+        poolType:
+          type: string
+          enum: [IPV4, IPV6]
+          description: IP version type
+          example: "IPV4"
+        isDefaultPool:
+          type: boolean
+          description: Whether this is the default pool
+          example: true
+
+    DeviceId:
+      type: object
+      description: Device identifier
+      properties:
+        kind:
+          type: string
+          enum: [imei, meid, esn, iccid, min, mdn, otaid]
+          description: Type of device identifier
+          example: "imei"
+        id:
+          type: string
+          description: Device identifier value
+          example: "990013907835573"
+
+    DeviceListRequest:
+      type: object
+      description: Request to list devices with optional filtering
+      properties:
+        deviceIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceId'
+        filter:
+          type: object
+          description: Filter criteria
+          properties:
+            servicePlans:
+              type: array
+              items:
+                type: string
+              description: Filter by service plans
+              example: ["ThingSpace"]
+            states:
+              type: array
+              items:
+                type: string
+              description: Filter by device states
+            maxNumberOfDevices:
+              type: integer
+              description: Maximum number of devices to return
+              example: 100
+
+    DeviceInformation:
+      type: object
+      description: Device information
+      properties:
+        accountName:
+          type: string
+          description: Account the device belongs to
+          example: "0000123456-00001"
+        deviceIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceId'
+        state:
+          type: string
+          enum: [active, inactive, ready, deactivated]
+          description: Device state
+          example: "active"
+        servicePlan:
+          type: string
+          description: Current service plan
+          example: "ThingSpace"
+        mdn:
+          type: string
+          description: Mobile Directory Number
+          example: "19085551234"
+
+    DeviceListResponse:
+      type: object
+      description: Response containing list of devices
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceInformation'
+        hasMoreData:
+          type: boolean
+          description: Whether there are more devices to retrieve
+          example: false
+        lastSeenDeviceId:
+          type: string
+          description: ID of the last device returned for pagination
+          example: "990013907835573"
+
+    ActivateDevicesRequest:
+      type: object
+      required:
+        - devices
+      description: Request to activate one or more devices
+      properties:
+        devices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceIds:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceId'
+              servicePlan:
+                type: string
+                description: Service plan to activate on
+                example: "ThingSpace"
+              mdnZipCode:
+                type: string
+                description: ZIP code for MDN assignment
+                example: "08540"
+              customFields:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                    value:
+                      type: string
+
+    DeactivateDevicesRequest:
+      type: object
+      required:
+        - devices
+        - reasonCode
+      description: Request to deactivate one or more devices
+      properties:
+        devices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceIds:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceId'
+        reasonCode:
+          type: string
+          description: Reason code for deactivation
+          example: "FF"
+        etfWaiver:
+          type: boolean
+          description: Whether to waive early termination fee
+          example: false
+
+    DeviceRequestResponse:
+      type: object
+      description: Response containing request ID for async operations
+      properties:
+        requestId:
+          type: string
+          description: Unique request ID to track the operation
+          example: "595f5c44-c31c-4552-8670-020a1545a959"
+        failedDevices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceId:
+                type: string
+              cause:
+                type: string
+
+    SessionLoginRequest:
+      type: object
+      required:
+        - username
+        - password
+      description: Session login credentials
+      properties:
+        username:
+          type: string
+          description: ThingSpace account username
+          example: "user@example.com"
+        password:
+          type: string
+          description: ThingSpace account password
+
+    SessionLoginResponse:
+      type: object
+      description: Session login response with token
+      properties:
+        sessionToken:
+          type: string
+          description: Session token for subsequent API calls
+          example: "bcce3ea6-fe4f-4952-bacb-56e4639936a0"
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+          example: 3600
+
+    SendSmsRequest:
+      type: object
+      required:
+        - deviceIds
+        - smsMessage
+      description: Request to send SMS to devices
+      properties:
+        deviceIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceId'
+        smsMessage:
+          type: string
+          maxLength: 160
+          description: SMS message content
+          example: "Hello IoT Device"
+        encoding:
+          type: string
+          enum: [TEXT, UNICODE, BINARY]
+          description: Message encoding type
+          example: "TEXT"
+
+    CallbackSummary:
+      type: object
+      description: Callback registration summary
+      properties:
+        name:
+          type: string
+          description: Callback service name
+          example: "CarrierService"
+        url:
+          type: string
+          description: Callback URL
+          example: "https://your-callback.example.com/carrier"
+
+    RegisterCallbackRequest:
+      type: object
+      required:
+        - name
+        - url
+      description: Request to register a callback
+      properties:
+        name:
+          type: string
+          description: Service name for the callback
+          example: "CarrierService"
+        url:
+          type: string
+          description: URL to receive callbacks
+          example: "https://your-callback.example.com/carrier"
+        username:
+          type: string
+          description: Username for callback endpoint authentication
+        password:
+          type: string
+          description: Password for callback endpoint authentication

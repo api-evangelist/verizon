@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json",
+  "title": "DeviceListRequest",
+  "description": "Request to list devices with optional filtering",
+  "type": "object",
+  "properties": {
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeviceId"
+      }
+    },
+    "filter": {
+      "type": "object",
+      "description": "Filter criteria",
+      "properties": {
+        "servicePlans": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by service plans",
+          "example": [
+            "ThingSpace"
+          ]
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by device states"
+        },
+        "maxNumberOfDevices": {
+          "type": "integer",
+          "description": "Maximum number of devices to return",
+          "example": 100
+        }
+      }
+    }
+  }
+}

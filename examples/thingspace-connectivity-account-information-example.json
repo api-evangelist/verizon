@@ -1,0 +1,9 @@
+{
+  "accountName": "0000123456-00001",
+  "accountNumber": "0000123456",
+  "organizationName": "Acme Corporation",
+  "isProvisioningAllowed": true,
+  "carrierInformation": [],
+  "features": [],
+  "ipPools": []
+}

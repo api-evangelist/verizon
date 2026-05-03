@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json",
+  "title": "DeviceRequestResponse",
+  "description": "Response containing request ID for async operations",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "Unique request ID to track the operation",
+      "example": "595f5c44-c31c-4552-8670-020a1545a959"
+    },
+    "failedDevices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "cause": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "poolName": "ACME_POOL",
+  "poolType": "IPV4",
+  "isDefaultPool": true
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json",
+  "description": "Device information",
+  "type": "object",
+  "properties": {
+    "accountName": {
+      "type": "string",
+      "description": "Account the device belongs to",
+      "example": "0000123456-00001"
+    },
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeviceId"
+      }
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "ready",
+        "deactivated"
+      ],
+      "description": "Device state",
+      "example": "active"
+    },
+    "servicePlan": {
+      "type": "string",
+      "description": "Current service plan",
+      "example": "ThingSpace"
+    },
+    "mdn": {
+      "type": "string",
+      "description": "Mobile Directory Number",
+      "example": "19085551234"
+    }
+  },
+  "name": "DeviceInformation"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json",
+  "description": "Account information and settings",
+  "type": "object",
+  "properties": {
+    "accountName": {
+      "type": "string",
+      "description": "The account name",
+      "example": "0000123456-00001"
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "The account number",
+      "example": "0000123456"
+    },
+    "organizationName": {
+      "type": "string",
+      "description": "The organization name on the account",
+      "example": "Acme Corporation"
+    },
+    "isProvisioningAllowed": {
+      "type": "boolean",
+      "description": "Whether the account allows device provisioning",
+      "example": true
+    },
+    "carrierInformation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CarrierInformation"
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Feature"
+      }
+    },
+    "ipPools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/IpPool"
+      }
+    }
+  },
+  "name": "AccountInformation"
+}

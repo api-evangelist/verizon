@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-callback-summary-structure.json",
+  "description": "Callback registration summary",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Callback service name",
+      "example": "CarrierService"
+    },
+    "url": {
+      "type": "string",
+      "description": "Callback URL",
+      "example": "https://your-callback.example.com/carrier"
+    }
+  },
+  "name": "CallbackSummary"
+}

@@ -1,0 +1,206 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "verizon": "https://verizon.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Feature": "verizon:Feature",
+    "CallbackSummary": "verizon:CallbackSummary",
+    "AccountInformation": "verizon:AccountInformation",
+    "DeviceInformation": "verizon:DeviceInformation",
+    "SessionLoginRequest": "verizon:SessionLoginRequest",
+    "RegisterCallbackRequest": "verizon:RegisterCallbackRequest",
+    "DeactivateDevicesRequest": "verizon:DeactivateDevicesRequest",
+    "SendSmsRequest": "verizon:SendSmsRequest",
+    "ActivateDevicesRequest": "verizon:ActivateDevicesRequest",
+    "IpPool": "verizon:IpPool",
+    "DeviceRequestResponse": "verizon:DeviceRequestResponse",
+    "SessionLoginResponse": "verizon:SessionLoginResponse",
+    "DeviceId": "verizon:DeviceId",
+    "DeviceListRequest": "verizon:DeviceListRequest",
+    "CarrierInformation": "verizon:CarrierInformation",
+    "DeviceListResponse": "verizon:DeviceListResponse",
+    "name": {
+      "@id": "verizon:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "verizon:description",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "verizon:url",
+      "@type": "xsd:string"
+    },
+    "accountName": {
+      "@id": "verizon:accountName",
+      "@type": "xsd:string"
+    },
+    "accountNumber": {
+      "@id": "verizon:accountNumber",
+      "@type": "xsd:string"
+    },
+    "organizationName": {
+      "@id": "verizon:organizationName",
+      "@type": "xsd:string"
+    },
+    "isProvisioningAllowed": {
+      "@id": "verizon:isProvisioningAllowed",
+      "@type": "xsd:boolean"
+    },
+    "carrierInformation": {
+      "@id": "verizon:carrierInformation",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "features": {
+      "@id": "verizon:features",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "ipPools": {
+      "@id": "verizon:ipPools",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "deviceIds": {
+      "@id": "verizon:deviceIds",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "state": {
+      "@id": "verizon:state",
+      "@type": "xsd:string"
+    },
+    "servicePlan": {
+      "@id": "verizon:servicePlan",
+      "@type": "xsd:string"
+    },
+    "mdn": {
+      "@id": "verizon:mdn",
+      "@type": "xsd:string"
+    },
+    "username": {
+      "@id": "verizon:username",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "verizon:password",
+      "@type": "xsd:string"
+    },
+    "devices": {
+      "@id": "verizon:devices",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "reasonCode": {
+      "@id": "verizon:reasonCode",
+      "@type": "xsd:string"
+    },
+    "etfWaiver": {
+      "@id": "verizon:etfWaiver",
+      "@type": "xsd:boolean"
+    },
+    "smsMessage": {
+      "@id": "verizon:smsMessage",
+      "@type": "xsd:string"
+    },
+    "encoding": {
+      "@id": "verizon:encoding",
+      "@type": "xsd:string"
+    },
+    "mdnZipCode": {
+      "@id": "verizon:mdnZipCode",
+      "@type": "xsd:string"
+    },
+    "customFields": {
+      "@id": "verizon:customFields",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "key": {
+      "@id": "verizon:key",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "verizon:value",
+      "@type": "xsd:string"
+    },
+    "poolName": {
+      "@id": "verizon:poolName",
+      "@type": "xsd:string"
+    },
+    "poolType": {
+      "@id": "verizon:poolType",
+      "@type": "xsd:string"
+    },
+    "isDefaultPool": {
+      "@id": "verizon:isDefaultPool",
+      "@type": "xsd:boolean"
+    },
+    "requestId": {
+      "@id": "verizon:requestId",
+      "@type": "xsd:string"
+    },
+    "failedDevices": {
+      "@id": "verizon:failedDevices",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "deviceId": {
+      "@id": "verizon:deviceId",
+      "@type": "xsd:string"
+    },
+    "cause": {
+      "@id": "verizon:cause",
+      "@type": "xsd:string"
+    },
+    "sessionToken": {
+      "@id": "verizon:sessionToken",
+      "@type": "xsd:string"
+    },
+    "expiresIn": {
+      "@id": "verizon:expiresIn",
+      "@type": "xsd:integer"
+    },
+    "kind": {
+      "@id": "verizon:kind",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "verizon:id",
+      "@type": "xsd:string"
+    },
+    "filter": {
+      "@id": "verizon:filter",
+      "@type": "@id"
+    },
+    "servicePlans": {
+      "@id": "verizon:servicePlans",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "states": {
+      "@id": "verizon:states",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "maxNumberOfDevices": {
+      "@id": "verizon:maxNumberOfDevices",
+      "@type": "xsd:integer"
+    },
+    "carrierName": {
+      "@id": "verizon:carrierName",
+      "@type": "xsd:string"
+    },
+    "hasMoreData": {
+      "@id": "verizon:hasMoreData",
+      "@type": "xsd:boolean"
+    },
+    "lastSeenDeviceId": {
+      "@id": "verizon:lastSeenDeviceId",
+      "@type": "xsd:string"
+    }
+  }
+}

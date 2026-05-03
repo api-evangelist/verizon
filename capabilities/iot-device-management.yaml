@@ -1,0 +1,206 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Verizon IoT Device Management"
+  description: "Unified capability for IoT operations teams to manage Verizon ThingSpace connected devices including device activation, deactivation, account management, SMS commands, and callback notifications. Used by IoT platform engineers and device operations teams to manage large-scale IoT deployments on Verizon's wireless network."
+  tags:
+    - IoT
+    - Device Management
+    - Connectivity
+    - Wireless
+    - Verizon
+    - Operations
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VERIZON_CLIENT_ID: VERIZON_CLIENT_ID
+      VERIZON_CLIENT_SECRET: VERIZON_CLIENT_SECRET
+
+capability:
+  consumes:
+    - import: verizon-thingspace-connectivity
+      location: ./shared/thingspace-connectivity.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: verizon-iot-management-api
+      description: "Unified REST API for IoT device lifecycle management on Verizon ThingSpace."
+      resources:
+        - path: /v1/accounts/{accountName}
+          name: account
+          description: "Account management"
+          operations:
+            - method: GET
+              name: get-account
+              description: "Get account information"
+              call: "verizon-thingspace-connectivity.get-account-information"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/devices
+          name: devices
+          description: "Device management operations"
+          operations:
+            - method: POST
+              name: list-devices
+              description: "List devices with optional filters"
+              call: "verizon-thingspace-connectivity.list-devices"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/devices/activate
+          name: device-activation
+          description: "Device activation"
+          operations:
+            - method: POST
+              name: activate-devices
+              description: "Activate devices on Verizon network"
+              call: "verizon-thingspace-connectivity.activate-devices"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/devices/deactivate
+          name: device-deactivation
+          description: "Device deactivation"
+          operations:
+            - method: POST
+              name: deactivate-devices
+              description: "Deactivate devices from Verizon network"
+              call: "verizon-thingspace-connectivity.deactivate-devices"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/sms
+          name: sms
+          description: "SMS messaging to devices"
+          operations:
+            - method: POST
+              name: send-sms
+              description: "Send SMS to devices"
+              call: "verizon-thingspace-connectivity.send-sms"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/callbacks
+          name: callbacks
+          description: "Callback subscriptions"
+          operations:
+            - method: GET
+              name: list-callbacks
+              description: "List registered callbacks"
+              call: "verizon-thingspace-connectivity.list-callbacks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: register-callback
+              description: "Register a callback endpoint"
+              call: "verizon-thingspace-connectivity.register-callback"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: verizon-iot-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted IoT device management on Verizon ThingSpace."
+      tools:
+        - name: get-account
+          description: "Get Verizon ThingSpace account information including device count and billing cycle"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.get-account-information"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-devices
+          description: "List IoT devices in a Verizon ThingSpace account with optional service plan and state filters"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.list-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: activate-devices
+          description: "Activate one or more IoT devices on a Verizon service plan"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.activate-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: deactivate-devices
+          description: "Deactivate IoT devices from the Verizon wireless network"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "verizon-thingspace-connectivity.deactivate-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: send-sms-to-devices
+          description: "Send an SMS command or message to one or more IoT devices"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.send-sms"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-callbacks
+          description: "List all registered callback endpoints for device event notifications"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.list-callbacks"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: register-callback
+          description: "Register a webhook callback URL to receive Verizon ThingSpace device events"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.register-callback"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."

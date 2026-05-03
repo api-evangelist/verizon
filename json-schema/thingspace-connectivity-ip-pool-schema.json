@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-ip-pool-schema.json",
+  "title": "IpPool",
+  "description": "IP address pool",
+  "type": "object",
+  "properties": {
+    "poolName": {
+      "type": "string",
+      "description": "Name of the IP pool",
+      "example": "ACME_POOL"
+    },
+    "poolType": {
+      "type": "string",
+      "enum": [
+        "IPV4",
+        "IPV6"
+      ],
+      "description": "IP version type",
+      "example": "IPV4"
+    },
+    "isDefaultPool": {
+      "type": "boolean",
+      "description": "Whether this is the default pool",
+      "example": true
+    }
+  }
+}

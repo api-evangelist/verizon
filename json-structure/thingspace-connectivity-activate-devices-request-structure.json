@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-activate-devices-request-structure.json",
+  "description": "Request to activate one or more devices",
+  "type": "object",
+  "properties": {
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "deviceIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeviceId"
+            }
+          },
+          "servicePlan": {
+            "type": "string",
+            "description": "Service plan to activate on",
+            "example": "ThingSpace"
+          },
+          "mdnZipCode": {
+            "type": "string",
+            "description": "ZIP code for MDN assignment",
+            "example": "08540"
+          },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "devices"
+  ],
+  "name": "ActivateDevicesRequest"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-session-login-response-structure.json",
+  "description": "Session login response with token",
+  "type": "object",
+  "properties": {
+    "sessionToken": {
+      "type": "string",
+      "description": "Session token for subsequent API calls",
+      "example": "bcce3ea6-fe4f-4952-bacb-56e4639936a0"
+    },
+    "expiresIn": {
+      "type": "int32",
+      "description": "Token expiry in seconds",
+      "example": 3600
+    }
+  },
+  "name": "SessionLoginResponse"
+}

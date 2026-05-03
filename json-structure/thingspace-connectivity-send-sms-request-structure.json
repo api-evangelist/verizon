@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-send-sms-request-structure.json",
+  "description": "Request to send SMS to devices",
+  "type": "object",
+  "properties": {
+    "deviceIds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DeviceId"
+      }
+    },
+    "smsMessage": {
+      "type": "string",
+      "maxLength": 160,
+      "description": "SMS message content",
+      "example": "Hello IoT Device"
+    },
+    "encoding": {
+      "type": "string",
+      "enum": [
+        "TEXT",
+        "UNICODE",
+        "BINARY"
+      ],
+      "description": "Message encoding type",
+      "example": "TEXT"
+    }
+  },
+  "required": [
+    "deviceIds",
+    "smsMessage"
+  ],
+  "name": "SendSmsRequest"
+}

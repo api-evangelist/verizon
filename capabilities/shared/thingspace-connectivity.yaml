@@ -1,0 +1,348 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Verizon ThingSpace Connectivity Management API"
+  description: "Verizon ThingSpace IoT device lifecycle management including device activation, deactivation, account management, SMS messaging, and callback subscriptions."
+  tags:
+    - IoT
+    - Device Management
+    - Connectivity
+    - Wireless
+    - Verizon
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VERIZON_CLIENT_ID: VERIZON_CLIENT_ID
+      VERIZON_CLIENT_SECRET: VERIZON_CLIENT_SECRET
+
+capability:
+  consumes:
+    - type: http
+      namespace: verizon-thingspace-connectivity
+      baseUri: https://thingspace.verizon.com/api/m2m/v2
+      description: "Verizon ThingSpace Connectivity Management REST API"
+      authentication:
+        type: bearer
+        token: "{{VERIZON_CLIENT_ID}}"
+      resources:
+        - name: accounts
+          path: /accounts/{accountName}
+          description: "Account information and management"
+          operations:
+            - name: get-account-information
+              method: GET
+              description: "Get account information and settings"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: device-list
+          path: /accounts/{accountName}/devices/actions/list
+          description: "List devices in an account"
+          operations:
+            - name: list-devices
+              method: POST
+              description: "List devices in account with optional filtering"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  filter: "{{tools.filter}}"
+
+        - name: device-activate
+          path: /accounts/{accountName}/devices/actions/activate
+          description: "Activate devices"
+          operations:
+            - name: activate-devices
+              method: POST
+              description: "Activate one or more devices to a service plan"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  devices: "{{tools.devices}}"
+
+        - name: device-deactivate
+          path: /accounts/{accountName}/devices/actions/deactivate
+          description: "Deactivate devices"
+          operations:
+            - name: deactivate-devices
+              method: POST
+              description: "Deactivate one or more devices"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  devices: "{{tools.devices}}"
+                  reasonCode: "{{tools.reasonCode}}"
+
+        - name: sms
+          path: /sms/{accountName}/actions/send
+          description: "SMS messaging to devices"
+          operations:
+            - name: send-sms
+              method: POST
+              description: "Send SMS message to one or more devices"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  deviceIds: "{{tools.deviceIds}}"
+                  smsMessage: "{{tools.smsMessage}}"
+
+        - name: callbacks
+          path: /callbacks/{accountName}
+          description: "Callback subscription management"
+          operations:
+            - name: list-callbacks
+              method: GET
+              description: "List registered callback endpoints"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: register-callback
+              method: POST
+              description: "Register a callback URL for a service"
+              inputParameters:
+                - name: accountName
+                  in: path
+                  type: string
+                  required: true
+                  description: "Account name"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  url: "{{tools.url}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: verizon-thingspace-rest
+      resources:
+        - path: /v1/accounts/{accountName}
+          operations:
+            - method: GET
+              name: get-account-information
+              description: "Get account information"
+              call: "verizon-thingspace-connectivity.get-account-information"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts/{accountName}/devices
+          operations:
+            - method: POST
+              name: list-devices
+              description: "List devices in account"
+              call: "verizon-thingspace-connectivity.list-devices"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts/{accountName}/devices/activate
+          operations:
+            - method: POST
+              name: activate-devices
+              description: "Activate devices"
+              call: "verizon-thingspace-connectivity.activate-devices"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts/{accountName}/devices/deactivate
+          operations:
+            - method: POST
+              name: deactivate-devices
+              description: "Deactivate devices"
+              call: "verizon-thingspace-connectivity.deactivate-devices"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts/{accountName}/sms
+          operations:
+            - method: POST
+              name: send-sms
+              description: "Send SMS to devices"
+              call: "verizon-thingspace-connectivity.send-sms"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts/{accountName}/callbacks
+          operations:
+            - method: GET
+              name: list-callbacks
+              description: "List callbacks"
+              call: "verizon-thingspace-connectivity.list-callbacks"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: register-callback
+              description: "Register callback"
+              call: "verizon-thingspace-connectivity.register-callback"
+              with:
+                accountName: "rest.accountName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: verizon-thingspace-mcp
+      transport: http
+      tools:
+        - name: get-account-information
+          description: "Get Verizon ThingSpace account information"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.get-account-information"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-devices
+          description: "List IoT devices in a Verizon ThingSpace account"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.list-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: activate-devices
+          description: "Activate IoT devices on Verizon wireless network"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.activate-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: deactivate-devices
+          description: "Deactivate IoT devices from Verizon wireless network"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "verizon-thingspace-connectivity.deactivate-devices"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: send-sms
+          description: "Send SMS message to one or more IoT devices"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.send-sms"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-callbacks
+          description: "List registered callback endpoints for Verizon ThingSpace notifications"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "verizon-thingspace-connectivity.list-callbacks"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: register-callback
+          description: "Register a callback URL for Verizon ThingSpace device event notifications"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "verizon-thingspace-connectivity.register-callback"
+          with:
+            accountName: "tools.accountName"
+          outputParameters:
+            - type: object
+              mapping: "$."

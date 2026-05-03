@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-register-callback-request-structure.json",
+  "description": "Request to register a callback",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Service name for the callback",
+      "example": "CarrierService"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to receive callbacks",
+      "example": "https://your-callback.example.com/carrier"
+    },
+    "username": {
+      "type": "string",
+      "description": "Username for callback endpoint authentication"
+    },
+    "password": {
+      "type": "string",
+      "description": "Password for callback endpoint authentication"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "name": "RegisterCallbackRequest"
+}

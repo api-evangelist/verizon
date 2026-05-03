@@ -1,0 +1,6 @@
+{
+  "name": "CarrierService",
+  "url": "https://your-callback.example.com/carrier",
+  "username": "Sample Name",
+  "password": "example-value"
+}
