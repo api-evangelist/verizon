@@ -1,0 +1,39 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Verizon
+providerId: verizon
+created: '2026-05-04'
+modified: '2026-05-04'
+reconciled: true
+tags:
+  - Telecommunications
+  - Enterprise
+  - B2B
+description: Verizon does not publish public API pricing. Access is via partner/B2B contracts negotiated
+  through the provider's enterprise sales team. Verizon Network APIs (5G, location, identity) sold via
+  the Verizon Open Innovation API portal with custom enterprise contracts.
+sources:
+  - https://thingspace.verizon.com/
+  - https://www.verizon.com/business/products/internet-of-things/
+plans:
+  - id: verizon-partner
+    name: Partner / B2B Contract
+    type: enterprise
+    description: Custom pricing through enterprise sales / partner program.
+    entries:
+      - label: Annual contract (custom)
+        name: annual
+        type: subscription
+        metric: year
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: Negotiated contracts
+      - name: Volume discounts
+      - name: Service-level agreements
+      - name: Dedicated account team
