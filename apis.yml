@@ -78,7 +78,7 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
       - type: JSONStructure
         url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
       - type: SDK
         url: https://github.com/sdks-io/verizon-apis-python-sdk
