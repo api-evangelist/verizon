@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Verizon ThingSpace Connectivity Management API — Session
+  description: 'Verizon ThingSpace Connectivity Management API — Session. 1 operations. Lead operation: Verizon Login Session.
+    Self-contained Naftiko capability covering one Verizon business surface.'
+  tags:
+  - Verizon
+  - Session
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VERIZON_API_KEY: VERIZON_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: thingspace-connectivity-session
+    baseUri: https://thingspace.verizon.com/api/m2m/v2
+    description: Verizon ThingSpace Connectivity Management API — Session business capability. Self-contained, no shared references.
+    resources:
+    - name: session-login
+      path: /session/login
+      operations:
+      - name: loginsession
+        method: POST
+        description: Verizon Login Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.VERIZON_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: thingspace-connectivity-session-rest
+    port: 8080
+    description: REST adapter for Verizon ThingSpace Connectivity Management API — Session. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/session/login
+      name: session-login
+      description: REST surface for session-login.
+      operations:
+      - method: POST
+        name: loginsession
+        description: Verizon Login Session
+        call: thingspace-connectivity-session.loginsession
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: thingspace-connectivity-session-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Verizon ThingSpace Connectivity Management API — Session. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: verizon-login-session
+      description: Verizon Login Session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: thingspace-connectivity-session.loginsession
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
