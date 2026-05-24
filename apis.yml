@@ -287,6 +287,8 @@ common:
       description: Connect TM Forum service management APIs to ServiceNow and other ITSM platforms.
     - name: IoT Platforms
       description: Integrate ThingSpace device management with enterprise IoT platforms and data lakes.
+  - type: LLMsTxt
+    url: https://developers.verizon.com/llms.txt
 created: '2024-11-19'
 modified: '2026-05-19'
 description: Verizon is a leading telecommunications company providing wireless, wireline, broadband, and global enterprise
