@@ -1,0 +1,1174 @@
+"""
+Verizon GraphQL Schema
+Conceptual schema covering Verizon wireless account management, IoT device management
+via ThingSpace, 5G Edge computing, TM Forum service management, CPaaS voice services,
+billing, network quality, security features, and device protection.
+Source: https://developer.verizon.com / https://thingspace.verizon.com
+"""
+
+scalar DateTime
+scalar JSON
+scalar PhoneNumberScalar
+scalar ICCID
+scalar MSISDN
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  PENDING
+  CLOSED
+}
+
+enum DeviceStatus {
+  ACTIVE
+  INACTIVE
+  DEACTIVATED
+  PREACTIVE
+  REPLACED
+  RETIRED
+}
+
+enum PlanType {
+  CONSUMER
+  BUSINESS
+  PREPAID
+  POSTPAID
+  IOT
+}
+
+enum NetworkGeneration {
+  LTE
+  FIVE_G_NSA
+  FIVE_G_SA
+  FIVE_G_UW
+}
+
+enum CallDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum MessageStatus {
+  SENT
+  DELIVERED
+  FAILED
+  PENDING
+}
+
+enum ClaimStatus {
+  OPEN
+  IN_PROGRESS
+  APPROVED
+  DENIED
+  CLOSED
+}
+
+enum SupportPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum WebhookEvent {
+  DEVICE_ACTIVATED
+  DEVICE_DEACTIVATED
+  DATA_THRESHOLD_REACHED
+  SMS_RECEIVED
+  CALLBACK_RECEIVED
+  NETWORK_STATUS_CHANGED
+  PAYMENT_PROCESSED
+  CLAIM_STATUS_CHANGED
+}
+
+enum UpgradeEligibility {
+  ELIGIBLE
+  NOT_ELIGIBLE
+  PENDING
+  EARLY_UPGRADE_AVAILABLE
+}
+
+enum BandwidthUnit {
+  KBPS
+  MBPS
+  GBPS
+}
+
+enum CoverageType {
+  EXCELLENT
+  GOOD
+  FAIR
+  LIMITED
+  NO_COVERAGE
+}
+
+# ─── Interfaces ──────────────────────────────────────────────────────────────
+
+interface Node {
+  id: ID!
+}
+
+interface DeviceBase {
+  id: ID!
+  imei: String
+  status: DeviceStatus!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+interface PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+}
+
+# ─── Account and Identity ────────────────────────────────────────────────────
+
+"""
+Top-level Verizon account record representing a consumer or business account.
+"""
+type Account implements Node {
+  id: ID!
+  accountNumber: String!
+  accountName: String!
+  status: AccountStatus!
+  billingAddress: Address
+  holder: AccountHolder
+  linesOfService: [LineOfService!]!
+  phoneNumbers: [PhoneNumber!]!
+  invoices: [Invoice!]!
+  paymentMethod: PaymentMethod
+  autoPay: AutoPay
+  plan: Plan
+  dataUsage: DataUsage
+  familyBase: FamilyBase
+  digitalSecure: DigitalSecure
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+My Verizon portal representation — aggregates account, devices, and services.
+"""
+type MyVerizon implements Node {
+  id: ID!
+  account: Account!
+  devices: [Device!]!
+  bills: [BillingStatement!]!
+  usageSummary: UsageSummary!
+  notifications: [NetworkNotification!]!
+  supportRequests: [SupportRequest!]!
+}
+
+"""
+Primary account holder contact information.
+"""
+type AccountHolder implements Node {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String
+  dateOfBirth: String
+  ssn: String
+  account: Account!
+}
+
+"""
+A phone number associated with a line of service.
+"""
+type PhoneNumber implements Node {
+  id: ID!
+  number: PhoneNumberScalar!
+  lineOfService: LineOfService
+  voicemail: Voicemail
+  callFilter: CallFilter
+  callLogs: [CallLog!]!
+}
+
+"""
+A single line of service on a Verizon account.
+"""
+type LineOfService implements Node {
+  id: ID!
+  phoneNumber: PhoneNumber!
+  device: Device
+  plan: Plan!
+  dataUsage: DataUsage!
+  roamingBenefit: RoamingBenefit
+  travelPass: TravelPass
+  safetyMode: SafetyMode
+  secureNet: SecureNet
+  contentFilter: ContentFilter
+  mobileHotspot: MobileHotspot
+  status: AccountStatus!
+  nickname: String
+}
+
+# ─── Device Management ───────────────────────────────────────────────────────
+
+"""
+A consumer or IoT device registered on a Verizon account.
+"""
+type Device implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  make: String!
+  model: String!
+  os: String
+  status: DeviceStatus!
+  deviceId: DeviceID
+  sim: SIM
+  esim: eSIM
+  lineOfService: LineOfService
+  networkGeneration: NetworkGeneration
+  location: DeviceLocation
+  devicePayment: DevicePayment
+  deviceProtect: DeviceProtect
+  upgradeEligibility: UpgradeEligibility
+  tradeInEstimate: TradeInEstimate
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+Composite device identifier including IMEI, MDN, ESN, and other IDs.
+"""
+type DeviceID implements Node {
+  id: ID!
+  imei: IMEI!
+  mdn: String
+  esn: String
+  meid: String
+  iccid: ICCID
+  device: Device!
+}
+
+"""
+IMEI representation for a device.
+"""
+type IMEI {
+  value: String!
+  tac: String
+  manufacturer: String
+  modelName: String
+  isValid: Boolean!
+}
+
+"""
+Physical SIM card associated with a device.
+"""
+type SIM implements Node {
+  id: ID!
+  iccid: ICCID!
+  status: DeviceStatus!
+  carrier: String
+  activatedAt: DateTime
+  device: Device
+}
+
+"""
+Embedded SIM (eSIM) profile for a device.
+"""
+type eSIM implements Node {
+  id: ID!
+  eid: String!
+  profileStatus: String!
+  activationCode: String
+  carrier: String
+  device: Device
+  activatedAt: DateTime
+}
+
+# ─── IoT Devices ─────────────────────────────────────────────────────────────
+
+"""
+Generic IoT device managed on the ThingSpace platform.
+"""
+type IoTDevice implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  name: String!
+  status: DeviceStatus!
+  accountNumber: String!
+  groupName: String
+  ipAddress: String
+  firmware: String
+  lastContact: DateTime
+  dataUsage: DataUsage
+  smsMessages: [SMS!]!
+  webhooks: [Webhook!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+ThingSpace-managed IoT device with full platform capabilities.
+"""
+type ThingspaceDevice implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  accountName: String!
+  status: DeviceStatus!
+  groupName: String
+  leadingImsi: String
+  ipAddress: String
+  publicIp: String
+  dataUsage: DataUsage
+  diagnostics: JSON
+  firmware: String
+  lastActivatedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+IoT device registered under the ThingsborneDevice family.
+"""
+type ThingsborneDevice implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  status: DeviceStatus!
+  accountNumber: String!
+  deviceKind: String!
+  sensorData: JSON
+  lastReported: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+Connected car device providing telematics and diagnostics.
+"""
+type ConnectCarDevice implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  vin: String!
+  make: String
+  model: String
+  year: Int
+  status: DeviceStatus!
+  location: DeviceLocation
+  diagnosticData: JSON
+  tripHistory: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+Hum OBD-II vehicle diagnostics device.
+"""
+type HumDevice implements Node & DeviceBase {
+  id: ID!
+  imei: String
+  vin: String!
+  status: DeviceStatus!
+  vehicleMake: String
+  vehicleModel: String
+  vehicleYear: Int
+  diagnosticAlerts: [String!]!
+  location: DeviceLocation
+  emergencyAlerts: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+Fleet tracking record for commercial vehicle and asset management.
+"""
+type FleetTracking implements Node {
+  id: ID!
+  accountNumber: String!
+  fleetName: String!
+  devices: [ConnectCarDevice!]!
+  totalVehicles: Int!
+  activeVehicles: Int!
+  geofences: [JSON]
+  reports: JSON
+  updatedAt: DateTime!
+}
+
+# ─── Plans and Services ───────────────────────────────────────────────────────
+
+"""
+Base Verizon wireless plan.
+"""
+type Plan implements Node & PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+  dataAllowanceGB: Float
+  voiceMinutes: Int
+  textMessages: Int
+  hotspotGB: Float
+  internationalEnabled: Boolean!
+  perksIncluded: [String!]!
+}
+
+"""
+Connect (IoT) plan for device connectivity.
+"""
+type ConnectPlan implements Node & PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+  dataAllowanceMB: Float!
+  pooled: Boolean!
+  overage: Boolean!
+  overageRateMB: Float
+  maxDevices: Int
+}
+
+"""
+Data-specific plan or add-on.
+"""
+type DataPlan implements Node & PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+  dataGB: Float!
+  sharedData: Boolean!
+  carryOver: Boolean!
+  safety: Boolean!
+}
+
+"""
+Voice calling plan or add-on.
+"""
+type VoicePlan implements Node & PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+  unlimitedMinutes: Boolean!
+  internationalMinutes: Int
+  wifiCalling: Boolean!
+}
+
+"""
+Text/messaging plan or add-on.
+"""
+type TextPlan implements Node & PlanBase {
+  id: ID!
+  name: String!
+  planType: PlanType!
+  monthlyPrice: Float!
+  contractLength: Int
+  unlimitedMessages: Boolean!
+  internationalEnabled: Boolean!
+  mmsEnabled: Boolean!
+}
+
+"""
+Shared data pool across multiple lines or devices.
+"""
+type SharedData implements Node {
+  id: ID!
+  accountNumber: String!
+  poolName: String!
+  totalGB: Float!
+  usedGB: Float!
+  remainingGB: Float!
+  lines: [LineOfService!]!
+  updatedAt: DateTime!
+}
+
+"""
+Mobile hotspot feature and usage data.
+"""
+type MobileHotspot implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  enabled: Boolean!
+  hotspotGB: Float
+  usedGB: Float!
+  remainingGB: Float!
+  connectedDevices: Int
+}
+
+# ─── Usage and Reporting ─────────────────────────────────────────────────────
+
+"""
+Data usage record for a device or line.
+"""
+type DataUsage implements Node {
+  id: ID!
+  accountNumber: String!
+  deviceId: String
+  billingPeriodStart: DateTime!
+  billingPeriodEnd: DateTime!
+  usedMB: Float!
+  allowanceMB: Float!
+  remainingMB: Float!
+  overageMB: Float
+  roamingMB: Float
+  hotspotMB: Float
+}
+
+"""
+Aggregated usage summary across account lines and devices.
+"""
+type UsageSummary implements Node {
+  id: ID!
+  account: Account!
+  billingPeriodStart: DateTime!
+  billingPeriodEnd: DateTime!
+  totalDataUsedGB: Float!
+  totalMinutesUsed: Int!
+  totalTextsUsed: Int!
+  totalHotspotGB: Float!
+  totalRoamingMB: Float!
+  lineBreakdown: [DataUsage!]!
+}
+
+# ─── Roaming and International ────────────────────────────────────────────────
+
+"""
+Roaming benefit included with a plan.
+"""
+type RoamingBenefit implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  countriesIncluded: [String!]!
+  dataRoamingMB: Float
+  voiceRoamingMinutes: Int
+  textRoamingEnabled: Boolean!
+}
+
+"""
+TravelPass add-on for international daily usage.
+"""
+type TravelPass implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  countries: [String!]!
+  dailyRate: Float!
+  active: Boolean!
+  activatedAt: DateTime
+  expiresAt: DateTime
+}
+
+"""
+International calling/messaging plan record.
+"""
+type International implements Node {
+  id: ID!
+  account: Account!
+  callingEnabled: Boolean!
+  messagingEnabled: Boolean!
+  dataEnabled: Boolean!
+  countries: [String!]!
+  ratePerMinute: Float
+  ratePerMB: Float
+}
+
+# ─── Communications ───────────────────────────────────────────────────────────
+
+"""
+A voice call record.
+"""
+type VoiceCall implements Node {
+  id: ID!
+  fromNumber: PhoneNumber!
+  toNumber: String!
+  direction: CallDirection!
+  startedAt: DateTime!
+  endedAt: DateTime
+  durationSeconds: Int
+  recordingUrl: String
+  transcription: String
+}
+
+"""
+Call log entry for a phone number.
+"""
+type CallLog implements Node {
+  id: ID!
+  phoneNumber: PhoneNumber!
+  call: VoiceCall!
+  timestamp: DateTime!
+  notes: String
+}
+
+"""
+An SMS text message.
+"""
+type SMS implements Node {
+  id: ID!
+  fromNumber: String!
+  toNumber: String!
+  body: String!
+  status: MessageStatus!
+  sentAt: DateTime!
+  deliveredAt: DateTime
+}
+
+"""
+An MMS multimedia message.
+"""
+type MMS implements Node {
+  id: ID!
+  fromNumber: String!
+  toNumber: String!
+  body: String
+  mediaUrls: [String!]!
+  status: MessageStatus!
+  sentAt: DateTime!
+  deliveredAt: DateTime
+}
+
+"""
+Voicemail box for a phone number.
+"""
+type Voicemail implements Node {
+  id: ID!
+  phoneNumber: PhoneNumber!
+  messages: [VoicemailMessage!]!
+  totalCount: Int!
+  unreadCount: Int!
+  transcriptionEnabled: Boolean!
+}
+
+"""
+A single voicemail message.
+"""
+type VoicemailMessage implements Node {
+  id: ID!
+  fromNumber: String!
+  receivedAt: DateTime!
+  durationSeconds: Int!
+  audioUrl: String
+  transcription: String
+  listened: Boolean!
+}
+
+# ─── Network ─────────────────────────────────────────────────────────────────
+
+"""
+Network quality measurement at a location or for a device.
+"""
+type NetworkQuality implements Node {
+  id: ID!
+  location: Location
+  downloadSpeedMbps: Float
+  uploadSpeedMbps: Float
+  latencyMs: Int
+  packetLossPct: Float
+  networkGeneration: NetworkGeneration!
+  signalStrengthDbm: Int
+  measuredAt: DateTime!
+}
+
+"""
+Network event notification for an account or device.
+"""
+type NetworkNotification implements Node {
+  id: ID!
+  account: Account
+  device: Device
+  notificationType: String!
+  message: String!
+  networkGeneration: NetworkGeneration
+  sentAt: DateTime!
+  read: Boolean!
+}
+
+"""
+5G access entitlement and status for a line or device.
+"""
+type FiveGAccess implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  fiveGEnabled: Boolean!
+  fiveGNSA: Boolean!
+  fiveGSA: Boolean!
+  ultraWideband: Boolean!
+  lastChecked: DateTime!
+}
+
+"""
+5G Non-Standalone (NSA) connectivity status.
+"""
+type FiveGNSA implements Node {
+  id: ID!
+  device: Device!
+  connected: Boolean!
+  bandBands: [String!]!
+  downloadMbps: Float
+  uploadMbps: Float
+  measuredAt: DateTime!
+}
+
+"""
+5G Ultra Wideband (mmWave / C-band) connectivity status.
+"""
+type FiveGUW implements Node {
+  id: ID!
+  device: Device!
+  connected: Boolean!
+  uwBand: String
+  downloadMbps: Float
+  uploadMbps: Float
+  indoorCoverage: Boolean!
+  measuredAt: DateTime!
+}
+
+"""
+5G coverage availability at a geographic area.
+"""
+type FiveGCoverage implements Node {
+  id: ID!
+  location: Location!
+  coverageType: CoverageType!
+  fiveGType: String
+  indoorCoverage: Boolean!
+  updatedAt: DateTime!
+}
+
+"""
+LTE network coverage at a geographic area.
+"""
+type LTECoverage implements Node {
+  id: ID!
+  location: Location!
+  coverageType: CoverageType!
+  bandBands: [String!]!
+  voLTE: Boolean!
+  updatedAt: DateTime!
+}
+
+"""
+Coverage map tile or polygon for a region.
+"""
+type CoverageMap implements Node {
+  id: ID!
+  region: String!
+  boundingBox: JSON!
+  fiveGCoverage: [FiveGCoverage!]!
+  lteCoverage: [LTECoverage!]!
+  updatedAt: DateTime!
+}
+
+"""
+A geographic location.
+"""
+type Location implements Node {
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+  altitude: Float
+  accuracy: Float
+  address: Address
+  timestamp: DateTime
+}
+
+"""
+Real-time or last-known location of a device.
+"""
+type DeviceLocation implements Node {
+  id: ID!
+  device: Device!
+  latitude: Float!
+  longitude: Float!
+  altitude: Float
+  accuracyMeters: Float
+  speed: Float
+  heading: Float
+  networkGeneration: NetworkGeneration
+  timestamp: DateTime!
+}
+
+# ─── Security and Controls ────────────────────────────────────────────────────
+
+"""
+Safety Mode feature that slows data to 128 Kbps after allowance is exhausted.
+"""
+type SafetyMode implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  enabled: Boolean!
+  activatesAt: Float
+  currentSpeedKbps: Int
+}
+
+"""
+Secure Net (network-level malware and content filtering) feature.
+"""
+type SecureNet implements Node {
+  id: ID!
+  account: Account!
+  enabled: Boolean!
+  malwareProtection: Boolean!
+  intrustionDetection: Boolean!
+  alertsEnabled: Boolean!
+  threatsBlockedThisCycle: Int
+}
+
+"""
+Call filtering to block robocalls and spam.
+"""
+type CallFilter implements Node {
+  id: ID!
+  phoneNumber: PhoneNumber!
+  enabled: Boolean!
+  spamRiskBlocked: Boolean!
+  robocallBlocked: Boolean!
+  allowList: [String!]!
+  blockList: [String!]!
+}
+
+"""
+Content filtering settings for a line (parental controls).
+"""
+type ContentFilter implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  enabled: Boolean!
+  ageGroup: String
+  blockedCategories: [String!]!
+  allowedApps: [String!]!
+}
+
+"""
+Family Base parental control service for an account.
+"""
+type FamilyBase implements Node {
+  id: ID!
+  account: Account!
+  enabled: Boolean!
+  managedLines: [LineOfService!]!
+  usageLimits: JSON
+  locationSharing: Boolean!
+  bedtimeMode: Boolean!
+}
+
+"""
+Digital Secure comprehensive security suite for an account.
+"""
+type DigitalSecure implements Node {
+  id: ID!
+  account: Account!
+  enabled: Boolean!
+  vpnEnabled: Boolean!
+  passwordManagerEnabled: Boolean!
+  identityMonitorEnabled: Boolean!
+  darkWebMonitoring: Boolean!
+  safeWifiEnabled: Boolean!
+  devicesProtected: Int!
+}
+
+# ─── Billing and Payments ─────────────────────────────────────────────────────
+
+"""
+A billing invoice for an account.
+"""
+type Invoice implements Node {
+  id: ID!
+  account: Account!
+  invoiceNumber: String!
+  billingPeriodStart: DateTime!
+  billingPeriodEnd: DateTime!
+  totalDue: Float!
+  dueDate: DateTime!
+  paid: Boolean!
+  pdfUrl: String
+  lineItems: [InvoiceLineItem!]!
+}
+
+"""
+A single line item on an invoice.
+"""
+type InvoiceLineItem implements Node {
+  id: ID!
+  invoice: Invoice!
+  description: String!
+  amount: Float!
+  category: String
+  lineOfService: LineOfService
+}
+
+"""
+Monthly billing statement summary.
+"""
+type BillingStatement implements Node {
+  id: ID!
+  account: Account!
+  statementDate: DateTime!
+  totalCharges: Float!
+  totalCredits: Float!
+  balanceDue: Float!
+  previousBalance: Float
+  payments: [PaymentMethod!]!
+  invoices: [Invoice!]!
+}
+
+"""
+AutoPay enrollment and settings.
+"""
+type AutoPay implements Node {
+  id: ID!
+  account: Account!
+  enabled: Boolean!
+  paymentMethod: PaymentMethod!
+  paymentDayOfMonth: Int!
+  discount: Float
+  nextPaymentDate: DateTime
+  nextPaymentAmount: Float
+}
+
+"""
+A payment method on file.
+"""
+type PaymentMethod implements Node {
+  id: ID!
+  account: Account!
+  methodType: String!
+  last4: String
+  expiryMonth: Int
+  expiryYear: Int
+  bankName: String
+  routingLast4: String
+  isDefault: Boolean!
+  billingAddress: Address
+}
+
+"""
+Device payment plan (financing) record.
+"""
+type DevicePayment implements Node {
+  id: ID!
+  device: Device!
+  account: Account!
+  totalAmount: Float!
+  remainingBalance: Float!
+  monthlyPayment: Float!
+  termMonths: Int!
+  monthsRemaining: Int!
+  payoffAmount: Float!
+  nextDueDate: DateTime!
+}
+
+# ─── Device Commerce and Protection ──────────────────────────────────────────
+
+"""
+Device upgrade eligibility and options.
+"""
+type DeviceUpgrade implements Node {
+  id: ID!
+  lineOfService: LineOfService!
+  eligibility: UpgradeEligibility!
+  eligibleDate: DateTime
+  upgradeCredit: Float
+  availableDevices: [JSON]
+}
+
+"""
+Trade-in estimate for a device.
+"""
+type TradeInEstimate implements Node {
+  id: ID!
+  device: Device!
+  estimatedValue: Float!
+  promotionalCredit: Float
+  estimateExpiresAt: DateTime!
+  conditions: [String!]!
+}
+
+"""
+Device protection plan (Verizon Protect).
+"""
+type DeviceProtect implements Node {
+  id: ID!
+  device: Device!
+  planName: String!
+  monthlyPremium: Float!
+  deductible: Float!
+  coveredPerils: [String!]!
+  claimsThisCycle: Int!
+  maxClaimsPerYear: Int!
+  squareTrade: SquareTrade
+  asurionClaim: AsurionClaim
+}
+
+"""
+SquareTrade extended warranty coverage details.
+"""
+type SquareTrade implements Node {
+  id: ID!
+  device: Device!
+  contractNumber: String!
+  coverageStartDate: DateTime!
+  coverageEndDate: DateTime!
+  coverageType: String!
+  deductible: Float!
+  claimsAllowed: Int!
+}
+
+"""
+Asurion insurance claim record.
+"""
+type AsurionClaim implements Node {
+  id: ID!
+  deviceProtect: DeviceProtect!
+  claimNumber: String!
+  status: ClaimStatus!
+  claimType: String!
+  filedAt: DateTime!
+  updatedAt: DateTime!
+  deductiblePaid: Float
+  replacementDevice: Device
+  trackingNumber: String
+}
+
+# ─── Customer Support ─────────────────────────────────────────────────────────
+
+"""
+A customer care interaction record.
+"""
+type CustomerCare implements Node {
+  id: ID!
+  account: Account!
+  representativeName: String
+  channel: String!
+  startedAt: DateTime!
+  endedAt: DateTime
+  summary: String
+  resolutionCode: String
+  satisfactionScore: Int
+}
+
+"""
+A customer support request or ticket.
+"""
+type SupportRequest implements Node {
+  id: ID!
+  account: Account!
+  subject: String!
+  description: String!
+  priority: SupportPriority!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resolvedAt: DateTime
+  assignedTo: String
+  category: String
+}
+
+# ─── Auth / API Management ────────────────────────────────────────────────────
+
+"""
+API key for ThingSpace or developer portal access.
+"""
+type APIKey implements Node {
+  id: ID!
+  key: String!
+  accountNumber: String!
+  name: String
+  createdAt: DateTime!
+  expiresAt: DateTime
+  scopes: [String!]!
+  active: Boolean!
+}
+
+"""
+OAuth 2.0 access token for Verizon API access.
+"""
+type OAuthToken implements Node {
+  id: ID!
+  accessToken: String!
+  tokenType: String!
+  expiresIn: Int!
+  scope: String!
+  issuedAt: DateTime!
+  expiresAt: DateTime!
+  refreshToken: String
+}
+
+"""
+Webhook subscription for event notifications.
+"""
+type Webhook implements Node {
+  id: ID!
+  accountNumber: String!
+  callbackUrl: String!
+  events: [WebhookEvent!]!
+  secret: String
+  active: Boolean!
+  createdAt: DateTime!
+  lastTriggeredAt: DateTime
+}
+
+# ─── Supporting Types ─────────────────────────────────────────────────────────
+
+"""
+A postal address.
+"""
+type Address {
+  street1: String!
+  street2: String
+  city: String!
+  state: String!
+  postalCode: String!
+  country: String!
+}
+
+# ─── Root Types ───────────────────────────────────────────────────────────────
+
+type Query {
+  account(id: ID!): Account
+  myVerizon(accountId: ID!): MyVerizon
+  device(id: ID!): Device
+  iotDevice(id: ID!): IoTDevice
+  thingspaceDevice(id: ID!): ThingspaceDevice
+  fleetTracking(accountNumber: String!): FleetTracking
+  plan(id: ID!): Plan
+  invoice(id: ID!): Invoice
+  billingStatement(accountId: ID!, statementDate: String!): BillingStatement
+  networkQuality(latitude: Float!, longitude: Float!): NetworkQuality
+  fiveGCoverage(latitude: Float!, longitude: Float!): FiveGCoverage
+  lteCoverage(latitude: Float!, longitude: Float!): LTECoverage
+  coverageMap(region: String!): CoverageMap
+  deviceLocation(deviceId: ID!): DeviceLocation
+  supportRequest(id: ID!): SupportRequest
+  callLogs(phoneNumberId: ID!, limit: Int): [CallLog!]!
+  smsMessages(accountNumber: String!, limit: Int): [SMS!]!
+  usageSummary(accountId: ID!): UsageSummary
+  webhooks(accountNumber: String!): [Webhook!]!
+}
+
+type Mutation {
+  activateDevice(accountNumber: String!, imei: String!, iccid: String!, planId: ID!): Device
+  deactivateDevice(deviceId: ID!, reason: String): Device
+  sendSMS(accountNumber: String!, toNumber: String!, body: String!): SMS
+  updatePlan(lineId: ID!, planId: ID!): LineOfService
+  enableTravelPass(lineId: ID!, countries: [String!]!): TravelPass
+  enrollAutoPay(accountId: ID!, paymentMethodId: ID!): AutoPay
+  fileAsurionClaim(deviceProtectId: ID!, claimType: String!, description: String!): AsurionClaim
+  createSupportRequest(accountId: ID!, subject: String!, description: String!, priority: SupportPriority!): SupportRequest
+  createWebhook(accountNumber: String!, callbackUrl: String!, events: [WebhookEvent!]!): Webhook
+  deleteWebhook(webhookId: ID!): Boolean
+  updateContentFilter(lineId: ID!, blockedCategories: [String!]!, ageGroup: String): ContentFilter
+  enableDigitalSecure(accountId: ID!): DigitalSecure
+  upgradeDevice(lineId: ID!, newDeviceModel: String!, tradeInDeviceId: ID): DeviceUpgrade
+  getTradeInEstimate(deviceId: ID!): TradeInEstimate
+  createAPIKey(accountNumber: String!, name: String!, scopes: [String!]!): APIKey
+}
+
+type Subscription {
+  deviceStatusChanged(deviceId: ID!): Device
+  dataThresholdReached(lineId: ID!, thresholdPct: Float!): DataUsage
+  networkNotification(accountId: ID!): NetworkNotification
+  smsReceived(accountNumber: String!): SMS
+  claimStatusChanged(claimId: ID!): AsurionClaim
+}
