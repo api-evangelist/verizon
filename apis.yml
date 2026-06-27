@@ -32,7 +32,7 @@ apis:
     type: Login
   - url: https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
     name: Sign up
-    type: SignUp
+    type: Signup
   - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
     name: 'Voice APIs: Communication Platform as a Service | Verizon'
     type: Documentation
@@ -82,10 +82,10 @@ apis:
     url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
     url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
     title: Python SDK
-  - type: SDK
+  - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
     title: PHP SDK
   description: ThingSpace gives organizations of all sizes all the tools to build
@@ -254,7 +254,7 @@ common:
   type: Login
 - url: https://secure.verizon.com/account/register/start?goto=https%3A%2F%2Fdevelopers.verizon.com%2Fapis%2Fsec%2Fv1%2Flogin
   name: Register a service
-  type: SignUp
+  type: Signup
 - url: https://www.verizon.com/about/privacy/
   type: PrivacyPolicy
 - url: https://www.verizon.com/about/terms-conditions/
@@ -304,7 +304,7 @@ common:
   - name: IoT Platforms
     description: Integrate ThingSpace device management with enterprise IoT platforms
       and data lakes.
-- type: LLMsTxt
+- type: LlmsText
   url: https://developers.verizon.com/llms.txt
 created: '2024-11-19'
 modified: '2026-05-19'
