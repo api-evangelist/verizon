@@ -236,6 +236,10 @@ tags:
 type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 common:
+- type: VulnerabilityDisclosure
+  url: security/verizon-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/verizon-domain-security.yml
 - type: Authentication
   url: authentication/verizon-authentication.yml
 - type: OAuthScopes

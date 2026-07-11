@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/verizon-thingspace-connectivity-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+    scopes: 3
+  sources:
+  - openapi/verizon-thingspace-connectivity-openapi.yml
