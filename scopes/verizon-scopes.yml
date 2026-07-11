@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/verizon-thingspace-connectivity-openapi.yml
+schemes:
+- name: OAuth2ClientCredentials
+  source: openapi/verizon-thingspace-connectivity-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+scopes:
+- scope: DISCOVERYREAD
+  description: Read discovery information
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/verizon-thingspace-connectivity-openapi.yml
+- scope: EVENTSREAD
+  description: Read device events
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/verizon-thingspace-connectivity-openapi.yml
+- scope: SERVICEPROFILEREAD
+  description: Read service profiles
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/verizon-thingspace-connectivity-openapi.yml

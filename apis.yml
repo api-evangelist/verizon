@@ -236,6 +236,10 @@ tags:
 type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 common:
+- type: Authentication
+  url: authentication/verizon-authentication.yml
+- type: OAuthScopes
+  url: scopes/verizon-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/verizon
 - url: https://www.verizon.com
