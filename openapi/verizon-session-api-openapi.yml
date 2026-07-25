@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Verizon ThingSpace Connectivity Management Accounts Session API
+  description: Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.
+  version: '1.0'
+  contact:
+    name: Verizon ThingSpace Support
+    url: https://thingspace.verizon.com/
+  license:
+    name: Verizon Terms of Service
+    url: https://www.verizon.com/about/terms-conditions/
+  x-generated-from: documentation
+servers:
+- url: https://thingspace.verizon.com/api/m2m/v2
+  description: Verizon ThingSpace Connectivity Management API v2
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Session
+  description: Session management and authentication
+paths:
+  /session/login:
+    post:
+      operationId: loginSession
+      summary: Verizon Login Session
+      description: Establishes an API session using a username and password. Returns an access token and session expiration time.
+      tags:
+      - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionLoginRequest'
+            examples:
+              LoginSessionRequestExample:
+                summary: Default loginSession request
+                x-microcks-default: true
+                value:
+                  username: thingspace-user@example.com
+                  password: secret-password
+      responses:
+        '200':
+          description: Session login response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionLoginResponse'
+              examples:
+                LoginSession200Example:
+                  summary: Default loginSession 200 response
+                  x-microcks-default: true
+                  value:
+                    sessionToken: bcce3ea6-fe4f-4952-bacb-56e4639936a0
+                    expiresIn: 3600
+        '400':
+          description: Bad request
+        '401':
+          description: Authentication failed
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SessionLoginRequest:
+      type: object
+      required:
+      - username
+      - password
+      description: Session login credentials
+      properties:
+        username:
+          type: string
+          description: ThingSpace account username
+          example: user@example.com
+        password:
+          type: string
+          description: ThingSpace account password
+    SessionLoginResponse:
+      type: object
+      description: Session login response with token
+      properties:
+        sessionToken:
+          type: string
+          description: Session token for subsequent API calls
+          example: bcce3ea6-fe4f-4952-bacb-56e4639936a0
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+          example: 3600
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+          scopes:
+            DISCOVERYREAD: Read discovery information
+            SERVICEPROFILEREAD: Read service profiles
+            EVENTSREAD: Read device events

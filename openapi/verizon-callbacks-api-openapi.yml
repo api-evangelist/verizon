@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Verizon ThingSpace Connectivity Management Accounts Callbacks API
+  description: Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.
+  version: '1.0'
+  contact:
+    name: Verizon ThingSpace Support
+    url: https://thingspace.verizon.com/
+  license:
+    name: Verizon Terms of Service
+    url: https://www.verizon.com/about/terms-conditions/
+  x-generated-from: documentation
+servers:
+- url: https://thingspace.verizon.com/api/m2m/v2
+  description: Verizon ThingSpace Connectivity Management API v2
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Callbacks
+  description: Callback subscription management
+paths:
+  /callbacks/{accountName}:
+    get:
+      operationId: listRegisteredCallbacks
+      summary: Verizon List Registered Callbacks
+      description: Returns a list of all registered callback endpoints for the account including service name and URL for each registered callback.
+      tags:
+      - Callbacks
+      parameters:
+      - name: accountName
+        in: path
+        required: true
+        description: Account name
+        schema:
+          type: string
+        example: 0000123456-00001
+      responses:
+        '200':
+          description: List of registered callbacks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CallbackSummary'
+              examples:
+                ListRegisteredCallbacks200Example:
+                  summary: Default listRegisteredCallbacks 200 response
+                  x-microcks-default: true
+                  value:
+                  - name: CarrierService
+                    url: https://your-callback.example.com/carrier
+                  - name: SMS
+                    url: https://your-callback.example.com/sms
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: registerCallback
+      summary: Verizon Register Callback
+      description: Registers a URL to receive callback messages for a specified service. Callbacks notify your system of device status changes and events.
+      tags:
+      - Callbacks
+      parameters:
+      - name: accountName
+        in: path
+        required: true
+        description: Account name
+        schema:
+          type: string
+        example: 0000123456-00001
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterCallbackRequest'
+            examples:
+              RegisterCallbackRequestExample:
+                summary: Default registerCallback request
+                x-microcks-default: true
+                value:
+                  name: CarrierService
+                  url: https://your-callback.example.com/carrier
+      responses:
+        '200':
+          description: Callback registration response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallbackSummary'
+              examples:
+                RegisterCallback200Example:
+                  summary: Default registerCallback 200 response
+                  x-microcks-default: true
+                  value:
+                    name: CarrierService
+                    url: https://your-callback.example.com/carrier
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RegisterCallbackRequest:
+      type: object
+      required:
+      - name
+      - url
+      description: Request to register a callback
+      properties:
+        name:
+          type: string
+          description: Service name for the callback
+          example: CarrierService
+        url:
+          type: string
+          description: URL to receive callbacks
+          example: https://your-callback.example.com/carrier
+        username:
+          type: string
+          description: Username for callback endpoint authentication
+        password:
+          type: string
+          description: Password for callback endpoint authentication
+    CallbackSummary:
+      type: object
+      description: Callback registration summary
+      properties:
+        name:
+          type: string
+          description: Callback service name
+          example: CarrierService
+        url:
+          type: string
+          description: Callback URL
+          example: https://your-callback.example.com/carrier
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+          scopes:
+            DISCOVERYREAD: Read discovery information
+            SERVICEPROFILEREAD: Read service profiles
+            EVENTSREAD: Read device events

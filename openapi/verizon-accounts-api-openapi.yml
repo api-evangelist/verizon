@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Verizon ThingSpace Connectivity Management Accounts API
+  description: Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.
+  version: '1.0'
+  contact:
+    name: Verizon ThingSpace Support
+    url: https://thingspace.verizon.com/
+  license:
+    name: Verizon Terms of Service
+    url: https://www.verizon.com/about/terms-conditions/
+  x-generated-from: documentation
+servers:
+- url: https://thingspace.verizon.com/api/m2m/v2
+  description: Verizon ThingSpace Connectivity Management API v2
+security:
+- OAuth2ClientCredentials: []
+tags:
+- name: Accounts
+  description: Account information and management
+paths:
+  /accounts/{accountName}:
+    get:
+      operationId: getAccountInformation
+      summary: Verizon Get Account Information
+      description: Returns information about a specified account. The information returned includes account type, billing cycle information, number of devices, and status.
+      tags:
+      - Accounts
+      parameters:
+      - name: accountName
+        in: path
+        required: true
+        description: Account name (32-character numeric value)
+        schema:
+          type: string
+        example: 0000123456-00001
+      responses:
+        '200':
+          description: Account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInformation'
+              examples:
+                GetAccountInformation200Example:
+                  summary: Default getAccountInformation 200 response
+                  x-microcks-default: true
+                  value:
+                    accountName: 0000123456-00001
+                    accountNumber: '0000123456'
+                    organizationName: Acme Corporation
+                    isProvisioningAllowed: true
+                    carrierInformation:
+                    - carrierName: Verizon Wireless
+                      state: REGISTERED
+                    features:
+                    - name: Callback
+                      description: Callback enabled
+                    ipPools:
+                    - poolName: ACME_POOL
+                      poolType: IPV4
+                      isDefaultPool: true
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Account not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Feature:
+      type: object
+      description: Account feature
+      properties:
+        name:
+          type: string
+          description: Feature name
+          example: Callback
+        description:
+          type: string
+          description: Feature description
+          example: Callback enabled
+    CarrierInformation:
+      type: object
+      description: Carrier network information
+      properties:
+        carrierName:
+          type: string
+          description: Name of the carrier
+          example: Verizon Wireless
+        state:
+          type: string
+          description: Account state on this carrier
+          example: REGISTERED
+    AccountInformation:
+      type: object
+      description: Account information and settings
+      properties:
+        accountName:
+          type: string
+          description: The account name
+          example: 0000123456-00001
+        accountNumber:
+          type: string
+          description: The account number
+          example: '0000123456'
+        organizationName:
+          type: string
+          description: The organization name on the account
+          example: Acme Corporation
+        isProvisioningAllowed:
+          type: boolean
+          description: Whether the account allows device provisioning
+          example: true
+        carrierInformation:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarrierInformation'
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        ipPools:
+          type: array
+          items:
+            $ref: '#/components/schemas/IpPool'
+    IpPool:
+      type: object
+      description: IP address pool
+      properties:
+        poolName:
+          type: string
+          description: Name of the IP pool
+          example: ACME_POOL
+        poolType:
+          type: string
+          enum:
+          - IPV4
+          - IPV6
+          description: IP version type
+          example: IPV4
+        isDefaultPool:
+          type: boolean
+          description: Whether this is the default pool
+          example: true
+  securitySchemes:
+    OAuth2ClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+          scopes:
+            DISCOVERYREAD: Read discovery information
+            SERVICEPROFILEREAD: Read service profiles
+            EVENTSREAD: Read device events
