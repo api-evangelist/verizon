@@ -1,0 +1,22 @@
+{
+  "provider": "verizon",
+  "sources": [
+    "verizon-accounts-api-openapi.yml",
+    "verizon-callbacks-api-openapi.yml",
+    "verizon-devices-api-openapi.yml",
+    "verizon-session-api-openapi.yml",
+    "verizon-sms-api-openapi.yml"
+  ],
+  "outputs": [
+    "verizon-accounts-api-openapi.yml",
+    "verizon-callbacks-api-openapi.yml",
+    "verizon-devices-api-openapi.yml",
+    "verizon-session-api-openapi.yml",
+    "verizon-sms-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
