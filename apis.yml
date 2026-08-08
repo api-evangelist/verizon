@@ -5,7 +5,7 @@ apis:
   name: Verizon 5G Edge
   tags:
   - Wireless
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://www.verizon.com/business/solutions/5g/edge-computing/
   properties:
   - url: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
     type: Documentation
@@ -27,12 +27,10 @@ apis:
   - url: https://www.verizon.com/about/privacy/
     name: Privacy Policy Home Page | About Verizon
     type: PrivacyPolicy
-  - url: >-
-      https://mblogin.verizonwireless.com/account/business/login?appGroup=TSD&goto=https%3A%2F%2Fmblogin.verizonwireless.com%2Fvzauth%2Foauth2%2Fauthorize%3Fscope%3Dopenid%26response_type%3Did_token%26realm%3D%2Fvzwmb%26redirect_uri%3Dhttps%3A%2F%2Fwww.verizon.com%2Fbusiness%2F5g-edge-portal%2Fredirect%26nonce%3DYmMyOWFhNjItZDU0ZS00Mzg1LTg2NzYtYTYyMjYzYWU4ZWFiLTIxNTA0MCxodHRwczovL3d3dy52ZXJpem9uLmNvbS9idXNpbmVzcy81Zy1lZGdlLXBvcnRhbC9hY2NvdW50L2xvZ2luP2E9MC41NTIyNzE1NDg0MTc3OTk4%26client_id%3Dmdp_agent%26response_mode%3Dform_post&realm=%2Fvzwmb
+  - url: https://mblogin.verizonwireless.com/account/business/login?appGroup=TSD&goto=https%3A%2F%2Fmblogin.verizonwireless.com%2Fvzauth%2Foauth2%2Fauthorize%3Fscope%3Dopenid%26response_type%3Did_token%26realm%3D%2Fvzwmb%26redirect_uri%3Dhttps%3A%2F%2Fwww.verizon.com%2Fbusiness%2F5g-edge-portal%2Fredirect%26nonce%3DYmMyOWFhNjItZDU0ZS00Mzg1LTg2NzYtYTYyMjYzYWU4ZWFiLTIxNTA0MCxodHRwczovL3d3dy52ZXJpem9uLmNvbS9idXNpbmVzcy81Zy1lZGdlLXBvcnRhbC9hY2NvdW50L2xvZ2luP2E9MC41NTIyNzE1NDg0MTc3OTk4%26client_id%3Dmdp_agent%26response_mode%3Dform_post&realm=%2Fvzwmb
     name: Verizon Business Account Login
     type: Login
-  - url: >-
-      https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
+  - url: https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
     name: Sign up
     type: Signup
   - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
@@ -40,168 +38,153 @@ apis:
     type: Documentation
   - url: graphql/verizon-graphql.md
     type: GraphQL
-  description: >-
-    Software Management Services API lets customers manage, schedule and distribute software updates to
-    eligible 4G and 5G Internet of Things devices.
+  description: Software Management Services API lets customers manage, schedule and distribute software
+    updates to eligible 4G and 5G Internet of Things devices.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: verizon:communications-platform-as-a-service
   name: Verizon Communications Platform as a Service (CPaaS)
   tags: []
-  humanURL: >-
-    https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/
+  humanURL: https://www.verizon.com/business/products/contact-center-cx-solutions/
   properties: []
-  description: >-
-    Available exclusively for IP Contact Center (IPCC) customers, our Communications Platform as a Service
-    (CPaaS) offering provides a set of APIs that you can leverage to build customized solutions for inbound
-    and outbound IP interactive voice response (IPIVR) and call detail reporting.
+  description: Available exclusively for IP Contact Center (IPCC) customers, our Communications Platform
+    as a Service (CPaaS) offering provides a set of APIs that you can leverage to build customized solutions
+    for inbound and outbound IP interactive voice response (IPIVR) and call detail reporting.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-inventory-management
   name: Verizon Inventory Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf
   properties:
   - type: Documentation
-    url: >-
-      https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+    url: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-incident-management
   name: Verizon Incident Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-incident-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-incident-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-change-management
   name: Verizon Change Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-change-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-change-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-event-management
   name: Verizon Event Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-event-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-event-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-problem-management
   name: Verizon Problem Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-problem-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-problem-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-order-management
   name: Verizon Order Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-order-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-order-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-billing-management
   name: Verizon Billing Management
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-billing-management-tmf
+  humanURL: https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-billing-management-tmf
   properties: []
-  description: >-
-    Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation
-    that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are
-    bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+  description: Verizon provides customers a suite of TM Forum certified service management APIs and associated
+    documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions.
+    These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer
+    systems synchronized.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:verizon-dynamic-bandwidth-apis
   name: Verizon Dynamic Bandwidth APIs
   tags: []
   humanURL: https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-bandwidth-apis
   properties: []
-  description: >-
-    These innovative network provisioning API solutions can be deployed in the enterprises network eco-system
-    to drive real-time network adjustments according to their changing business needs. Taking an agile
-    approach to network provisioning, it can aid in dynamically allocating/de-allocating and scaling the
-    bandwidth requirements as the need arises.
+  description: These innovative network provisioning API solutions can be deployed in the enterprises
+    network eco-system to drive real-time network adjustments according to their changing business needs.
+    Taking an agile approach to network provisioning, it can aid in dynamically allocating/de-allocating
+    and scaling the bandwidth requirements as the need arises.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:dynamic-network-manager-dnm-standardized-apis
   name: Dynamic Network Manager (DNM) Standardized APIs
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1
+  humanURL: https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1
   properties: []
-  description: >-
-    MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs
-    can work with multiple Payload Schemas, in this case the Private IP Payload Schema. The MEF-76 Specification
-    describes APIs for service control functions (e.g. inventory, parameter change requests, notifications
-    etc.).
+  description: MEF-standardized Dynamic Network Manager APIs. Verizon documents the same API surface under
+    four product families — Private IP, Internet Dedicated, E-Line and E-LAN — which is why this appeared
+    four times in the profile.
+  X-Product-Contexts:
+    note: One API, documented by Verizon under four product families.
+    contexts:
+    - product: Private IP
+      url: https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1
+    - product: Internet Dedicated Services
+      url: https://developers.verizon.com/#/apis/ns/products/internet-dedicated-services-apis/dynamic-network-manager-mef-2
+    - product: E-Line Services
+      url: https://developers.verizon.com/#/apis/ns/products/e-line-services-apis/dynamic-network-manager-mef-3
+    - product: E-LAN Services
+      url: https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:secure-cloud-interconnect-apis-utilization
   name: Secure Cloud Interconnect APIs Utilization
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Utilization-API
+  humanURL: https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Utilization-API
   properties: []
-  description: >-
-    SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection
-    to the cloud.
+  description: SCI supports APIs to fetch data consumption and bandwidth utilization measurements for
+    the SCI connection to the cloud.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: undefined:secure-cloud-interconnect-apis-billing-usage
   name: Secure Cloud Interconnect APIs Billing Usage
   tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Billing-Usage-API
+  humanURL: https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Billing-Usage-API
   properties: []
-  description: >-
-    SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection
-    to the cloud.
-- aid: undefined:dynamic-network-manager-dnm-standardized-apis
-  name: Dynamic Network Manager (DNM) Standardized APIs
-  tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/internet-dedicated-services-apis/dynamic-network-manager-mef-2
-  properties: []
-  description: >-
-    MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs
-    can work with multiple Payload Schemas, in this case the DNM APIs to support IDS. The MEF-76 Specification
-    describes APIs for service control functions (e.g. inventory, parameter change requests, notifications
-    etc.).
-- aid: undefined:dynamic-network-manager-dnm-standardized-apis
-  name: Dynamic Network Manager (DNM) Standardized APIs
-  tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/e-line-services-apis/dynamic-network-manager-mef-3
-  properties: []
-  description: >-
-    MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs
-    can work with multiple Payload Schemas, in this case the DNM APIs to support E-Line. The MEF-76 Specification
-    describes APIs for service control functions (e.g. inventory, parameter change requests, notifications
-    etc.).
-- aid: undefined:dynamic-network-manager-dnm-standardized-apis
-  name: Dynamic Network Manager (DNM) Standardized APIs
-  tags: []
-  humanURL: >-
-    https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4
-  properties: []
-  description: >-
-    MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs
-    can work with multiple Payload Schemas, in this case the DNM APIs to support E-LAN . The MEF-76 Specification
-    describes APIs for service control functions (e.g. inventory, parameter change requests, notifications
-    etc.).
+  description: SCI supports APIs to fetch data consumption and bandwidth utilization measurements for
+    the SCI connection to the cloud.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://developers.verizon.com
 - aid: verizon:verizon-accounts-api
   name: Verizon Accounts API
   description: Account information and management
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://thingspace.verizon.com/documentation
   tags:
   - Accounts
   properties:
@@ -212,52 +195,41 @@ apis:
   - type: APIReference
     url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
   - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
   - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+  baseURL: https://thingspace.verizon.com/api/m2m/v2
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: verizon:verizon-callbacks-api
   name: Verizon Callbacks API
   description: Callback subscription management
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://thingspace.verizon.com/documentation
   tags:
   - Callbacks
   properties:
@@ -268,52 +240,41 @@ apis:
   - type: APIReference
     url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
   - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
   - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+  baseURL: https://thingspace.verizon.com/api/m2m/v2
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: verizon:verizon-devices-api
   name: Verizon Devices API
   description: Device activation, deactivation, and management
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://thingspace.verizon.com/documentation
   tags:
   - Devices
   properties:
@@ -324,52 +285,41 @@ apis:
   - type: APIReference
     url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
   - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
   - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+  baseURL: https://thingspace.verizon.com/api/m2m/v2
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: verizon:verizon-session-api
   name: Verizon Session API
   description: Session management and authentication
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://thingspace.verizon.com/documentation
   tags:
   - Session
   properties:
@@ -380,52 +330,41 @@ apis:
   - type: APIReference
     url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
   - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
   - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+  baseURL: https://thingspace.verizon.com/api/m2m/v2
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 - aid: verizon:verizon-sms-api
   name: Verizon SMS API
   description: SMS messaging to devices
-  humanURL: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+  humanURL: https://thingspace.verizon.com/documentation
   tags:
   - SMS
   properties:
@@ -436,48 +375,37 @@ apis:
   - type: APIReference
     url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json
   - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json
   - type: JSONStructure
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json
   - type: JSONLD
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
+    url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld
   - type: SDKs
     url: https://github.com/sdks-io/verizon-apis-python-sdk
   - type: SDKs
     url: https://packagist.org/packages/sdksio/verizon-apis-sdk
+  baseURL: https://thingspace.verizon.com/api/m2m/v2
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 name: Verizon
 tags:
 - Wireless
@@ -517,6 +445,13 @@ common:
   url: https://www.linkedin.com/company/verizon
 - url: https://www.verizon.com
   type: Website
+- url: https://www.verizon.com/llms.txt
+  name: Verizon llms.txt
+  type: LlmsText
+  description: Verizon's published llms.txt (5,716 bytes, text/plain, verified 2026-08-07). It
+    indexes consumer retail — smartphones, accessories, deals, plans, switching carriers — and
+    names no developer, API or ThingSpace surface. The developer surface publishes none of its
+    own; thingspace.verizon.com/llms.txt 302s to a page-not-found that answers HTTP 200.
 - url: https://developers.verizon.com/
   name: Portal
   type: Portal
@@ -544,8 +479,8 @@ common:
   data:
   - 'Verizon: API access via partner / B2B contracts only'
   - No public API pricing published — contact enterprise sales
-  - Verizon Network APIs (5G, location, identity) sold via the Verizon Open Innovation
-    API portal with custom enterprise contracts.
+  - Verizon Network APIs (5G, location, identity) sold via the Verizon Open Innovation API portal with
+    custom enterprise contracts.
   sources:
   - https://thingspace.verizon.com/
   - https://www.verizon.com/business/products/internet-of-things/
@@ -553,44 +488,147 @@ common:
 - type: UseCases
   data:
   - name: IoT Fleet Management
-    description: Manage large-scale IoT device fleets with activation, deactivation,
-      and status monitoring.
+    description: Manage large-scale IoT device fleets with activation, deactivation, and status monitoring.
   - name: Remote Device Management
-    description: Remotely diagnose, configure, and update IoT devices over Verizon's
-      wireless network.
+    description: Remotely diagnose, configure, and update IoT devices over Verizon's wireless network.
   - name: Enterprise Network Automation
-    description: Automate network bandwidth provisioning and IT service management
-      with TM Forum APIs.
+    description: Automate network bandwidth provisioning and IT service management with TM Forum APIs.
   - name: 5G Edge Applications
-    description: Build ultra-low-latency applications on Verizon's 5G edge computing
-      infrastructure.
+    description: Build ultra-low-latency applications on Verizon's 5G edge computing infrastructure.
   - name: Contact Center Modernization
-    description: Build customized IVR and call routing solutions with Verizon's CPaaS
-      Voice API.
+    description: Build customized IVR and call routing solutions with Verizon's CPaaS Voice API.
 - type: Integrations
   data:
   - name: AWS Wavelength
-    description: Deploy 5G Edge applications on Verizon MEC nodes through AWS Wavelength
-      partnership.
+    description: Deploy 5G Edge applications on Verizon MEC nodes through AWS Wavelength partnership.
   - name: Google Cloud MEC
-    description: Build edge-native applications through Verizon and Google Cloud edge
-      computing integration.
+    description: Build edge-native applications through Verizon and Google Cloud edge computing integration.
   - name: ITSM Platforms
-    description: Connect TM Forum service management APIs to ServiceNow and other
-      ITSM platforms.
+    description: Connect TM Forum service management APIs to ServiceNow and other ITSM platforms.
   - name: IoT Platforms
-    description: Integrate ThingSpace device management with enterprise IoT platforms
-      and data lakes.
-- type: LlmsText
-  url: https://developers.verizon.com/llms.txt
+    description: Integrate ThingSpace device management with enterprise IoT platforms and data lakes.
+- type: LLMsTxt
+  name: llms.txt (API Evangelist generated)
+  url: llms/verizon-llms.txt
+- type: Packages
+  url: packages/verizon-packages.yml
+- type: SDKs
+  name: Verizon API client libraries
+  url: packages/verizon-packages.yml
+- type: MCPServer
+  name: ThingSpace MCP tool candidate (API Evangelist derived — Verizon operates no MCP server)
+  url: mcp/verizon-mcp.yml
+- type: AgentSkill
+  name: Verizon ThingSpace agent skills
+  url: skills/_index.yml
+- type: Protobuf
+  name: Edge Transportation Exchange protobuf
+  url: grpc/verizon-etx-protobuf.yml
+- type: Conformance
+  url: conformance/verizon-conformance.yml
+- type: ErrorCatalog
+  name: ThingSpace error-code registry
+  url: errors/verizon-error-codes.yml
+- type: ErrorCatalog
+  name: HTTP problem types derived from the OpenAPI
+  url: errors/verizon-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/verizon-lifecycle.yml
+- type: StatusPage
+  name: Verizon service outage status (network services, not API-scoped)
+  url: https://www.verizon.com/support/service-outage-status/
+- type: Conventions
+  url: conventions/verizon-conventions.yml
+- type: ChangeLog
+  name: ThingSpace What's New
+  url: changelog/verizon-changelog.yml
+- type: Sandbox
+  name: ThingSpace API Console and simulator
+  url: sandbox/verizon-sandbox.yml
+- type: DataModel
+  url: data-model/verizon-data-model.yml
+- type: Webhooks
+  name: ThingSpace callback services
+  url: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+- type: Security
+  name: Report a security vulnerability
+  url: https://www.verizon.com/solutions-and-services/report-security-vulnerability/
+- type: Overlay
+  name: Accounts API overlay
+  url: overlays/verizon-accounts-api-overlay.yaml
+- type: Overlay
+  name: Callbacks API overlay
+  url: overlays/verizon-callbacks-api-overlay.yaml
+- type: Overlay
+  name: Devices API overlay
+  url: overlays/verizon-devices-api-overlay.yaml
+- type: Overlay
+  name: Session API overlay
+  url: overlays/verizon-session-api-overlay.yaml
+- type: Overlay
+  name: SMS API overlay
+  url: overlays/verizon-sms-api-overlay.yaml
+- type: Documentation
+  name: ThingSpace API documentation
+  url: https://thingspace.verizon.com/documentation/api-documentation.html
+- type: APIReference
+  name: Connectivity Management API Reference
+  url: https://thingspace.verizon.com/documentation/apis/connectivity-management/api-reference.html
+- type: GettingStarted
+  name: Introduction to the Connectivity Management API
+  url: https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html
+- type: GitHubOrganization
+  name: Verizon on GitHub
+  url: https://github.com/Verizon
 created: '2024-11-19'
-modified: '2026-05-19'
-description: Verizon is a leading telecommunications company providing wireless, wireline,
-  broadband, and global enterprise services. Verizon offers developer APIs for IoT
-  device management via ThingSpace, 5G edge computing, TM Forum service management,
-  dynamic network bandwidth, and communications platform APIs for contact center and
-  SMS solutions.
+modified: '2026-08-04'
+description: Verizon is a leading telecommunications company providing wireless, wireline, broadband,
+  and global enterprise services. Verizon offers developer APIs for IoT device management via ThingSpace,
+  5G edge computing, TM Forum service management, dynamic network bandwidth, and communications platform
+  APIs for contact center and SMS solutions.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 specificationVersion: '0.19'
+X-Discovery:
+  date: '2026-08-04'
+  method: probed
+  note: Re-profiled after Verizon security (TMC-R838719) asked about the repository. Every documentation
+    URL was fetched.
+  findings:
+  - surface: Documentation
+    url: https://www.verizon.com/business/5g-edge-portal/api-documentation.html
+    http_status: 404
+    real: false
+    note: DEAD. Seven entries pointed here — the 5G Edge API and all five ThingSpace APIs. Replaced.
+  - surface: Documentation
+    url: https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/
+    http_status: 404
+    real: false
+    note: DEAD. The CPaaS entry pointed here. Replaced with the live product page.
+  - surface: Documentation
+    url: https://thingspace.verizon.com/documentation
+    http_status: 200
+    real: true
+    note: Correct home for the five ThingSpace APIs; their specs declare this host.
+  - surface: Documentation
+    url: https://www.verizon.com/business/solutions/5g/edge-computing/
+    http_status: 200
+    real: true
+  - surface: Documentation
+    url: https://www.verizon.com/business/products/contact-center-cx-solutions/
+    http_status: 200
+    real: true
+  - surface: DeveloperPortal
+    url: https://developers.verizon.com/#/apis/ns
+    http_status: 200
+    real: true
+    note: 'CAVEAT: developers.verizon.com is a client-side SPA. Every #/ fragment — including a deliberate
+      nonsense control path — returns a byte-identical page (md5 a165ea021157a3ac6c7a999ee90fcbd4). The
+      fragment URLs on entries below therefore CANNOT be verified by fetching. They are recorded as the
+      provider published them, not as confirmed live pages.'
+x-enrichment:
+  date: '2026-08-04'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1
