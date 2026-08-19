@@ -1,0 +1,127 @@
+generated: '2026-08-04'
+method: searched
+source: https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Synchronous_Error_Messages/
+docs:
+  - https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Synchronous_Error_Messages/
+  - https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Callback_Error_Messages/
+  - https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Error_Messages/
+format: proprietary
+rfc9457: false
+description: >-
+  Verizon ThingSpace publishes a two-track error registry: a synchronous envelope
+  returned inline on the HTTP response, and an asynchronous faultResponse delivered
+  on the registered callback listener. Codes are namespaced
+  `<ServiceName>.<CLASS>.<Specific>`; Verizon states the code portion is stable
+  across releases and is the reliable identifier for error handling, while the
+  message string may change.
+envelopes:
+  - id: synchronous
+    returned_on: the HTTP response to the API call
+    fields:
+      - {name: errorCode, type: string, description: 'Namespaced code, e.g. UnifiedWebService.REQUEST_FAILED.AccountNotFound'}
+      - {name: errorMessage, type: string, description: Human-readable message}
+  - id: asynchronous
+    returned_on: the registered callback listener (see asyncapi/verizon-thingspace-callbacks-webhooks.yml)
+    object: faultResponse
+    fields:
+      - {name: faultcode, type: string, description: Service name + period + error code}
+      - {name: faultstring, type: string, description: Additional context, may embed dynamic data}
+      - {name: status, type: string, description: 'Typically "Failed" for errors'}
+      - {name: requestId, type: string, description: Correlates back to the originating request}
+      - {name: deviceIds, type: array, description: Affected device identifiers}
+      - {name: callbackCount, type: integer}
+      - {name: maxCallbackThreshold, type: integer}
+code_structure:
+  pattern: '<ServiceName>.<CLASS>[.<Specific>]'
+  examples:
+    - UnifiedWebService.REQUEST_FAILED.AccountNotFound
+    - DeviceService.INPUT_INVALID.CustomField.InvalidName
+    - UnifiedWebService.REQUEST_FAILED.DeviceAlreadyActive
+  stability: >-
+    Verizon documents the error-code portion as stable across releases; the
+    faultstring/errorMessage text is not.
+classes:
+  - id: INPUT_INVALID
+    meaning: Malformed request, missing required field, or an incompatible device identifier.
+  - id: REQUEST_FAILED
+    meaning: >-
+      Service execution failure — carrier issues, device state conflicts, unavailable
+      resources, authentication problems.
+  - id: REQUEST_ONHOLD
+    meaning: Operation blocked pending approval (for example a pending credit request).
+  - id: REQUEST_CANCELLED
+    meaning: A previously blocked operation cancelled after timeout (for example credit denial).
+oauth_errors:
+  - {http: 400, condition: Bad context, message: No matching resource found in the API for the given request}
+  - {http: 400, condition: Wrong grant_type, message: Missing or invalid grant_type parameter}
+  - {http: 401, condition: Missing basic token, message: Required OAuth credentials not provided}
+  - {http: 401, condition: Wrong bearer token, message: Invalid Credentials / Access failure}
+  - {http: 401, condition: Missing bearer token, message: Required OAuth credentials not provided}
+  - {http: 401, condition: Expired bearer token, message: Invalid Credentials}
+  - {http: 403, condition: Wrong authentication, message: Resource not available}
+  - {http: 404, condition: Wrong endpoint, message: The requested resource is not available}
+error_codes:
+  - group: general
+    codes:
+      - {code: INPUT_INVALID.Request.InvalidCharacter, meaning: 'Illegal characters in the request (apostrophe, <, backslash).', action: Strip or escape the offending characters.}
+      - {code: INPUT_INVALID.RequestUndefined, meaning: Empty request message., action: Send a request body.}
+      - {code: REQUEST_FAILED.UnexpectedError, meaning: Missing required elements or an unknown failure., action: Validate the payload against the schema, then retry.}
+      - {code: DeserializationFailed, meaning: A required XML element is missing., action: Correct the request document.}
+  - group: session-token
+    codes:
+      - {code: REQUEST_FAILED.SessionToken.Expired, meaning: Session token inactive for more than 20 minutes., action: 'Re-run loginSession to mint a new VZ-M2M token.'}
+      - {code: REQUEST_FAILED.SessionToken.Format, meaning: Session token not present in the header., action: 'Send the token in the VZ-M2M-Token header.'}
+      - {code: INPUT_INVALID.SessionToken.Invalid, meaning: Session token is not a valid GUID., action: Use the token value returned by loginSession verbatim.}
+  - group: account
+    codes:
+      - {code: INPUT_INVALID.Account.NotDefined, meaning: Account name required but missing., action: Supply accountName.}
+      - {code: REQUEST_FAILED.AccountName, meaning: The authenticated user is not associated with the account., action: Use an account the credential is entitled to.}
+      - {code: REQUEST_FAILED.AccountNotFound, meaning: The account does not exist., action: Verify the accountName format (for example 0000123456-00001).}
+      - {code: REQUEST_FAILED.NoAccounts, meaning: The user has no accounts., action: Provision the user against an account.}
+      - {code: REQUEST_FAILED.MultipleAccounts, meaning: The user must specify which of several accounts to use., action: Pass accountName explicitly.}
+  - group: device-identifier
+    codes:
+      - {code: INPUT_INVALID.Device.Kind.Invalid, meaning: 'Device kind not one of ICCID, MEID, IMSI, MDN, IMEI, MSISDN, ESN.', action: Use a supported kind.}
+      - {code: INPUT_INVALID.Device.Identifier.Invalid, meaning: Identifier format does not match the declared kind., action: Check digit length and format for that kind.}
+      - {code: REQUEST_FAILED.DeviceNotFound, meaning: The device does not exist., action: Confirm the device is on the account.}
+  - group: custom-fields
+    codes:
+      - {code: INPUT_INVALID.CustomField.InvalidName, meaning: Only CustomField1 through CustomField5 are allowed., action: Rename the field.}
+      - {code: INPUT_INVALID.CustomField.TooLong, meaning: Custom field value exceeds 50 characters., action: Truncate to 50 characters.}
+  - group: device-management
+    codes:
+      - {code: INPUT_INVALID.MaxRequestsExceeded, meaning: More than 10,000 devices in a request., action: Split the batch.}
+      - {code: INPUT_INVALID.NumberofDevices, meaning: More than 200 devices in a single request., action: Batch to 200 devices or fewer.}
+      - {code: INPUT_INVALID.DeviceState.Invalid, meaning: Device is not in the Active state., action: Activate the device first.}
+      - {code: 'REQUEST_FAILED._servicePlan_.NotFound', meaning: The named service plan does not exist., action: Query the account service plans.}
+      - {code: REQUEST_FAILED.DeviceAlreadyActive, meaning: The device is already active., action: Treat as a no-op.}
+      - {code: REQUEST_FAILED.DefaultIpPoolNotDefined, meaning: No default IP pool is defined for the account., action: Define an IP pool or name one explicitly.}
+  - group: sms-nidd
+    codes:
+      - {code: INPUT_INVALID.SmsMessage.Null, meaning: Message field is empty., action: Supply a message.}
+      - {code: INPUT_INVALID.SmsMessage.TooLong, meaning: 7-bit message over 160 characters or 8-bit message over 140 characters., action: Split or shorten the message.}
+      - {code: INPUT_INVALID.Message.Null, meaning: 'NIDD: message is required.', action: Supply a message.}
+      - {code: INPUT_INVALID.DeviceNotProvided, meaning: 'NIDD: deviceIds is required.', action: Supply deviceIds.}
+  - group: device-group
+    codes:
+      - {code: REQUEST_FAILED.DeviceGroup.Exists, meaning: A device group with that name already exists., action: Pick another name.}
+      - {code: INPUT_INVALID.DeviceGroup.DeleteDefault, meaning: The default device group cannot be deleted., action: Delete a non-default group.}
+      - {code: REQUEST_FAILED.DeviceGroupNotFound, meaning: The device group does not exist., action: List groups to confirm the name.}
+coverage:
+  codes_captured: 27
+  complete: false
+  note: >-
+    The published Error Messages and Callback Error Messages references are larger
+    than what is captured here; the tables are client-rendered and only the sections
+    reachable in this pass were read. Codes are recorded verbatim; none have been
+    invented.
+related:
+  problem_types: errors/verizon-problem-types.yml
+  webhooks: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+  conventions: conventions/verizon-conventions.yml
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+    - https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Synchronous_Error_Messages/
+    - https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/Callback_Error_Messages/
+  http_status: 200

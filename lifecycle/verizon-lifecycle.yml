@@ -1,0 +1,78 @@
+generated: '2026-08-04'
+method: searched
+source: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+description: >-
+  Versioning, deprecation and service-status posture for the Verizon developer
+  surface. Verizon publishes per-API "What's New" pages and versions in the URI path,
+  but there is no published API deprecation policy, no documented Sunset/Deprecation
+  header support, no API SLA and no developer-facing API status page.
+versioning:
+  scheme: uri-path
+  current: v2
+  paths:
+    - {api: Connectivity Management, base: /api/m2m/v2, version: v2}
+    - {api: ThingSpace OAuth token service, base: /api/ts/v1, version: v1}
+    - {api: Software Management, versions: [v1, v2], docs: 'https://thingspace.verizon.com/documentation/apis/software-management/api-reference-v2.html'}
+  docs: https://thingspace.verizon.com/documentation/apis/connectivity-management.html
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  notice_channel: Per-API "What's New" documentation pages
+  notice_url: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+  note: >-
+    Verizon announces individual deprecations in the per-API What's New page but
+    publishes no deprecation POLICY — no notice period, no sunset window, no
+    RFC 8594 Sunset/Deprecation header contract. No `Deprecation` pointer is wired
+    in apis.yml for that reason; a single deprecation notice is not a policy.
+  announced:
+    - resource: /devices/connections/actions/list
+      status: deprecated
+      replacement: /devices/connections/actions/listHistory
+      replacement_note: >-
+        Same signature as the original resource, but returns HTTP 202 when more data
+        remains.
+      source: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+    - subject: TLS 1.0 and TLS 1.1 support
+      status: withdrawn
+      effective: '2020-09-01'
+      scope: Verizon Media Platform (EdgeCast CDN)
+      replacement: TLS 1.2 and TLS 1.3 only
+      source: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in any of the five harvested OpenAPI documents carries
+  `deprecated: true`. The deprecated /devices/connections/actions/list resource is
+  not modelled in the harvested specs.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No public API SLA. Verizon service levels are contained in per-service Service
+    Guides and negotiated enterprise contracts (see plans/verizon-plans-pricing.yml).
+status_page:
+  url: https://www.verizon.com/support/service-outage-status/
+  scope: network-services
+  api_scoped: false
+  note: >-
+    Verizon publishes a customer-facing service-outage status checker for its network
+    services. It is NOT an API status page — it reports wireless/Fios outages by
+    address, not ThingSpace or developers.verizon.com API availability. No developer
+    API status page or incident history was found on any Verizon host.
+changelog:
+  artifact: changelog/verizon-changelog.yml
+  url: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+security_advisories:
+  url: https://www.verizon.com/business/support/vec/service-management/verizon-security-advisories/
+  cna_repo: https://github.com/verizon/cve
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+    - https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+    - https://www.verizon.com/support/service-outage-status/
+  http_status: 200
+  probes_missed:
+    - {url: 'https://status.thingspace.verizon.com', status: 403}
+    - {url: 'https://status.verizon.com', status: 0, note: DNS/connection failure}
+    - {url: 'https://www.verizon.com/business/support/service-status/', status: 404}

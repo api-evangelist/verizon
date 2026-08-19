@@ -1,0 +1,32 @@
+generated: '2026-08-04'
+method: generated
+authored_by: API Evangelist
+provider_published: false
+provider_published_note: >-
+  Verizon publishes no agent skills, AGENTS.md or equivalent operating instructions
+  on any developer host. These three were generated from the harvested ThingSpace
+  OpenAPI plus the provider's own Getting Started, callback and error documentation.
+  Every operationId referenced was verified against the specs in openapi/.
+source:
+  - openapi/verizon-accounts-api-openapi.yml
+  - openapi/verizon-callbacks-api-openapi.yml
+  - openapi/verizon-devices-api-openapi.yml
+  - openapi/verizon-session-api-openapi.yml
+  - openapi/verizon-sms-api-openapi.yml
+  - conventions/verizon-conventions.yml
+  - errors/verizon-error-codes.yml
+  - asyncapi/verizon-thingspace-callbacks-webhooks.yml
+skills:
+  - file: verizon-activate-iot-devices.md
+    name: Activate IoT devices on a Verizon ThingSpace account
+    api: openapi/verizon-devices-api-openapi.yml
+    operations: [loginSession, getAccountInformation, activateDevices, registerCallback]
+  - file: verizon-send-sms-to-devices.md
+    name: Send SMS to Verizon ThingSpace IoT devices
+    api: openapi/verizon-sms-api-openapi.yml
+    operations: [loginSession, registerCallback, sendSmsToDevices]
+  - file: verizon-register-callback-listeners.md
+    name: Register Verizon ThingSpace callback listeners
+    api: openapi/verizon-callbacks-api-openapi.yml
+    operations: [loginSession, listRegisteredCallbacks, registerCallback]
+operations_grounded: [loginSession, getAccountInformation, listDevicesInAccount, activateDevices, deactivateDevices, sendSmsToDevices, listRegisteredCallbacks, registerCallback]

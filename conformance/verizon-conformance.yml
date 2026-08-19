@@ -1,0 +1,153 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/_original/verizon-thingspace-connectivity-openapi.yml
+docs:
+  - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+  - https://developers.verizon.com/#/apis/ns
+description: >-
+  Cross-cutting and industry standards the Verizon API surface does and does not
+  conform to, derived from the harvested OpenAPI plus the provider's own
+  documentation. Verizon's developer marketplace advertises TM Forum Open API
+  products by name, which is the strongest standards claim on the surface, but the
+  TMF product specs are behind a login so no conformance could be verified.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OpenAPI securitySchemes declare an oauth2 clientCredentials flow; the docs
+      publish the token endpoint https://thingspace.verizon.com/api/ts/v1/oauth2/token
+      and the RFC 6749 Basic-auth client-credential exchange.
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: 'Access token returned and presented as Authorization: Bearer.'
+  - id: oidc
+    conforms: false
+    evidence: >-
+      No /.well-known/openid-configuration on any host (well-known/verizon-well-known.yml).
+      The 5G Edge portal login uses a Verizon eSSO OAuth2 authorize endpoint with
+      scope=openid and response_type=id_token, but that is the human portal login,
+      not the API.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: false
+    evidence: /.well-known/oauth-authorization-server absent on all hosts.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: No /.well-known/security.txt on any Verizon host.
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: No /.well-known/ document published.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Proprietary {errorCode, errorMessage} envelope and a faultResponse callback
+      object; no application/problem+json anywhere.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header contract documented.
+  - id: idempotency-key
+    conforms: false
+    evidence: No Idempotency-Key header on any operation; no replay contract documented.
+  - id: openapi-3
+    conforms: true
+    evidence: >-
+      Five OpenAPI 3.x documents in openapi/. NOTE these were assembled by API
+      Evangelist from Verizon's published API Reference; Verizon does not itself
+      publish a downloadable OpenAPI document (see the contract-discovery note below).
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      A real 14-service webhook catalogue exists but no AsyncAPI document is
+      published (asyncapi/verizon-thingspace-callbacks-webhooks.yml).
+  - id: webhooks
+    conforms: true
+    evidence: >-
+      ThingSpace callback services — registration, retry policy, three message
+      categories, 14 named services.
+  - id: tmforum-open-api
+    conforms: claimed
+    claimed_by: provider
+    claim: >-
+      Verizon's own product copy states it "provides customers a suite of TM Forum
+      certified service management APIs and associated documentation that expose
+      Verizon's ITIL functions", describing them as bi-directional.
+    evidence: >-
+      developers.verizon.com lists seven TM Forum-aligned service-management products
+      by name — Inventory, Incident, Change, Event, Problem, Order and Billing
+      Management (each slugged *-tmf). The certification claim could NOT be verified:
+      the product pages are client-rendered behind the API Marketplace SPA, the
+      specifications require a signed-in eSSO account, and Verizon publishes no TMF
+      conformance profile, TMF API version or Conformance Test Kit result on any
+      anonymously reachable page.
+    verification_gap: >-
+      "TM Forum certified" is a specific, testable claim (a CTK result against a
+      named TMF Open API version). Verizon names no TMF API numbers, no versions and
+      links no certification artifact. This is the single largest unverifiable
+      standards claim on the Verizon surface.
+    apis:
+      - Verizon Inventory Management
+      - Verizon Incident Management
+      - Verizon Change Management
+      - Verizon Event Management
+      - Verizon Problem Management
+      - Verizon Order Management
+      - Verizon Billing Management
+  - id: mef-lso
+    conforms: unverified
+    evidence: >-
+      Dynamic Network Manager (DNM) Standardized APIs are published under a
+      "dynamic-network-manager-mef-1" slug, indicating MEF alignment. Same SPA/login
+      gating as the TMF products; unverified.
+  - id: sae-j2735
+    conforms: true
+    evidence: >-
+      Verizon Edge Transportation Exchange publishes an official sample client with a
+      SAE J2735 codec and a protobuf message envelope
+      (grpc/verizon-etx-georoutedmsg.proto).
+  - id: rfc8805-geofeed
+    conforms: true
+    evidence: >-
+      Verizon publishes an RFC 8805 compliant geofeed for US Verizon Wireless mobile,
+      fixed wireless access and wireline prefixes — https://github.com/Verizon/verizon-geofeed.
+  - id: cve-numbering-authority
+    conforms: true
+    evidence: >-
+      Verizon is a CVE Numbering Authority and publishes its advisories at
+      https://github.com/verizon/cve.
+  - id: fhir
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: json-api
+    conforms: false
+compliance_program:
+  published: false
+  trust_center: null
+  certifications: []
+  note: >-
+    No Verizon trust center, no published SOC 2 / ISO 27001 / PCI DSS / HIPAA /
+    FedRAMP attestation page for the developer APIs was found. Verizon sells ISO
+    27001/27002 assessment services to other organizations, which is not a claim
+    about its own APIs. No `Compliance` pointer is wired for that reason.
+contract_discovery:
+  openapi_published_by_provider: false
+  probes:
+    - {url: 'https://thingspace.verizon.com/openapi.json', status: 200, verdict: false-positive-html}
+    - {url: 'https://thingspace.verizon.com/swagger.json', status: 200, verdict: false-positive-html}
+    - {url: 'https://thingspace.verizon.com/api-docs', status: 403}
+    - {url: 'https://thingspace.verizon.com/api/m2m/v2/openapi.json', status: 401}
+    - {url: 'https://developers.verizon.com/openapi.json', status: 200, verdict: false-positive-html}
+    - {url: 'https://developers.verizon.com/swagger.json', status: 200, verdict: false-positive-html}
+    - {url: 'https://api.verizon.com/openapi.json', status: 404}
+  note: >-
+    Verizon's ThingSpace docs are an APIMatic-hosted portal (the AEM page mounts an
+    #apimatic-widget bound to a DAM path with enableExport:true), which means a
+    machine-readable description exists inside APIMatic. It is not served from any
+    anonymously reachable URL: the widget's docsgen/transform routes resolve against
+    an AEM DAM path that returns an authoring dialog XML, and the API Marketplace
+    backend (developers.verizon.com/apis/sec) requires a signed-in eSSO session
+    (401/404/406 anonymously). Recorded as a real gap: Verizon has the artifact and
+    does not publish it.

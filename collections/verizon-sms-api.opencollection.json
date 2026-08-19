@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verizon ThingSpace Connectivity Management Accounts SMS API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verizon Send SMS to Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/sms/:accountName/actions/send",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an SMS message to one or more devices. Messages can be up to 160 characters. Delivery of the SMS message can be confirmed through a callback subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

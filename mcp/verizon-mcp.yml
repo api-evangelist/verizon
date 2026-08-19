@@ -1,0 +1,104 @@
+generated: '2026-08-04'
+method: derived
+status: candidate
+source: openapi/verizon-accounts-api-openapi.yml, openapi/verizon-callbacks-api-openapi.yml, openapi/verizon-devices-api-openapi.yml,
+  openapi/verizon-session-api-openapi.yml, openapi/verizon-sms-api-openapi.yml
+server:
+  name: verizon-thingspace
+  transport: null
+  url: null
+  published_by_provider: false
+description: 'CANDIDATE, NOT A VERIZON PRODUCT. Verizon publishes no Model Context Protocol server. This
+  is an API Evangelist-derived tool proposal: one tool per real ThingSpace Connectivity Management operationId,
+  so an adapter can be stood up against the operations that genuinely exist. Every tool below inherits
+  its input contract from the referenced OpenAPI operation''s parameters and requestBody — no tool, parameter
+  or capability has been invented.'
+search:
+  official_server: not-found
+  probes:
+  - surface: Verizon docs (thingspace.verizon.com, developers.verizon.com)
+    result: no MCP server documented
+  - surface: npm
+    result: no @verizon/* or first-party MCP package
+  - surface: MCP registries
+    result: no Verizon-operated entry found
+  third_party:
+  - name: '@striderlabs/mcp-verizon'
+    registry: npm
+    url: https://www.npmjs.com/package/@striderlabs/mcp-verizon
+    description: MCP server for Verizon Wireless account management
+    affiliation: none — third-party, unaffiliated with Verizon
+  - name: switch-carrier-mcp
+    registry: npm
+    description: Universal carrier switching MCP server covering US carriers generally
+    affiliation: none
+auth:
+  model: two-token
+  note: Any adapter must first mint a ThingSpace OAuth bearer token, then exchange it via loginSession
+    for a VZ-M2M session token. See authentication/verizon-authentication.yml.
+tools:
+- name: verizon_login_session
+  description: Start a Connectivity Management session and obtain a VZ-M2M session token.
+  source_operation: openapi/verizon-session-api-openapi.yml#loginSession
+  action_class: acting
+  prerequisite: true
+- name: verizon_get_account_information
+  description: Retrieve account information, features, carrier information and IP pools for an account.
+  source_operation: openapi/verizon-accounts-api-openapi.yml#getAccountInformation
+  action_class: read
+- name: verizon_list_devices_in_account
+  description: Start an asynchronous device listing for an account. Returns a requestId; results arrive
+    on the DeviceService callback.
+  source_operation: openapi/verizon-devices-api-openapi.yml#listDevicesInAccount
+  action_class: read
+  async: true
+- name: verizon_activate_devices
+  description: Activate one or more devices on a service plan. Asynchronous; outcome arrives on the CarrierService
+    callback.
+  source_operation: openapi/verizon-devices-api-openapi.yml#activateDevices
+  action_class: acting
+  consequence: write
+  async: true
+- name: verizon_deactivate_devices
+  description: Deactivate one or more devices. Asynchronous; outcome arrives on the CarrierService callback.
+    Not reversible without a re-activation.
+  source_operation: openapi/verizon-devices-api-openapi.yml#deactivateDevices
+  action_class: acting
+  consequence: write
+  async: true
+- name: verizon_send_sms_to_devices
+  description: Send an SMS message to one or more devices.
+  source_operation: openapi/verizon-sms-api-openapi.yml#sendSmsToDevices
+  action_class: acting
+  consequence: write
+  async: true
+- name: verizon_list_registered_callbacks
+  description: List the callback listeners registered for an account.
+  source_operation: openapi/verizon-callbacks-api-openapi.yml#listRegisteredCallbacks
+  action_class: read
+- name: verizon_register_callback
+  description: Register a callback listener URL for a named ThingSpace callback service.
+  source_operation: openapi/verizon-callbacks-api-openapi.yml#registerCallback
+  action_class: acting
+  consequence: write
+coverage:
+  tools: 8
+  rest_operations: 8
+  rest_operations_with_a_tool: 8
+  operations_verified_in_spec: true
+caveats:
+- Six of the eight operations are asynchronous — the tool call returns a requestId, not a result. An agent
+  using this surface needs a callback listener (asyncapi/verizon-thingspace-callbacks-webhooks.yml) or
+  a polling strategy.
+- No idempotency contract exists, so a retried activate/deactivate/send call executes twice (conventions/verizon-conventions.yml).
+related:
+  openapi: openapi/
+  agentic_access: agentic-access/verizon-agentic-access.yml
+  authentication: authentication/verizon-authentication.yml
+  webhooks: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

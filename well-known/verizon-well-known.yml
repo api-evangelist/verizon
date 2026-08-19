@@ -1,0 +1,66 @@
+generated: '2026-08-04'
+method: probed
+description: >-
+  RFC 8615 /.well-known/ discovery probe across every host in apis.yml and every
+  OpenAPI servers[] host. RESULT: Verizon publishes no /.well-known/ discovery
+  document on any probed host. No pointer is wired into apis.yml for this artifact
+  because nothing was found — this file records the negative result so the next
+  round does not re-probe blind.
+caveat: >-
+  CRITICAL FALSE-POSITIVE WARNING. Both developers.verizon.com (a React SPA) and
+  thingspace.verizon.com (Adobe AEM) answer HTTP 200 with an HTML page shell for
+  EVERY unmatched path, including every /.well-known/* path. A naive status-code
+  probe reads those as hits. Each 200 below was therefore content-verified: the
+  body was fetched and compared against a deliberate nonsense control path
+  (/nonsense-control-path-xyz123). Identical bodies mean a catch-all, not a document.
+controls:
+  - host: thingspace.verizon.com
+    path: /nonsense-control-path-xyz123
+    status: 200
+    body_md5: 16222f464e49b050a4a0e14237f4b162
+    content_type: text/html;charset=utf-8
+  - host: developers.verizon.com
+    path: /nonsense-control-path-xyz123
+    status: 200
+    body_md5: 43ca710b8fb52c501e899f311cfa6d12
+    content_type: text/html; charset=UTF-8
+hosts:
+  - host: https://www.verizon.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404, verdict: absent}
+      - {path: /.well-known/openid-configuration, status: 404, verdict: absent}
+      - {path: /.well-known/api-catalog, status: 404, verdict: absent}
+      - {path: /.well-known/agent-card.json, status: 404, verdict: absent}
+      - {path: /.well-known/agent.json, status: 404, verdict: absent}
+  - host: https://verizon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        verdict: false-positive
+        note: Redirects to https://www.verizon.com/content/wcms/404.html (a 404 page served with 200).
+  - host: https://thingspace.verizon.com
+    note: Adobe AEM catch-all; every unmatched path returns the ThingSpace marketing shell.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, verdict: false-positive, content_type: 'text/html;charset=utf-8'}
+      - {path: /.well-known/openid-configuration, status: 200, verdict: false-positive, content_type: 'text/html;charset=utf-8'}
+      - {path: /.well-known/oauth-authorization-server, status: 200, verdict: false-positive, content_type: 'text/html;charset=utf-8'}
+      - {path: /.well-known/agent-card.json, status: 200, verdict: false-positive, content_type: 'text/html;charset=utf-8'}
+      - {path: /.well-known/agent.json, status: 200, verdict: false-positive, content_type: 'text/html;charset=utf-8'}
+  - host: https://developers.verizon.com
+    note: React SPA catch-all; every unmatched path returns the API Marketplace index.html.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, verdict: false-positive, content_type: 'text/html; charset=UTF-8'}
+      - {path: /.well-known/api-catalog, status: 200, verdict: false-positive, content_type: 'text/html; charset=UTF-8'}
+      - {path: /.well-known/agent-card.json, status: 200, verdict: false-positive, content_type: 'text/html; charset=UTF-8'}
+      - {path: /.well-known/agent.json, status: 200, verdict: false-positive, content_type: 'text/html; charset=UTF-8'}
+summary:
+  documents_found: 0
+  false_positives_rejected: 11
+  security_txt: absent
+  openid_configuration: absent
+  oauth_authorization_server: absent
+  api_catalog: absent
+  agent_card: absent
+x-evidence:
+  fetched: '2026-08-04'
+  method: curl -L -A "Mozilla/5.0", body md5 compared against a nonsense control path per host

@@ -1,0 +1,74 @@
+generated: '2026-08-04'
+method: searched
+source: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+docs:
+  - https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+  - https://thingspace.verizon.com/resources/documentation/connectivity/What_Is_New/
+description: >-
+  Verizon publishes a per-API "What's New" page rather than a dated, versioned
+  changelog. The page is rendered client-side by the APIMatic portal widget, so the
+  HTML served to a non-JavaScript client is an empty shell; the entries below were
+  read from the rendered page. Verizon does NOT date its What's New entries and does
+  not stamp them with an API version, so every entry here carries `date: null` — a
+  faithful record of what is published, not an inferred timeline.
+scheme:
+  versioning: uri-path
+  current_version: v2
+  dated_entries: false
+  rss: null
+  breaking_change_flagging: false
+entries:
+  - version: null
+    date: null
+    kind: deprecation
+    breaking: true
+    highlight: >-
+      /devices/connections/actions/list is deprecated and replaced by
+      /devices/connections/actions/listHistory. listHistory has the same signature
+      but returns HTTP 202 when more data remains.
+  - version: null
+    date: '2020-09-01'
+    kind: removal
+    breaking: true
+    highlight: >-
+      Verizon Media Platform (EdgeCast CDN) stops supporting TLS 1.0 and TLS 1.1;
+      only TLS 1.2 and TLS 1.3 are supported.
+    date_note: The only entry on the page that carries an explicit effective date.
+  - version: null
+    date: null
+    kind: addition
+    breaking: false
+    highlight: >-
+      Connectivity Management adds API functions to monitor Data and SMS
+      reachability and the LTE network connection status of 4G devices.
+  - version: null
+    date: null
+    kind: addition
+    breaking: false
+    highlight: >-
+      New Retrieve SMS Event History API returns mobile-originated and
+      mobile-terminated SMS history for a single device over a specified period.
+  - version: null
+    date: null
+    kind: change
+    breaking: false
+    highlight: >-
+      Upload Devices API updated to make accountName an optional parameter in the
+      request body.
+per_api_pages:
+  - {api: Connectivity Management, url: 'https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html'}
+  - {api: Software Management, url: 'https://thingspace.verizon.com/documentation/apis/software-management.html'}
+gaps:
+  - No entry dates on the published page (one exception, the 2020 TLS removal).
+  - No API version stamped against any entry.
+  - No feed (RSS/Atom/JSON) for the What's New surface.
+  - No changelog at all for the developers.verizon.com API Marketplace products.
+related:
+  lifecycle: lifecycle/verizon-lifecycle.yml
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://thingspace.verizon.com/documentation/apis/connectivity-management/what-is-new.html
+  http_status: 200
+  note: >-
+    Direct curl of this URL returns a 69KB APIMatic shell containing no changelog
+    text; content is loaded by the client-side portal widget.

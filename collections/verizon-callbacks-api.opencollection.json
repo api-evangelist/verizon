@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verizon ThingSpace Connectivity Management Accounts Callbacks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Callbacks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verizon List Registered Callbacks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/callbacks/:accountName",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ]
+          },
+          "docs": "Returns a list of all registered callback endpoints for the account including service name and URL for each registered callback."
+        },
+        {
+          "info": {
+            "name": "Verizon Register Callback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/callbacks/:accountName",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a URL to receive callback messages for a specified service. Callbacks notify your system of device status changes and events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

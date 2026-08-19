@@ -1,0 +1,39 @@
+generated: '2026-08-04'
+method: searched
+source: https://github.com/Verizon/EdgeTransportationExchange_SampleClient
+description: >-
+  Protobuf definitions published by Verizon in its own GitHub organization. The
+  Edge Transportation Exchange (ETX) sample client is Verizon's official onboarding
+  resource for the ETX platform and includes a high-performance SAE J2735 codec; the
+  georoutedmsg envelope is the wire format ETX uses to carry geo-routed V2X messages.
+  Saved verbatim — nothing generated.
+files:
+  - file: verizon-etx-georoutedmsg.proto
+    package: georoutedmsg
+    syntax: proto3
+    source_url: https://raw.githubusercontent.com/Verizon/EdgeTransportationExchange_SampleClient/main/etx/proto/georoutedmsg.proto
+    repository: https://github.com/Verizon/EdgeTransportationExchange_SampleClient
+    repo_path: etx/proto/georoutedmsg.proto
+    http_status: 200
+    bytes: 274
+    messages:
+      - {name: Position, fields: [latitude, longitude]}
+      - {name: GeoRoutedMsg, fields: [msgBytes, time, position]}
+    imports: [google/protobuf/timestamp.proto]
+    services: []
+    note: >-
+      Message definitions only; no gRPC service is declared in this file. The
+      msgBytes payload carries the SAE J2735 encoded V2X message.
+search:
+  scope: Verizon GitHub organization, buf.build, developer docs
+  proto_files_found: 1
+  query: 'org:Verizon extension:proto'
+  note: >-
+    One .proto exists across the entire Verizon GitHub organization. No buf.build
+    module and no .proto in the ThingSpace or developers.verizon.com documentation.
+related:
+  standards: SAE J2735 (see conformance/verizon-conformance.yml)
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://raw.githubusercontent.com/Verizon/EdgeTransportationExchange_SampleClient/main/etx/proto/georoutedmsg.proto
+  http_status: 200

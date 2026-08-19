@@ -1,0 +1,115 @@
+generated: '2026-08-04'
+method: searched
+source: openapi/_original/verizon-thingspace-connectivity-openapi.yml
+docs:
+  - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html
+  - https://thingspace.verizon.com/documentation/apis/connectivity-management/working-with-verizon/about-callback-services.html
+description: >-
+  Cross-cutting request/response semantics for the Verizon ThingSpace Connectivity
+  Management API, searched from the provider's Getting Started and callback
+  documentation and derived from the harvested OpenAPI. The dominant convention is
+  asynchronous: long-running operations return a requestId synchronously and deliver
+  the result on a registered callback listener.
+authentication:
+  style: two-token
+  summary: >-
+    OAuth 2.0 client-credentials token in Authorization, plus a VZ-M2M session token
+    in a VZ-M2M-Token header on Connectivity Management calls.
+  artifact: authentication/verizon-authentication.yml
+async_request_response:
+  pattern: request-id-plus-callback
+  request_id_field: requestId
+  description: >-
+    Mutating and bulk operations (activate, deactivate, list devices, send SMS)
+    return a DeviceRequestResponse carrying a requestId. The actual outcome arrives
+    later on the callback service registered for that message type.
+  result_delivery: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+  operations:
+    - openapi/verizon-devices-api-openapi.yml#activateDevices
+    - openapi/verizon-devices-api-openapi.yml#deactivateDevices
+    - openapi/verizon-devices-api-openapi.yml#listDevicesInAccount
+    - openapi/verizon-sms-api-openapi.yml#sendSmsToDevices
+idempotency:
+  supported: false
+  header: null
+  evidence: >-
+    No Idempotency-Key (or equivalent) header appears in any operation across the
+    five harvested OpenAPI documents, and the ThingSpace documentation defines no
+    request-replay contract. The requestId returned by asynchronous operations is a
+    correlation identifier for the callback, NOT a client-supplied idempotency key —
+    it is minted server-side per request, so a retried call produces a new requestId
+    and a second execution.
+  note: >-
+    No `Idempotency` pointer is wired in apis.yml because Verizon publishes no
+    idempotency contract. This is a genuine gap, not a capture gap.
+pagination:
+  style: none-documented
+  evidence: >-
+    No page/cursor/limit parameters appear on any harvested operation. Bulk device
+    listing is expressed as an asynchronous job (listDevicesInAccount) whose results
+    are delivered on the DeviceUsage / DeviceService callbacks rather than paged
+    inline. The 2020 deprecation of /devices/connections/actions/list in favour of
+    /devices/connections/actions/listHistory introduced a 202 response when more
+    data remains — a continuation signal rather than a page cursor.
+filtering:
+  style: request-body
+  description: >-
+    Device selection is expressed in the request body as a deviceIds[] array of
+    {id, kind} pairs, or as account/filter fields on DeviceListRequest — not as
+    query-string filters.
+identifiers:
+  device_id:
+    shape: '{id, kind}'
+    kinds: [imei, meid, esn, iccid, min, mdn, otaid]
+    kinds_source: json-schema/thingspace-connectivity-device-id-schema.json
+  account_name:
+    shape: path parameter accountName on every account-scoped operation
+versioning:
+  scheme: uri-path
+  current: v2
+  base_path: /api/m2m/v2
+  token_path: /api/ts/v1
+  note: >-
+    Connectivity Management is v2 under /api/m2m/v2; the ThingSpace OAuth token
+    service is v1 under /api/ts/v1. Software Management publishes both v1 and v2
+    reference documents.
+  artifact: lifecycle/verizon-lifecycle.yml
+error_envelope:
+  format: proprietary
+  rfc9457: false
+  content_type: application/json
+  status_codes_used: [200, 202, 400, 401, 404]
+  artifact: errors/verizon-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: {retry_after: Retry-After}
+  throttled_status: 429
+  note: >-
+    Rate limits are negotiated per contract; no public defaults are published.
+  artifact: rate-limits/verizon-rate-limits.yml
+webhooks:
+  supported: true
+  registration_required: true
+  artifact: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+  retry: 3 retries at 5-minute intervals (4 attempts total); failures archived 30 days
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+  note: >-
+    No provider-generic metadata bag. DeviceInformation carries named fields
+    (accountName, deviceIds, state, servicePlan, mdn) rather than a free-form map.
+related:
+  authentication: authentication/verizon-authentication.yml
+  scopes: scopes/verizon-scopes.yml
+  errors: errors/verizon-problem-types.yml
+  lifecycle: lifecycle/verizon-lifecycle.yml
+  rate_limits: rate-limits/verizon-rate-limits.yml
+  webhooks: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+  sandbox: sandbox/verizon-sandbox.yml
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+    - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html
+    - https://thingspace.verizon.com/documentation/apis/connectivity-management/working-with-verizon/about-callback-services.html
+  http_status: 200

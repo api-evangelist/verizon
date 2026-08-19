@@ -1,0 +1,76 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/verizon-accounts-api-openapi.yml, openapi/verizon-callbacks-api-openapi.yml,
+  openapi/verizon-devices-api-openapi.yml, openapi/verizon-session-api-openapi.yml,
+  openapi/verizon-sms-api-openapi.yml
+format: proprietary
+rfc9457: false
+rfc9457_note: >-
+  No operation declares application/problem+json. Verizon uses its own
+  {errorCode, errorMessage} envelope synchronously and a faultResponse object on
+  callbacks — see errors/verizon-error-codes.yml for the published registry.
+content_type: application/json
+description: >-
+  HTTP failure surface derived from the 4xx responses declared across the five
+  harvested ThingSpace OpenAPI documents. The specs declare status codes and
+  descriptions but attach no response schema to any 4xx, so the envelope shape below
+  comes from the provider's error documentation rather than from the spec.
+problems:
+  - status: 400
+    title: Bad request
+    class: INPUT_INVALID
+    envelope: {errorCode: string, errorMessage: string}
+    source_operations:
+      - openapi/verizon-accounts-api-openapi.yml#getAccountInformation
+      - openapi/verizon-callbacks-api-openapi.yml#listRegisteredCallbacks
+      - openapi/verizon-callbacks-api-openapi.yml#registerCallback
+      - openapi/verizon-devices-api-openapi.yml#listDevicesInAccount
+      - openapi/verizon-devices-api-openapi.yml#activateDevices
+      - openapi/verizon-devices-api-openapi.yml#deactivateDevices
+      - openapi/verizon-session-api-openapi.yml#loginSession
+      - openapi/verizon-sms-api-openapi.yml#sendSmsToDevices
+    remediation: >-
+      Validate the request body against the operation schema. Common causes are an
+      invalid device kind, an identifier that does not match its kind, an over-size
+      batch (>200 devices per request, >10,000 total) and illegal characters.
+  - status: 401
+    title: Unauthorized
+    class: REQUEST_FAILED
+    envelope: {errorCode: string, errorMessage: string}
+    source_operations:
+      - openapi/verizon-accounts-api-openapi.yml#getAccountInformation
+      - openapi/verizon-callbacks-api-openapi.yml#listRegisteredCallbacks
+      - openapi/verizon-callbacks-api-openapi.yml#registerCallback
+      - openapi/verizon-devices-api-openapi.yml#listDevicesInAccount
+      - openapi/verizon-devices-api-openapi.yml#activateDevices
+      - openapi/verizon-devices-api-openapi.yml#deactivateDevices
+      - openapi/verizon-sms-api-openapi.yml#sendSmsToDevices
+    remediation: >-
+      Refresh the ThingSpace OAuth bearer token (1 hour TTL) and confirm the
+      VZ-M2M-Token header carries a session token that has not gone 20 minutes idle.
+  - status: 401
+    title: Authentication failed
+    class: REQUEST_FAILED
+    source_operations:
+      - openapi/verizon-session-api-openapi.yml#loginSession
+    remediation: Check the UWS username/password and the ThingSpace bearer token.
+  - status: 404
+    title: Account not found
+    class: REQUEST_FAILED.AccountNotFound
+    source_operations:
+      - openapi/verizon-accounts-api-openapi.yml#getAccountInformation
+    remediation: >-
+      Verify the accountName path parameter, which is formatted as a billing account
+      plus sub-account (for example 0000123456-00001).
+undeclared_but_documented:
+  - {status: 403, note: 'Wrong authentication — "Resource not available". Declared in the error docs, not in any spec.'}
+  - {status: 404, note: 'Wrong endpoint — "The requested resource is not available".'}
+  - {status: 429, note: 'Throttling status recorded in rate-limits/verizon-rate-limits.yml; not declared in any spec.'}
+  - {status: 202, note: 'listHistory returns 202 when more data remains (see lifecycle/); not declared in any spec.'}
+gaps:
+  - No 4xx response in any spec carries a schema or an example.
+  - No 5xx response is declared on any operation.
+  - No RFC 9457 problem+json media type anywhere in the surface.
+related:
+  error_codes: errors/verizon-error-codes.yml
+  conventions: conventions/verizon-conventions.yml

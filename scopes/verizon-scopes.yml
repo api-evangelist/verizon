@@ -1,9 +1,30 @@
-generated: '2026-07-11'
+generated: '2026-08-04'
 method: derived
-source: openapi/verizon-thingspace-connectivity-openapi.yml
+source: openapi/verizon-accounts-api-openapi.yml, openapi/verizon-callbacks-api-openapi.yml,
+  openapi/verizon-devices-api-openapi.yml, openapi/verizon-session-api-openapi.yml, openapi/verizon-sms-api-openapi.yml
 schemes:
 - name: OAuth2ClientCredentials
-  source: openapi/verizon-thingspace-connectivity-openapi.yml
+  source: openapi/verizon-accounts-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+- name: OAuth2ClientCredentials
+  source: openapi/verizon-callbacks-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+- name: OAuth2ClientCredentials
+  source: openapi/verizon-devices-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+- name: OAuth2ClientCredentials
+  source: openapi/verizon-session-api-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+- name: OAuth2ClientCredentials
+  source: openapi/verizon-sms-api-openapi.yml
   flows:
   - flow: clientCredentials
     tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
@@ -13,16 +34,28 @@ scopes:
   flows:
   - clientCredentials
   sources:
-  - openapi/verizon-thingspace-connectivity-openapi.yml
+  - openapi/verizon-accounts-api-openapi.yml
+  - openapi/verizon-callbacks-api-openapi.yml
+  - openapi/verizon-devices-api-openapi.yml
+  - openapi/verizon-session-api-openapi.yml
+  - openapi/verizon-sms-api-openapi.yml
 - scope: EVENTSREAD
   description: Read device events
   flows:
   - clientCredentials
   sources:
-  - openapi/verizon-thingspace-connectivity-openapi.yml
+  - openapi/verizon-accounts-api-openapi.yml
+  - openapi/verizon-callbacks-api-openapi.yml
+  - openapi/verizon-devices-api-openapi.yml
+  - openapi/verizon-session-api-openapi.yml
+  - openapi/verizon-sms-api-openapi.yml
 - scope: SERVICEPROFILEREAD
   description: Read service profiles
   flows:
   - clientCredentials
   sources:
-  - openapi/verizon-thingspace-connectivity-openapi.yml
+  - openapi/verizon-accounts-api-openapi.yml
+  - openapi/verizon-callbacks-api-openapi.yml
+  - openapi/verizon-devices-api-openapi.yml
+  - openapi/verizon-session-api-openapi.yml
+  - openapi/verizon-sms-api-openapi.yml

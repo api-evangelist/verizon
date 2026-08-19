@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "49ad756d-fb57-4b14-8bb4-500016bf5e40",
+      "name": "SMS",
+      "description": {
+        "content": "SMS messaging to devices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba08fa4a-debb-4769-a8b2-0869155bf2b4",
+          "name": "Verizon Send SMS to Devices",
+          "request": {
+            "name": "Verizon Send SMS to Devices",
+            "description": {
+              "content": "Sends an SMS message to one or more devices. Messages can be up to 160 characters. Delivery of the SMS message can be confirmed through a callback subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms",
+                ":accountName",
+                "actions",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountName",
+                  "description": "(Required) Account name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"smsMessage\": \"<string>\",\n  \"encoding\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90a7442d-7b36-43a7-89cd-257ad40ca1a9",
+              "name": "SMS send response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    ":accountName",
+                    "actions",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) Account name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"smsMessage\": \"Hello IoT Device\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"595f5c44-c31c-4552-8670-020a1545a959\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "434e9d86-025f-4b07-a3ea-6eab882248b4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    ":accountName",
+                    "actions",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) Account name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"smsMessage\": \"Hello IoT Device\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ab1dd31-03e2-4640-bb8e-23973f79024f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    ":accountName",
+                    "actions",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountName",
+                      "description": "(Required) Account name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"smsMessage\": \"Hello IoT Device\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://thingspace.verizon.com/api/m2m/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "DISCOVERYREAD SERVICEPROFILEREAD EVENTSREAD"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://thingspace.verizon.com/api/m2m/v2/session/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e8747b5a-79aa-462a-9b0c-e44773fe5061",
+    "name": "Verizon ThingSpace Connectivity Management Accounts SMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.\n\nContact Support:\n Name: Verizon ThingSpace Support",
+      "type": "text/plain"
+    }
+  }
+}

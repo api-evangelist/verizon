@@ -1,4 +1,4 @@
-generated: '2026-07-11'
+generated: '2026-08-04'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
@@ -6,27 +6,24 @@ hosts:
   https: true
   tls_version: TLSv1.3
   cert_expires: Dec  8 23:59:59 2026 GMT
-  hsts: true
-  hsts_max_age: 31536000
+  hsts: null
 - host: developers.verizon.com
   https: true
   tls_version: TLSv1.3
   cert_expires: Dec 15 23:59:59 2026 GMT
-  hsts: true
-  hsts_max_age: 31536000
+  hsts: null
 - host: thingspace.verizon.com
   https: true
   tls_version: TLSv1.3
   cert_expires: Dec 11 23:59:59 2026 GMT
-  hsts: true
-  hsts_max_age: 31536000
+  hsts: null
 domains:
 - domain: verizon.com
   dnssec: false
   caa:
   - 0 issue "letsencrypt.org"
-  - 0 issue "amazon.com"
   - 0 issue "digicert.com"
+  - 0 issue "amazon.com"
   spf: true
   dmarc: true
   dmarc_policy: reject

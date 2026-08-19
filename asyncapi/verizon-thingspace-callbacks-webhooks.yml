@@ -1,0 +1,115 @@
+generated: '2026-08-04'
+method: searched
+source: https://thingspace.verizon.com/documentation/apis/connectivity-management/working-with-verizon/about-callback-services.html
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  Verizon publishes no AsyncAPI document for the ThingSpace event surface. The
+  callback catalogue below is the provider's own published webhook contract,
+  captured verbatim from the Connectivity Management "About Callback Services"
+  documentation. No AsyncAPI has been fabricated from it.
+description: >-
+  ThingSpace Connectivity Management delivers server-to-client events by HTTP
+  callback (webhook). The consumer deploys a web service that accepts REST messages
+  conforming to the ThingSpace callback JSON schema, then registers that URL per
+  callback service through the Connectivity Management API. Messages fall into three
+  categories: asynchronous API responses, ThingSpace notifications, and device
+  messages.
+registration:
+  register: openapi/verizon-callbacks-api-openapi.yml#registerCallback
+  list: openapi/verizon-callbacks-api-openapi.yml#listRegisteredCallbacks
+  deregister:
+    documented: true
+    operation_id: null
+    docs: https://thingspace.verizon.com/documentation/apis/connectivity-management/api-reference/deregister-callback-listener.html
+    note: >-
+      A Deregister Callback Listener operation is documented but is not present in
+      the harvested OpenAPI; it has no operationId in openapi/.
+  cardinality: One registration per callback service name per account.
+delivery:
+  transport: https
+  retry_attempts: 3
+  retry_interval_minutes: 5
+  total_attempts: 4
+  failed_message_archive_days: 30
+  security_options:
+    - Whitelist Verizon source IP addresses
+    - Serve the listener over HTTPS with a third-party certificate
+    - Basic username/password carried in the callback body
+categories:
+  - id: api-response
+    label: Asynchronous API responses
+    description: >-
+      Status or requested payload for API requests that take time to process; the
+      synchronous call returns a requestId and the result arrives on the callback.
+  - id: notification
+    label: ThingSpace notifications
+    description: Changes made outside the API interface, and threshold/alert events.
+  - id: device-message
+    label: Device messages
+    description: SMS messages sent by devices through ThingSpace to the application.
+services:
+  - name: CarrierService
+    category: api-response
+    delivers: >-
+      Status updates from device state changes and metadata modifications —
+      activation, suspension, restoration, deactivation.
+  - name: DeviceService
+    category: api-response
+    delivers: Results from device upload operations and device availability checks.
+  - name: DevicePRLInformation
+    category: api-response
+    delivers: Current device PRL values following list requests.
+  - name: DeviceProfileService
+    category: api-response
+    delivers: Status confirmations for profile download, enable, disable and delete operations.
+  - name: DeviceSuspensionStatus
+    category: api-response
+    delivers: Suspension status information following a status inquiry.
+  - name: DeviceUsage
+    category: api-response
+    delivers: Device usage data from aggregated usage list requests.
+  - name: DiagnosticsService
+    category: api-response
+    delivers: Device state change notifications for SCEF device registration and monitoring.
+  - name: EnhancedConnectivityService
+    category: [api-response, device-message]
+    delivers: >-
+      SMS delivery confirmations and device message receipt; also carries inbound SMS
+      sent by devices to the ThingSpace short codes.
+  - name: StateService
+    category: api-response
+    delivers: Results from state transition requests.
+  - name: AlertService
+    category: notification
+    delivers: Notifications raised when a trigger condition activates.
+  - name: ExternalProvisioningChanges
+    category: notification
+    delivers: Provisioning changes made outside the API (portal-initiated modifications).
+  - name: ResumeTrackingNotification
+    category: notification
+    delivers: Seven-day advance notice before a suspended device auto-resumes.
+  - name: SubscriptionNotificationService
+    category: notification
+    delivers: Data throttling alerts and usage threshold notifications.
+  - name: PromoChanges
+    category: notification
+    delivers: Promotional code expiration and removal updates.
+message_envelope:
+  schema_artifact: json-schema/thingspace-connectivity-callback-summary-schema.json
+  registration_schema_artifact: json-schema/thingspace-connectivity-register-callback-request-schema.json
+  note: >-
+    The docs reference a "Callback JSON schema" but do not publish it as a
+    downloadable schema document. The callback-summary and register-callback shapes
+    captured in json-schema/ are derived from the harvested OpenAPI, not from a
+    Verizon-published schema file.
+coverage:
+  services_documented: 14
+  services_with_published_message_schema: 0
+related:
+  openapi: openapi/verizon-callbacks-api-openapi.yml
+  conventions: conventions/verizon-conventions.yml
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://thingspace.verizon.com/documentation/apis/connectivity-management/working-with-verizon/about-callback-services.html
+  http_status: 200

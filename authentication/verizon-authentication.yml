@@ -1,17 +1,83 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/verizon-thingspace-connectivity-openapi.yml
+generated: '2026-08-04'
+method: searched
+source: openapi/verizon-session-api-openapi.yml
+docs: https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+description: >-
+  Verizon ThingSpace uses a two-token model. An OAuth 2.0 client-credentials grant
+  issues a ThingSpace access token from the application key/secret; that token is then
+  exchanged, together with UWS (Unified Web Services) username/password, for a
+  VZ-M2M session token that authorizes every Connectivity Management call. Both
+  tokens must be present on Connectivity Management requests.
 summary:
   types:
-  - oauth2
+    - oauth2
+    - apiKey
   oauth2_flows:
-  - clientCredentials
+    - clientCredentials
+  api_key_in: [header]
 schemes:
-- name: OAuth2ClientCredentials
-  type: oauth2
-  flows:
-  - flow: clientCredentials
-    tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
-    scopes: 3
-  sources:
-  - openapi/verizon-thingspace-connectivity-openapi.yml
+  - name: ThingSpaceOAuth2
+    type: oauth2
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://thingspace.verizon.com/api/ts/v1/oauth2/token
+        scopes: 3
+    credential: Application key and secret, colon-joined and Base64-encoded
+    request_header: 'Authorization: Basic <base64(key:secret)>'
+    response_header: 'Authorization: Bearer <access_token>'
+    token_ttl: 3600
+    token_ttl_note: >-
+      Valid for one hour from first issue; further token requests inside that window
+      return the same token rather than minting a new one.
+    sources:
+      - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+  - name: VZM2MSessionToken
+    type: apiKey
+    in: header
+    parameter_name: VZ-M2M-Token
+    obtained_via: openapi/verizon-session-api-openapi.yml#loginSession
+    credential: ThingSpace OAuth token + UWS username/password
+    token_ttl_note: >-
+      Remains valid while the application keeps using it; expires after 20 minutes of
+      inactivity. Explicitly terminated with the End Connectivity Management Session
+      operation.
+    sources:
+      - openapi/verizon-session-api-openapi.yml
+      - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+  - name: OAuth2ClientCredentials
+    type: oauth2
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://thingspace.verizon.com/api/m2m/v2/session/token
+        scopes: 3
+    sources:
+      - openapi/verizon-accounts-api-openapi.yml
+      - openapi/verizon-callbacks-api-openapi.yml
+      - openapi/verizon-devices-api-openapi.yml
+      - openapi/verizon-session-api-openapi.yml
+      - openapi/verizon-sms-api-openapi.yml
+    note: >-
+      The scheme as declared in the harvested OpenAPI. The docs-confirmed token
+      issuer is https://thingspace.verizon.com/api/ts/v1/oauth2/token; the
+      /api/m2m/v2 path in the spec is the Connectivity Management base, not the
+      token endpoint.
+credential_management:
+  console: https://thingspace.verizon.com
+  path: Account Settings > Key Management > My Keys
+combined_request_headers:
+  - name: Authorization
+    value: Bearer <ThingSpace access token>
+    required_on: all requests
+  - name: VZ-M2M-Token
+    value: <session token>
+    required_on: Connectivity Management requests
+related:
+  scopes: scopes/verizon-scopes.yml
+  conventions: conventions/verizon-conventions.yml
+  sandbox: sandbox/verizon-sandbox.yml
+x-evidence:
+  fetched: '2026-08-04'
+  urls:
+    - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+    - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html
+  http_status: 200

@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verizon ThingSpace Connectivity Management Accounts Devices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verizon List Devices in Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/accounts/:accountName/devices/actions/list",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of devices in an account and their associated account, service plan, MDN, and IP address information."
+        },
+        {
+          "info": {
+            "name": "Verizon Activate Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/accounts/:accountName/devices/actions/activate",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate one or more devices to a specified service plan, and optionally set a MDN, service address, custom fields, and device group assignments."
+        },
+        {
+          "info": {
+            "name": "Verizon Deactivate Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/accounts/:accountName/devices/actions/deactivate",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate one or more devices from the Verizon wireless network. Deactivated devices are billed for the remainder of their billing cycle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

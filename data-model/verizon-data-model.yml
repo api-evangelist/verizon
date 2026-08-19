@@ -1,0 +1,107 @@
+generated: '2026-08-04'
+method: derived
+source: openapi/_original/verizon-thingspace-connectivity-openapi.yml
+description: >-
+  Entity-relationship graph for the Verizon ThingSpace Connectivity Management API,
+  derived from the 16 component schemas and the $ref / id-reference edges between
+  them across the five harvested OpenAPI documents. The domain root is the account;
+  every other entity hangs off it, and the device identifier is the join key that
+  binds devices, SMS and callbacks together.
+root: AccountInformation
+entities:
+  - name: AccountInformation
+    domain: accounts
+    key: accountName
+    key_format: '<billing account>-<sub account>, e.g. 0000123456-00001'
+    schema: json-schema/thingspace-connectivity-account-information-schema.json
+    source_operation: openapi/verizon-accounts-api-openapi.yml#getAccountInformation
+  - name: CarrierInformation
+    domain: accounts
+    schema: json-schema/thingspace-connectivity-carrier-information-schema.json
+  - name: Feature
+    domain: accounts
+    schema: json-schema/thingspace-connectivity-feature-schema.json
+  - name: IpPool
+    domain: accounts
+    schema: json-schema/thingspace-connectivity-ip-pool-schema.json
+  - name: DeviceId
+    domain: devices
+    key: '{kind, id}'
+    kinds: [imei, meid, esn, iccid, min, mdn, otaid]
+    schema: json-schema/thingspace-connectivity-device-id-schema.json
+    role: join-key
+  - name: DeviceInformation
+    domain: devices
+    schema: json-schema/thingspace-connectivity-device-information-schema.json
+    fields: [accountName, deviceIds, state, servicePlan, mdn]
+    states: [active, inactive, ready, deactivated]
+  - name: DeviceListRequest
+    domain: devices
+    schema: json-schema/thingspace-connectivity-device-list-request-schema.json
+  - name: DeviceListResponse
+    domain: devices
+    schema: json-schema/thingspace-connectivity-device-list-response-schema.json
+  - name: ActivateDevicesRequest
+    domain: devices
+    schema: json-schema/thingspace-connectivity-activate-devices-request-schema.json
+  - name: DeactivateDevicesRequest
+    domain: devices
+    schema: json-schema/thingspace-connectivity-deactivate-devices-request-schema.json
+  - name: DeviceRequestResponse
+    domain: devices
+    key: requestId
+    role: async-correlation
+    schema: json-schema/thingspace-connectivity-device-request-response-schema.json
+  - name: SessionLoginRequest
+    domain: session
+    schema: json-schema/thingspace-connectivity-session-login-request-schema.json
+  - name: SessionLoginResponse
+    domain: session
+    key: sessionToken
+    schema: json-schema/thingspace-connectivity-session-login-response-schema.json
+  - name: SendSmsRequest
+    domain: sms
+    schema: json-schema/thingspace-connectivity-send-sms-request-schema.json
+  - name: RegisterCallbackRequest
+    domain: callbacks
+    schema: json-schema/thingspace-connectivity-register-callback-request-schema.json
+  - name: CallbackSummary
+    domain: callbacks
+    schema: json-schema/thingspace-connectivity-callback-summary-schema.json
+relationships:
+  - {from: AccountInformation, to: CarrierInformation, kind: has_many, via: '$ref'}
+  - {from: AccountInformation, to: Feature, kind: has_many, via: '$ref'}
+  - {from: AccountInformation, to: IpPool, kind: has_many, via: '$ref'}
+  - {from: DeviceInformation, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: DeviceInformation, to: AccountInformation, kind: belongs_to, via: accountName}
+  - {from: DeviceListResponse, to: DeviceInformation, kind: has_many, via: '$ref'}
+  - {from: DeviceListRequest, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: ActivateDevicesRequest, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: DeactivateDevicesRequest, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: SendSmsRequest, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: DeviceRequestResponse, to: DeviceId, kind: has_many, via: deviceIds}
+  - {from: RegisterCallbackRequest, to: AccountInformation, kind: belongs_to, via: accountName}
+  - {from: CallbackSummary, to: AccountInformation, kind: belongs_to, via: accountName}
+async_edges:
+  - from: DeviceRequestResponse.requestId
+    to: faultResponse.requestId / callback payload requestId
+    via: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+    note: >-
+      The requestId returned by every asynchronous operation is the correlation key
+      that ties the eventual callback message back to the originating call.
+domains:
+  accounts: [AccountInformation, CarrierInformation, Feature, IpPool]
+  devices: [DeviceId, DeviceInformation, DeviceListRequest, DeviceListResponse, ActivateDevicesRequest, DeactivateDevicesRequest, DeviceRequestResponse]
+  session: [SessionLoginRequest, SessionLoginResponse]
+  sms: [SendSmsRequest]
+  callbacks: [RegisterCallbackRequest, CallbackSummary]
+id_prefixes: none
+coverage:
+  entities: 16
+  relationships: 13
+  note: >-
+    Scoped to what the harvested Connectivity Management specs model. The broader
+    ThingSpace surface (Device Diagnostics, Device Location, Hyper Precise Location,
+    Software Management, Streaming Cloud Connector, Sensor Insights, Intelligence,
+    Security) has no machine-readable contract in this repo, so its entities are
+    absent from this graph.

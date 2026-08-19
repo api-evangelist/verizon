@@ -1,0 +1,64 @@
+generated: '2026-08-04'
+method: searched
+source: https://thingspace.verizon.com/resources/documentation/connectivity/API_Console/
+docs:
+  - https://thingspace.verizon.com/resources/documentation/connectivity/API_Console/
+  - https://thingspace.verizon.com/documentation/apis/sms/api-console.html
+  - https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html
+description: >-
+  ThingSpace ships an in-documentation API Console with a simulator back end. A
+  registered ThingSpace developer gets simulator credentials that exercise a test
+  account, so requests and responses can be explored before any real device or UWS
+  credential is involved. There is no separate sandbox hostname and no test/live key
+  prefix scheme — the same base URL is used and the credential decides whether the
+  call hits the simulator or a real account.
+mode_separation:
+  style: credential-scoped
+  test_host: https://thingspace.verizon.com/api/m2m/v2
+  live_host: https://thingspace.verizon.com/api/m2m/v2
+  key_prefixes: none
+  note: >-
+    Test and live share one base URL. Switching is done by swapping the simulator
+    credentials for real ThingSpace application key/secret plus UWS Connectivity
+    Management credentials.
+console:
+  name: ThingSpace API Console
+  url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Console/
+  embedded_in_docs: true
+  try_it_out: true
+  backed_by: APIMatic-hosted portal console (Verizon's docs are an APIMatic portal)
+  note: >-
+    "Try it out!" buttons on each API Reference page issue live requests against the
+    simulator using the simulator credentials shown on the page.
+simulator:
+  available: true
+  requires_registration: true
+  registration: https://thingspace.verizon.com
+  published_test_values:
+    - field: VZ-M2M-Token
+      value: null
+      rule: >-
+        Any value is accepted for VZ-M2M-Token while using the simulator. Verizon
+        publishes a rule, not a fixed token string, so no literal test token is
+        recorded here.
+  note: >-
+    Verizon does not publish fixed simulator account names, device IDs or tokens in
+    open documentation — the simulator credentials are shown inside the console to
+    signed-in developers. No test values have been invented for this artifact.
+promotion_to_live:
+  requirement: >-
+    A Verizon business account or test account with UWS credentials, plus a real
+    ThingSpace API token, is needed to manage real devices.
+  docs: https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+not_published:
+  - test cards / payment fixtures (not a payments API)
+  - test clocks / time simulation
+  - fixture or event-trigger tooling
+  - a dedicated sandbox hostname
+related:
+  authentication: authentication/verizon-authentication.yml
+  conventions: conventions/verizon-conventions.yml
+x-evidence:
+  fetched: '2026-08-04'
+  url: https://thingspace.verizon.com/resources/documentation/connectivity/API_Console/
+  http_status: 200

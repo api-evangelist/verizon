@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Verizon ThingSpace Connectivity Management Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verizon Get Account Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thingspace.verizon.com/api/m2m/v2/accounts/:accountName",
+            "params": [
+              {
+                "name": "accountName",
+                "value": "0000123456-00001",
+                "type": "path",
+                "description": "Account name (32-character numeric value)"
+              }
+            ]
+          },
+          "docs": "Returns information about a specified account. The information returned includes account type, billing cycle information, number of devices, and status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

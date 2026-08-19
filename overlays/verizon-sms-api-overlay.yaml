@@ -1,0 +1,42 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Verizon ThingSpace Connectivity Management Accounts SMS API
+  version: 1.0.0
+extends: openapi/verizon-sms-api-openapi.yml
+x-generated: '2026-08-04'
+x-method: generated
+x-source: conventions/verizon-conventions.yml, errors/verizon-error-codes.yml, authentication/verizon-authentication.yml
+actions:
+- target: $.info
+  description: Record the API Evangelist enrichment context for this API.
+  update:
+    x-apievangelist-provider: verizon
+    x-apievangelist-enriched: '2026-08-04'
+    x-apievangelist-artifacts:
+      authentication: authentication/verizon-authentication.yml
+      conventions: conventions/verizon-conventions.yml
+      errors: errors/verizon-error-codes.yml
+      lifecycle: lifecycle/verizon-lifecycle.yml
+      webhooks: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+      data_model: data-model/verizon-data-model.yml
+      sandbox: sandbox/verizon-sandbox.yml
+      skills: skills/_index.yml
+    x-provider-publishes-openapi: false
+- target: $.components.securitySchemes
+  description: Add the VZ-M2M session token header, which Verizon documents but the harvested spec does
+    not declare.
+  update:
+    VZM2MSessionToken:
+      type: apiKey
+      in: header
+      name: VZ-M2M-Token
+      description: Session token from loginSession. Expires after 20 minutes of inactivity. Documented
+        at https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started/getting-credentials.html
+- target: $.paths['/sms/{accountName}/actions/send'].post
+  description: Annotate sendSmsToDevices with the runtime semantics captured in conventions/ and errors/.
+  update:
+    x-error-catalog: errors/verizon-error-codes.yml
+    x-idempotent: false
+    x-idempotency-note: Verizon documents no idempotency key; a retry re-executes.
+    x-async-result: asyncapi/verizon-thingspace-callbacks-webhooks.yml
+    x-async-correlation-field: requestId
