@@ -589,7 +589,7 @@ description: Verizon is a leading telecommunications company providing wireless,
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 X-Discovery:
   date: '2026-08-04'
   method: probed
