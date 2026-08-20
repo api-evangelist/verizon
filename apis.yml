@@ -186,6 +186,8 @@ apis:
   description: Account information and management
   humanURL: https://thingspace.verizon.com/documentation
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
