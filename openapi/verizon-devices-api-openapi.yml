@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Verizon ThingSpace Connectivity Management Accounts Devices API
   description: Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.
@@ -273,6 +273,23 @@ components:
               type: integer
               description: Maximum number of devices to return
               example: 100
+    DeviceRequestResponse:
+      type: object
+      description: Response containing request ID for async operations
+      properties:
+        requestId:
+          type: string
+          description: Unique request ID to track the operation
+          example: 595f5c44-c31c-4552-8670-020a1545a959
+        failedDevices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceId:
+                type: string
+              cause:
+                type: string
     DeviceId:
       type: object
       description: Device identifier
@@ -293,23 +310,6 @@ components:
           type: string
           description: Device identifier value
           example: '990013907835573'
-    DeviceRequestResponse:
-      type: object
-      description: Response containing request ID for async operations
-      properties:
-        requestId:
-          type: string
-          description: Unique request ID to track the operation
-          example: 595f5c44-c31c-4552-8670-020a1545a959
-        failedDevices:
-          type: array
-          items:
-            type: object
-            properties:
-              deviceId:
-                type: string
-              cause:
-                type: string
     DeactivateDevicesRequest:
       type: object
       required:

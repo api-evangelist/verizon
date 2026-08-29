@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Verizon ThingSpace Connectivity Management Accounts Session API
   description: Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.
@@ -62,6 +62,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SessionLoginResponse:
+      type: object
+      description: Session login response with token
+      properties:
+        sessionToken:
+          type: string
+          description: Session token for subsequent API calls
+          example: bcce3ea6-fe4f-4952-bacb-56e4639936a0
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+          example: 3600
     SessionLoginRequest:
       type: object
       required:
@@ -76,18 +88,6 @@ components:
         password:
           type: string
           description: ThingSpace account password
-    SessionLoginResponse:
-      type: object
-      description: Session login response with token
-      properties:
-        sessionToken:
-          type: string
-          description: Session token for subsequent API calls
-          example: bcce3ea6-fe4f-4952-bacb-56e4639936a0
-        expiresIn:
-          type: integer
-          description: Token expiry in seconds
-          example: 3600
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

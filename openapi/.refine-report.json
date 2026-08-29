@@ -17,6 +17,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "verizon-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "verizon-callbacks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "verizon-devices-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "verizon-session-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "verizon-sms-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }
