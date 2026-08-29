@@ -1,5 +1,7 @@
 aid: verizon
 url: https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/apis.yml
+x-api-posture: partner-gated
+x-api-posture-basis: observed
 apis:
 - aid: verizon:verizon-5g-edge
   name: Verizon 5G Edge
