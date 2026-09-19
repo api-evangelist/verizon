@@ -325,6 +325,8 @@ apis:
   description: Session management and authentication
   humanURL: https://thingspace.verizon.com/documentation
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
