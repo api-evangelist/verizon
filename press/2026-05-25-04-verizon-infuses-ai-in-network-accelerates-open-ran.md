@@ -1,7 +1,9 @@
 ---
 title: Verizon infuses AI in network, accelerates Open RAN ...
 url: https://www.samsung.com/global/business/networks/insights/press-release/0224-verizon-infuses-ai-in-network-accelerates-open-ran-innovation-with-multi-vendor-ran-intelligent-controller-deployment/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Verizon" press release artificial intelligence'
 position: 4
 source: serpapi-google

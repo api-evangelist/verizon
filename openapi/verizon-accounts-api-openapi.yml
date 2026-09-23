@@ -71,30 +71,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Feature:
-      type: object
-      description: Account feature
-      properties:
-        name:
-          type: string
-          description: Feature name
-          example: Callback
-        description:
-          type: string
-          description: Feature description
-          example: Callback enabled
-    CarrierInformation:
-      type: object
-      description: Carrier network information
-      properties:
-        carrierName:
-          type: string
-          description: Name of the carrier
-          example: Verizon Wireless
-        state:
-          type: string
-          description: Account state on this carrier
-          example: REGISTERED
     AccountInformation:
       type: object
       description: Account information and settings
@@ -127,6 +103,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IpPool'
+    CarrierInformation:
+      type: object
+      description: Carrier network information
+      properties:
+        carrierName:
+          type: string
+          description: Name of the carrier
+          example: Verizon Wireless
+        state:
+          type: string
+          description: Account state on this carrier
+          example: REGISTERED
+    Feature:
+      type: object
+      description: Account feature
+      properties:
+        name:
+          type: string
+          description: Feature name
+          example: Callback
+        description:
+          type: string
+          description: Feature description
+          example: Callback enabled
     IpPool:
       type: object
       description: IP address pool

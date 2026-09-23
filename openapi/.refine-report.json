@@ -1,29 +1,28 @@
 {
   "provider": "verizon",
   "sources": [
-    "verizon-accounts-api-openapi.yml",
-    "verizon-callbacks-api-openapi.yml",
-    "verizon-devices-api-openapi.yml",
-    "verizon-session-api-openapi.yml",
-    "verizon-sms-api-openapi.yml"
+    "_ae-authored/verizon-thingspace-connectivity-openapi.yml"
   ],
   "outputs": [
     "verizon-accounts-api-openapi.yml",
     "verizon-callbacks-api-openapi.yml",
     "verizon-devices-api-openapi.yml",
-    "verizon-session-api-openapi.yml",
-    "verizon-sms-api-openapi.yml"
+    "verizon-sms-api-openapi.yml",
+    "verizon-session-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "verizon-accounts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "verizon-callbacks-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "verizon-devices-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "verizon-session-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "verizon-sms-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "verizon-thingspace-connectivity-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "verizon-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verizon-callbacks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verizon-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verizon-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "verizon-sms-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

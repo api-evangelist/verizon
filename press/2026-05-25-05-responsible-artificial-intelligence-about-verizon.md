@@ -1,7 +1,9 @@
 ---
 title: Responsible Artificial Intelligence | About Verizon
 url: https://www.verizon.com/about/investors/responsible-ai-program
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Verizon" press release artificial intelligence'
 position: 5
 source: serpapi-google
