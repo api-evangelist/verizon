@@ -38,8 +38,6 @@ apis:
   - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
     name: 'Voice APIs: Communication Platform as a Service | Verizon'
     type: Documentation
-  - url: graphql/verizon-graphql.md
-    type: GraphQL
   description: Software Management Services API lets customers manage, schedule and distribute software
     updates to eligible 4G and 5G Internet of Things devices.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
