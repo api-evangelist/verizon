@@ -71,6 +71,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DeviceId:
+      type: object
+      description: Device identifier
+      properties:
+        kind:
+          type: string
+          enum:
+          - imei
+          - meid
+          - esn
+          - iccid
+          - min
+          - mdn
+          - otaid
+          description: Type of device identifier
+          example: imei
+        id:
+          type: string
+          description: Device identifier value
+          example: '990013907835573'
     DeviceRequestResponse:
       type: object
       description: Response containing request ID for async operations
@@ -112,26 +132,6 @@ components:
           - BINARY
           description: Message encoding type
           example: TEXT
-    DeviceId:
-      type: object
-      description: Device identifier
-      properties:
-        kind:
-          type: string
-          enum:
-          - imei
-          - meid
-          - esn
-          - iccid
-          - min
-          - mdn
-          - otaid
-          description: Type of device identifier
-          example: imei
-        id:
-          type: string
-          description: Device identifier value
-          example: '990013907835573'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

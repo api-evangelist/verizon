@@ -32,7 +32,7 @@ apis:
   - url: https://mblogin.verizonwireless.com/account/business/login?appGroup=TSD&goto=https%3A%2F%2Fmblogin.verizonwireless.com%2Fvzauth%2Foauth2%2Fauthorize%3Fscope%3Dopenid%26response_type%3Did_token%26realm%3D%2Fvzwmb%26redirect_uri%3Dhttps%3A%2F%2Fwww.verizon.com%2Fbusiness%2F5g-edge-portal%2Fredirect%26nonce%3DYmMyOWFhNjItZDU0ZS00Mzg1LTg2NzYtYTYyMjYzYWU4ZWFiLTIxNTA0MCxodHRwczovL3d3dy52ZXJpem9uLmNvbS9idXNpbmVzcy81Zy1lZGdlLXBvcnRhbC9hY2NvdW50L2xvZ2luP2E9MC41NTIyNzE1NDg0MTc3OTk4%26client_id%3Dmdp_agent%26response_mode%3Dform_post&realm=%2Fvzwmb
     name: Verizon Business Account Login
     type: Login
-  - url: https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.
+  - url: https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957
     name: Sign up
     type: Signup
   - url: https://www.verizon.com/business/products/contact-center-cx/voice-api/
