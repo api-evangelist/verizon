@@ -208,50 +208,6 @@ components:
           type: boolean
           description: Whether to waive early termination fee
           example: false
-    DeviceListResponse:
-      type: object
-      description: Response containing list of devices
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceInformation'
-        hasMoreData:
-          type: boolean
-          description: Whether there are more devices to retrieve
-          example: false
-        lastSeenDeviceId:
-          type: string
-          description: ID of the last device returned for pagination
-          example: '990013907835573'
-    DeviceListRequest:
-      type: object
-      description: Request to list devices with optional filtering
-      properties:
-        deviceIds:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceId'
-        filter:
-          type: object
-          description: Filter criteria
-          properties:
-            servicePlans:
-              type: array
-              items:
-                type: string
-              description: Filter by service plans
-              example:
-              - ThingSpace
-            states:
-              type: array
-              items:
-                type: string
-              description: Filter by device states
-            maxNumberOfDevices:
-              type: integer
-              description: Maximum number of devices to return
-              example: 100
     DeviceRequestResponse:
       type: object
       description: Response containing request ID for async operations
@@ -318,6 +274,34 @@ components:
           type: string
           description: Device identifier value
           example: '990013907835573'
+    DeviceListRequest:
+      type: object
+      description: Request to list devices with optional filtering
+      properties:
+        deviceIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceId'
+        filter:
+          type: object
+          description: Filter criteria
+          properties:
+            servicePlans:
+              type: array
+              items:
+                type: string
+              description: Filter by service plans
+              example:
+              - ThingSpace
+            states:
+              type: array
+              items:
+                type: string
+              description: Filter by device states
+            maxNumberOfDevices:
+              type: integer
+              description: Maximum number of devices to return
+              example: 100
     ActivateDevicesRequest:
       type: object
       required:
@@ -350,6 +334,22 @@ components:
                       type: string
                     value:
                       type: string
+    DeviceListResponse:
+      type: object
+      description: Response containing list of devices
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceInformation'
+        hasMoreData:
+          type: boolean
+          description: Whether there are more devices to retrieve
+          example: false
+        lastSeenDeviceId:
+          type: string
+          description: ID of the last device returned for pagination
+          example: '990013907835573'
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

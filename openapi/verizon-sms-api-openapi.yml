@@ -91,23 +91,6 @@ components:
           type: string
           description: Device identifier value
           example: '990013907835573'
-    DeviceRequestResponse:
-      type: object
-      description: Response containing request ID for async operations
-      properties:
-        requestId:
-          type: string
-          description: Unique request ID to track the operation
-          example: 595f5c44-c31c-4552-8670-020a1545a959
-        failedDevices:
-          type: array
-          items:
-            type: object
-            properties:
-              deviceId:
-                type: string
-              cause:
-                type: string
     SendSmsRequest:
       type: object
       required:
@@ -132,6 +115,23 @@ components:
           - BINARY
           description: Message encoding type
           example: TEXT
+    DeviceRequestResponse:
+      type: object
+      description: Response containing request ID for async operations
+      properties:
+        requestId:
+          type: string
+          description: Unique request ID to track the operation
+          example: 595f5c44-c31c-4552-8670-020a1545a959
+        failedDevices:
+          type: array
+          items:
+            type: object
+            properties:
+              deviceId:
+                type: string
+              cause:
+                type: string
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2

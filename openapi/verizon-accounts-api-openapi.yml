@@ -71,30 +71,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CarrierInformation:
-      type: object
-      description: Carrier network information
-      properties:
-        carrierName:
-          type: string
-          description: Name of the carrier
-          example: Verizon Wireless
-        state:
-          type: string
-          description: Account state on this carrier
-          example: REGISTERED
-    Feature:
-      type: object
-      description: Account feature
-      properties:
-        name:
-          type: string
-          description: Feature name
-          example: Callback
-        description:
-          type: string
-          description: Feature description
-          example: Callback enabled
     AccountInformation:
       type: object
       description: Account information and settings
@@ -146,6 +122,30 @@ components:
           type: boolean
           description: Whether this is the default pool
           example: true
+    Feature:
+      type: object
+      description: Account feature
+      properties:
+        name:
+          type: string
+          description: Feature name
+          example: Callback
+        description:
+          type: string
+          description: Feature description
+          example: Callback enabled
+    CarrierInformation:
+      type: object
+      description: Carrier network information
+      properties:
+        carrierName:
+          type: string
+          description: Name of the carrier
+          example: Verizon Wireless
+        state:
+          type: string
+          description: Account state on this carrier
+          example: REGISTERED
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
