@@ -62,18 +62,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SessionLoginResponse:
-      type: object
-      description: Session login response with token
-      properties:
-        sessionToken:
-          type: string
-          description: Session token for subsequent API calls
-          example: bcce3ea6-fe4f-4952-bacb-56e4639936a0
-        expiresIn:
-          type: integer
-          description: Token expiry in seconds
-          example: 3600
     SessionLoginRequest:
       type: object
       required:
@@ -88,6 +76,18 @@ components:
         password:
           type: string
           description: ThingSpace account password
+    SessionLoginResponse:
+      type: object
+      description: Session login response with token
+      properties:
+        sessionToken:
+          type: string
+          description: Session token for subsequent API calls
+          example: bcce3ea6-fe4f-4952-bacb-56e4639936a0
+        expiresIn:
+          type: integer
+          description: Token expiry in seconds
+          example: 3600
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
