@@ -447,6 +447,8 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/verizon.png
 common:
+- url: https://www.verizon.com/about/news
+  type: Blog
 - type: AgenticAccess
   url: agentic-access/verizon-agentic-access.yml
 - type: VulnerabilityDisclosure
@@ -598,7 +600,7 @@ common:
   name: Verizon on GitHub
   url: https://github.com/Verizon
 created: '2024-11-19'
-modified: '2026-08-04'
+modified: '2026-10-06'
 description: Verizon is a leading telecommunications company providing wireless, wireline, broadband,
   and global enterprise services. Verizon offers developer APIs for IoT device management via ThingSpace,
   5G edge computing, TM Forum service management, dynamic network bandwidth, and communications platform
