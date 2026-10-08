@@ -40,3 +40,19 @@ plans:
       - name: Volume discounts
       - name: Service-level agreements
       - name: Dedicated account team
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - period
+  plans:
+  - name: Partner / B2B Contract
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - period
+    periods:
+    - year
