@@ -1,0 +1,44 @@
+edges:
+- partner_name: CAMARA
+  partner: camara-project
+  type: contract
+  channel: network-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://raw.githubusercontent.com/camaraproject/camara-landscape/main/landscape.yml
+  contract_reference:
+    register: CAMARA landscape (Linux Foundation CAMARA project)
+    spec_file: null
+    role: api-maintainer
+    tier: premier-member
+    landscape_roles:
+    - Operators
+    registered_name: Verizon Corporate Services
+    matched_domain: verizon.com
+    api_families:
+    - ApplicationEndpointDiscovery
+    - ApplicationEndpointRegistration
+    - ApplicationProfiles
+    - ConnectedNetworkType
+    - ConnectivityInsights
+    - ConnectivityQualityManagement
+    - DeviceLocation
+    - DeviceMediaStreamingRate
+    - DeviceReachabilityStatus
+    - DeviceRoamingStatus
+    - DeviceStatus
+    - EdgeApplicationManagement
+    - EdgeCloud
+    - IoTDeviceManagement
+    - OptimalEdgeDiscovery
+    - PopulationDensityData
+    - QualityOnDemand
+    - SessionInsights
+    - SimpleEdgeDiscovery
+    api_families_basis: MAINTAINERS.MD (maintains, not implements)
+    detected_by: sweep-telco-network-apis.py
+    detected: '2026-10-12'
+generated: '2026-10-12'
+method: searched
+checked:
+- https://raw.githubusercontent.com/camaraproject/camara-landscape/main/landscape.yml
