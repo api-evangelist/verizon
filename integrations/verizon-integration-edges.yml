@@ -38,7 +38,29 @@ edges:
     api_families_basis: MAINTAINERS.MD (maintains, not implements)
     detected_by: sweep-telco-network-apis.py
     detected: '2026-10-12'
+- partner_name: Clever (clever-app-gallery)
+  partner: clever
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: clever-app-gallery
+  evidence: https://clever.com/app-gallery
+  mirror_of: clever/integrations/clever-integration-edges.yml
+  apps: []
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: social_studies, reading, communication, intervention
+  features:
+  - instant_login
+  - library_support
 generated: '2026-10-12'
 method: searched
 checked:
+- clever/integrations/clever-integration-edges.yml
 - https://raw.githubusercontent.com/camaraproject/camara-landscape/main/landscape.yml
+source:
+- clever/integrations/clever-integration-edges.yml
