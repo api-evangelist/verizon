@@ -71,18 +71,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Feature:
+    IpPool:
       type: object
-      description: Account feature
+      description: IP address pool
       properties:
-        name:
+        poolName:
           type: string
-          description: Feature name
-          example: Callback
-        description:
+          description: Name of the IP pool
+          example: ACME_POOL
+        poolType:
           type: string
-          description: Feature description
-          example: Callback enabled
+          enum:
+          - IPV4
+          - IPV6
+          description: IP version type
+          example: IPV4
+        isDefaultPool:
+          type: boolean
+          description: Whether this is the default pool
+          example: true
     CarrierInformation:
       type: object
       description: Carrier network information
@@ -127,25 +134,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/IpPool'
-    IpPool:
+    Feature:
       type: object
-      description: IP address pool
+      description: Account feature
       properties:
-        poolName:
+        name:
           type: string
-          description: Name of the IP pool
-          example: ACME_POOL
-        poolType:
+          description: Feature name
+          example: Callback
+        description:
           type: string
-          enum:
-          - IPV4
-          - IPV6
-          description: IP version type
-          example: IPV4
-        isDefaultPool:
-          type: boolean
-          description: Whether this is the default pool
-          example: true
+          description: Feature description
+          example: Callback enabled
   securitySchemes:
     OAuth2ClientCredentials:
       type: oauth2
