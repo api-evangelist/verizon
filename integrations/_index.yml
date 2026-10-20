@@ -59,3 +59,71 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: verizon-peeringdb-interconnection-register
+  label: PeeringDB (interconnection register)
+  partner_name: PeeringDB (interconnection register)
+  category: network interconnection register
+  type: register
+  channel: standard-directory
+  evidence: https://www.peeringdb.com/net/8
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: PeeringDB (peeringdb.com/api net, ix, fac, org)
+    standard: null
+    spec_file: null
+    role: peeringdb-facility-operator+network
+    registered_name: Verizon Managed Router Service
+    register_id: https://www.peeringdb.com/net/8
+    matched_domain: verizon.com
+    matched_by: domain
+    asns:
+    - 701
+    - 702
+    - 703
+    - 2828
+    - 14551
+    - 23148
+    info_types:
+    - NSP
+    ix_presence: 16
+    exchanges_operated: []
+    facilities_operated: 1
+    signal_note: 'participation only: PeeringDB is self-registered by network operators; ASNs, IX presence and facility
+      counts are context, never counted'
+    detected_by: sweep-network-edge.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: verizon-manrs-mutually-agreed-norms-for-routing-security
+  label: MANRS (Mutually Agreed Norms for Routing Security)
+  partner_name: MANRS (Mutually Agreed Norms for Routing Security)
+  category: routing-security programme
+  type: register
+  channel: standard-directory
+  evidence: https://manrs.org/participant/019eccd4-bc10-750b-90d9-09192aaa0244
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: MANRS participants (manrs.org netops / cdn-cloud-providers / ixps / equipment-vendors)
+    standard: MANRS
+    spec_file: null
+    role: manrs-participant
+    registered_name: Verizon
+    register_id: https://manrs.org/participant/019eccd4-bc10-750b-90d9-09192aaa0244
+    matched_domain: verizon.com
+    matched_by: domain
+    domain_source: peeringdb net website for AS701
+    certified_products:
+    - product: MANRS Network Operators
+      program: netops
+      lapsed: false
+      approved: '2023-04-28'
+    signal_note: certified_products = one entry per MANRS programme admitted to (reviewed against the programme's
+      actions), never per ASN; ASNs are context. The tables list current participants only, so lapsed is always
+      false
+    detected_by: sweep-network-edge.py
+    detected: '2026-10-20'
+    identity_source: peeringdb net website by the participant's ASN (labelled provenance step)
+  status: not-a-workflow
+  arazzo: null
