@@ -127,3 +127,72 @@
     identity_source: peeringdb net website by the participant's ASN (labelled provenance step)
   status: not-a-workflow
   arazzo: null
+- slug: verizon-cve-program-cve-numbering-authorities
+  label: CVE Program (CVE Numbering Authorities)
+  partner_name: CVE Program (CVE Numbering Authorities)
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  type: register
+  channel: standard-directory
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Verizon
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Verizon
+    matched_domain: verizon.com
+    matched_by: domain
+    cna_id: CNA-2026-0043
+    cna_short_name: Verizon
+    cna_types:
+    - Vendor
+    - Hosted Service
+    - Open Source
+    - Researcher
+    cna_roles:
+    - CNA
+    scope: All Verizon products and services.
+    top_level_root: Cybersecurity and Infrastructure Security Agency (CISA)
+    root: Cybersecurity and Infrastructure Security Agency (CISA) Industrial Control Systems (ICS)
+    security_advisories:
+    - https://github.com/Verizon/cve
+    disclosure_policy:
+    - https://github.com/Verizon/cve
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: verizon-first-forum-of-incident-response-and-security-teams
+  label: FIRST (Forum of Incident Response and Security Teams)
+  partner_name: FIRST (Forum of Incident Response and Security Teams)
+  category: Incident response / PSIRT (FIRST member team)
+  type: register
+  channel: standard-directory
+  evidence: https://www.first.org/members/teams/vz-tmc
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: FIRST member teams (api.first.org/data/v1/teams, public JSON API)
+    standard: FIRST (Forum of Incident Response and Security Teams) membership
+    spec_file: null
+    role: first-member-team
+    registered_name: Verizon Communications Inc.
+    matched_domain: verizon.com
+    matched_by: domain
+    teams:
+    - id: vz-tmc
+      team: VZ-TMC
+      team_type: CSIRT, SOC
+      member_since: December 19, 2018
+      country: US
+    signal_note: FIRST full membership of an incident-response / product-security team = participation; team_type
+      names CSIRT / PSIRT / SOC; never a count
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
