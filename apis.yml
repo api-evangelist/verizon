@@ -447,6 +447,8 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/verizon.png
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/verizon/overview
 - type: Plans
   url: plans/verizon-plans-pricing.yml
 - type: RateLimits
