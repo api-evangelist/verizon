@@ -1,746 +1,779 @@
 {
+  "info": {
+    "_postman_id": "f664a57e-958a-4941-b157-b34b805e0042",
+    "name": "Verizon ThingSpace Connectivity Management Devices API",
+    "description": "Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.\n\nContact Support:\n Name: Verizon ThingSpace Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:22.000Z",
+    "updatedAt": "2026-10-21T20:12:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f664a57e-958a-4941-b157-b34b805e0042"
+  },
   "item": [
     {
-      "id": "a006f3da-9676-4a6f-abdc-a222f70f55f1",
-      "name": "Devices",
-      "description": {
-        "content": "Device activation, deactivation, and management",
-        "type": "text/plain"
-      },
+      "name": "accounts",
       "item": [
         {
-          "id": "262ea552-535a-4325-bd15-0c3f21f7bce3",
-          "name": "Verizon List Devices in Account",
-          "request": {
-            "name": "Verizon List Devices in Account",
-            "description": {
-              "content": "Returns a list of devices in an account and their associated account, service plan, MDN, and IP address information.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountName",
-                "devices",
-                "actions",
-                "list"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountName",
-                  "description": "(Required) Account name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"states\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"maxNumberOfDevices\": \"<integer>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "{accountName}",
+          "item": [
             {
-              "id": "0e9f7a2e-22f8-49f3-a801-e10c381c9cfc",
-              "name": "Device list",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"ThingSpace\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "devices",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "actions",
+                  "item": [
+                    {
+                      "name": "list",
+                      "item": [
+                        {
+                          "name": "Verizon List Devices in Account",
+                          "id": "d8e06f6a-dd28-474f-b4a1-23970a7bd6a8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"meid\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"esn\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"states\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"maxNumberOfDevices\": \"<integer>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/list",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountName",
+                                "devices",
+                                "actions",
+                                "list"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "f2d1c6f0-2d76-4563-a6c4-48f61165efab",
+                                  "key": "accountName",
+                                  "value": "<string>",
+                                  "description": "(Required) Account name"
+                                }
+                              ]
+                            },
+                            "description": "Returns a list of devices in an account and their associated account, service plan, MDN, and IP address information."
+                          },
+                          "response": [
+                            {
+                              "id": "cccfea1a-dd1c-4a05-8281-1ad924e22e99",
+                              "name": "Device list",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"meid\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"esn\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"states\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"maxNumberOfDevices\": \"<integer>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/list",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "list"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"devices\": [\n    {\n      \"accountName\": \"<string>\",\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"meid\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"state\": \"inactive\",\n      \"servicePlan\": \"<string>\",\n      \"mdn\": \"<string>\"\n    },\n    {\n      \"accountName\": \"<string>\",\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"min\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"state\": \"ready\",\n      \"servicePlan\": \"<string>\",\n      \"mdn\": \"<string>\"\n    }\n  ],\n  \"hasMoreData\": \"<boolean>\",\n  \"lastSeenDeviceId\": \"<string>\"\n}",
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-cccfea1a-dd1c-4a05-8281-1ad924e22e99"
+                            },
+                            {
+                              "id": "1115740a-9344-4757-b1e1-f57871ee933e",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"meid\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"esn\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"states\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"maxNumberOfDevices\": \"<integer>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/list",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "list"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-1115740a-9344-4757-b1e1-f57871ee933e"
+                            },
+                            {
+                              "id": "231fca10-4440-43d0-985a-a1e3234f851a",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"meid\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"kind\": \"esn\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"states\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"maxNumberOfDevices\": \"<integer>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/list",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "list"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-231fca10-4440-43d0-985a-a1e3234f851a"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:12:22.000Z",
+                          "updatedAt": "2026-10-21T20:12:22.000Z",
+                          "uid": "35240-d8e06f6a-dd28-474f-b4a1-23970a7bd6a8"
+                        }
+                      ],
+                      "id": "e2c07d6a-48f1-4bbf-864f-dc56502e67fc",
+                      "createdAt": "2026-10-21T20:12:22.000Z",
+                      "updatedAt": "2026-10-21T20:12:22.000Z",
+                      "uid": "35240-e2c07d6a-48f1-4bbf-864f-dc56502e67fc"
+                    },
+                    {
+                      "name": "activate",
+                      "item": [
+                        {
+                          "name": "Verizon Activate Devices",
+                          "id": "48b3377d-6dbe-481e-96ff-e605277ae7fa",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"otaid\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/activate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountName",
+                                "devices",
+                                "actions",
+                                "activate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0998ee68-ad34-4a24-b948-b6234ce15b2b",
+                                  "key": "accountName",
+                                  "value": "<string>",
+                                  "description": "(Required) Account name"
+                                }
+                              ]
+                            },
+                            "description": "Activate one or more devices to a specified service plan, and optionally set a MDN, service address, custom fields, and device group assignments."
+                          },
+                          "response": [
+                            {
+                              "id": "40c35b7c-5772-4116-b354-1f9f7cbc02b3",
+                              "name": "Device activation response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"otaid\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"requestId\": \"<string>\",\n  \"failedDevices\": [\n    {\n      \"deviceId\": \"<string>\",\n      \"cause\": \"<string>\"\n    },\n    {\n      \"deviceId\": \"<string>\",\n      \"cause\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-40c35b7c-5772-4116-b354-1f9f7cbc02b3"
+                            },
+                            {
+                              "id": "9317da5b-8d49-4e16-8ef8-c3526daad608",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"otaid\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-9317da5b-8d49-4e16-8ef8-c3526daad608"
+                            },
+                            {
+                              "id": "d22c1be3-06ae-4975-acd9-4764a043597a",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"otaid\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-d22c1be3-06ae-4975-acd9-4764a043597a"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:12:22.000Z",
+                          "updatedAt": "2026-10-21T20:12:22.000Z",
+                          "uid": "35240-48b3377d-6dbe-481e-96ff-e605277ae7fa"
+                        }
+                      ],
+                      "id": "75b5176f-a213-4004-a169-11556d13f412",
+                      "createdAt": "2026-10-21T20:12:22.000Z",
+                      "updatedAt": "2026-10-21T20:12:22.000Z",
+                      "uid": "35240-75b5176f-a213-4004-a169-11556d13f412"
+                    },
+                    {
+                      "name": "deactivate",
+                      "item": [
+                        {
+                          "name": "Verizon Deactivate Devices",
+                          "id": "b00f387d-f133-4fb1-8854-5b41cbf6ca6d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"iccid\",\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"min\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"<string>\",\n  \"etfWaiver\": \"<boolean>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":accountName",
+                                "devices",
+                                "actions",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7b409b87-aa0b-4b01-8c3c-0c497da5549d",
+                                  "key": "accountName",
+                                  "value": "<string>",
+                                  "description": "(Required) Account name"
+                                }
+                              ]
+                            },
+                            "description": "Deactivate one or more devices from the Verizon wireless network. Deactivated devices are billed for the remainder of their billing cycle."
+                          },
+                          "response": [
+                            {
+                              "id": "fde22ae7-b9a3-4862-8c9e-ca92647ee01b",
+                              "name": "Device deactivation response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"iccid\",\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"min\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"<string>\",\n  \"etfWaiver\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"requestId\": \"<string>\",\n  \"failedDevices\": [\n    {\n      \"deviceId\": \"<string>\",\n      \"cause\": \"<string>\"\n    },\n    {\n      \"deviceId\": \"<string>\",\n      \"cause\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-fde22ae7-b9a3-4862-8c9e-ca92647ee01b"
+                            },
+                            {
+                              "id": "292bd6ac-03da-4eb4-af3a-795c1c35354c",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"iccid\",\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"min\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"<string>\",\n  \"etfWaiver\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-292bd6ac-03da-4eb4-af3a-795c1c35354c"
+                            },
+                            {
+                              "id": "e3e4983d-d062-47a6-9c5a-727cd6f5f775",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"esn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"iccid\",\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"mdn\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"min\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"<string>\",\n  \"etfWaiver\": \"<boolean>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/accounts/:accountName/devices/actions/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "accounts",
+                                    ":accountName",
+                                    "devices",
+                                    "actions",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "accountName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-10-21T20:12:23.000Z",
+                              "updatedAt": "2026-10-21T20:12:23.000Z",
+                              "uid": "35240-e3e4983d-d062-47a6-9c5a-727cd6f5f775"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T20:12:22.000Z",
+                          "updatedAt": "2026-10-21T20:12:22.000Z",
+                          "uid": "35240-b00f387d-f133-4fb1-8854-5b41cbf6ca6d"
+                        }
+                      ],
+                      "id": "8ddb9d74-0141-4edc-86e2-38bcc752c5c9",
+                      "createdAt": "2026-10-21T20:12:22.000Z",
+                      "updatedAt": "2026-10-21T20:12:22.000Z",
+                      "uid": "35240-8ddb9d74-0141-4edc-86e2-38bcc752c5c9"
+                    }
+                  ],
+                  "id": "fd864e20-779d-473f-9458-738b5cd33757",
+                  "createdAt": "2026-10-21T20:12:22.000Z",
+                  "updatedAt": "2026-10-21T20:12:22.000Z",
+                  "uid": "35240-fd864e20-779d-473f-9458-738b5cd33757"
                 }
               ],
-              "body": "{\n  \"devices\": [\n    {\n      \"accountName\": \"0000123456-00001\",\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ],\n      \"state\": \"active\",\n      \"servicePlan\": \"ThingSpace\",\n      \"mdn\": \"19085551234\"\n    }\n  ],\n  \"hasMoreData\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6ba650c5-9c30-40a7-937c-ae3d8306a463",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"ThingSpace\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "46b54a56-6ab6-41e7-a5c0-6169a5069a54",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"deviceIds\": [\n    {\n      \"kind\": \"imei\",\n      \"id\": \"990013907835573\"\n    }\n  ],\n  \"filter\": {\n    \"servicePlans\": [\n      \"ThingSpace\"\n    ]\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "4a5c780f-d703-4e75-a1d4-03f7bd829938",
+              "createdAt": "2026-10-21T20:12:22.000Z",
+              "updatedAt": "2026-10-21T20:12:22.000Z",
+              "uid": "35240-4a5c780f-d703-4e75-a1d4-03f7bd829938"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "daf03803-3d82-4698-bb12-4f3e3d8cad00",
-          "name": "Verizon Activate Devices",
-          "request": {
-            "name": "Verizon Activate Devices",
-            "description": {
-              "content": "Activate one or more devices to a specified service plan, and optionally set a MDN, service address, custom fields, and device group assignments.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountName",
-                "devices",
-                "actions",
-                "activate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountName",
-                  "description": "(Required) Account name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ],\n      \"servicePlan\": \"<string>\",\n      \"mdnZipCode\": \"<string>\",\n      \"customFields\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "dcda5ebc-d92a-425e-99f5-f5c3e5a81fe2",
-              "name": "Device activation response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ],\n      \"servicePlan\": \"ThingSpace\",\n      \"mdnZipCode\": 8540\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"requestId\": \"595f5c44-c31c-4552-8670-020a1545a959\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1e5a59b1-cdf6-4bbf-8417-246de5dcda2c",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ],\n      \"servicePlan\": \"ThingSpace\",\n      \"mdnZipCode\": 8540\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "54791b29-44b1-4432-873c-f3d7ddd354fa",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "activate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ],\n      \"servicePlan\": \"ThingSpace\",\n      \"mdnZipCode\": 8540\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "76805e38-a860-49fd-a487-2a9ebbed5b6f",
-          "name": "Verizon Deactivate Devices",
-          "request": {
-            "name": "Verizon Deactivate Devices",
-            "description": {
-              "content": "Deactivate one or more devices from the Verizon wireless network. Deactivated devices are billed for the remainder of their billing cycle.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountName",
-                "devices",
-                "actions",
-                "deactivate"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountName",
-                  "description": "(Required) Account name"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        },\n        {\n          \"kind\": \"<string>\",\n          \"id\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"<string>\",\n  \"etfWaiver\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "4c8f665d-9b7f-4d37-a95b-5fce28b38b08",
-              "name": "Device deactivation response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "deactivate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"FF\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"requestId\": \"595f5c44-c31c-4552-8670-020a1545a959\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9aedf9e0-08d5-4f1b-ab0e-fc67952952fd",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "deactivate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"FF\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f534a338-57b7-425b-bdad-ebf485d49be8",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName",
-                    "devices",
-                    "actions",
-                    "deactivate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"devices\": [\n    {\n      \"deviceIds\": [\n        {\n          \"kind\": \"imei\",\n          \"id\": \"990013907835573\"\n        }\n      ]\n    }\n  ],\n  \"reasonCode\": \"FF\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "31094cff-f13d-432c-96ad-b428b7335e45",
+          "createdAt": "2026-10-21T20:12:22.000Z",
+          "updatedAt": "2026-10-21T20:12:22.000Z",
+          "uid": "35240-31094cff-f13d-432c-96ad-b428b7335e45"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://thingspace.verizon.com/api/m2m/v2",
-      "key": "baseUrl"
+      "id": "27b423b7-a2ce-424f-9823-ba596304fa2f",
+      "createdAt": "2026-10-21T20:12:22.000Z",
+      "updatedAt": "2026-10-21T20:12:22.000Z",
+      "uid": "35240-27b423b7-a2ce-424f-9823-ba596304fa2f"
     }
   ],
   "auth": {
@@ -748,25 +781,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "DISCOVERYREAD SERVICEPROFILEREAD EVENTSREAD"
+        "value": "DISCOVERYREAD SERVICEPROFILEREAD EVENTSREAD",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://thingspace.verizon.com/api/m2m/v2/session/token"
+        "value": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "9eec6c53-7925-4a63-8ca3-f1cce08652b2",
-    "name": "Verizon ThingSpace Connectivity Management Accounts Devices API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.\n\nContact Support:\n Name: Verizon ThingSpace Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thingspace.verizon.com/api/m2m/v2"
     }
-  }
+  ]
 }

@@ -1,263 +1,237 @@
 {
+  "info": {
+    "_postman_id": "3d77af7f-ca43-4386-aeec-a9fdd9c86072",
+    "name": "Verizon ThingSpace Connectivity Management Accounts API",
+    "description": "Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.\n\nContact Support:\n Name: Verizon ThingSpace Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:09.000Z",
+    "updatedAt": "2026-10-21T20:12:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3d77af7f-ca43-4386-aeec-a9fdd9c86072"
+  },
   "item": [
     {
-      "id": "6bdc2438-d6d8-4639-b62a-2ee2d5f51e19",
-      "name": "Accounts",
-      "description": {
-        "content": "Account information and management",
-        "type": "text/plain"
-      },
+      "name": "accounts",
       "item": [
         {
-          "id": "43876bcd-ce30-4df3-bb89-ec297ddd452f",
-          "name": "Verizon Get Account Information",
-          "request": {
-            "name": "Verizon Get Account Information",
-            "description": {
-              "content": "Returns information about a specified account. The information returned includes account type, billing cycle information, number of devices, and status.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "accounts",
-                ":accountName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "accountName",
-                  "description": "(Required) Account name (32-character numeric value)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{accountName}",
+          "item": [
             {
-              "id": "ad326145-4ae2-4ab7-a15b-27ad2df92f86",
-              "name": "Account information",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name (32-character numeric value)"
-                    }
-                  ]
-                },
+              "name": "Verizon Get Account Information",
+              "id": "a05fdcd2-cbcc-4a01-892d-ae70873db7f5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"accountName\": \"0000123456-00001\",\n  \"accountNumber\": \"0000123456\",\n  \"organizationName\": \"Acme Corporation\",\n  \"isProvisioningAllowed\": true,\n  \"carrierInformation\": [\n    {\n      \"carrierName\": \"Verizon Wireless\",\n      \"state\": \"REGISTERED\"\n    }\n  ],\n  \"features\": [\n    {\n      \"name\": \"Callback\",\n      \"description\": \"Callback enabled\"\n    }\n  ],\n  \"ipPools\": [\n    {\n      \"poolName\": \"ACME_POOL\",\n      \"poolType\": \"IPV4\",\n      \"isDefaultPool\": true\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7edd2b38-cee8-4384-ac98-a8ee09c9d9b2",
-              "name": "Bad request",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/accounts/:accountName",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "accounts",
                     ":accountName"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "2c159435-afa9-488e-a290-fb087a1591b0",
                       "key": "accountName",
+                      "value": "<string>",
                       "description": "(Required) Account name (32-character numeric value)"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Returns information about a specified account. The information returned includes account type, billing cycle information, number of devices, and status."
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "00431491-6f79-45e9-80a1-efefab366921",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name (32-character numeric value)"
+                  "id": "d3ddb29f-9581-4f6a-9683-7ee0ec5d57e8",
+                  "name": "Account information",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountName"
+                        }
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "34038946-4a92-4b3e-ab73-72c92e913aab",
-              "name": "Account not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "accounts",
-                    ":accountName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "accountName",
-                      "description": "(Required) Account name (32-character numeric value)"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accountName\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"organizationName\": \"<string>\",\n  \"isProvisioningAllowed\": \"<boolean>\",\n  \"carrierInformation\": [\n    {\n      \"carrierName\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    {\n      \"carrierName\": \"<string>\",\n      \"state\": \"<string>\"\n    }\n  ],\n  \"features\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"ipPools\": [\n    {\n      \"poolName\": \"<string>\",\n      \"poolType\": \"IPV6\",\n      \"isDefaultPool\": \"<boolean>\"\n    },\n    {\n      \"poolName\": \"<string>\",\n      \"poolType\": \"IPV6\",\n      \"isDefaultPool\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:12:10.000Z",
+                  "updatedAt": "2026-10-21T20:12:10.000Z",
+                  "uid": "35240-d3ddb29f-9581-4f6a-9683-7ee0ec5d57e8"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "f643ee5e-c0f2-4321-9c03-a10c11aeee1b",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:12:10.000Z",
+                  "updatedAt": "2026-10-21T20:12:10.000Z",
+                  "uid": "35240-f643ee5e-c0f2-4321-9c03-a10c11aeee1b"
+                },
+                {
+                  "id": "cdae6853-4a6c-43b1-b8d9-8108cc0fea13",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:12:10.000Z",
+                  "updatedAt": "2026-10-21T20:12:10.000Z",
+                  "uid": "35240-cdae6853-4a6c-43b1-b8d9-8108cc0fea13"
+                },
+                {
+                  "id": "1eb0f550-cee2-49de-a283-aecf549c143e",
+                  "name": "Account not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:accountName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":accountName"
+                      ],
+                      "variable": [
+                        {
+                          "key": "accountName"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:12:10.000Z",
+                  "updatedAt": "2026-10-21T20:12:10.000Z",
+                  "uid": "35240-1eb0f550-cee2-49de-a283-aecf549c143e"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:12:10.000Z",
+              "updatedAt": "2026-10-21T20:12:10.000Z",
+              "uid": "35240-a05fdcd2-cbcc-4a01-892d-ae70873db7f5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7ffa3243-a696-473f-be07-533bfb2daa72",
+          "createdAt": "2026-10-21T20:12:09.000Z",
+          "updatedAt": "2026-10-21T20:12:09.000Z",
+          "uid": "35240-7ffa3243-a696-473f-be07-533bfb2daa72"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://thingspace.verizon.com/api/m2m/v2",
-      "key": "baseUrl"
+      "id": "1b2cdbbf-8eaf-4f29-b6d4-4b4df2a03492",
+      "createdAt": "2026-10-21T20:12:09.000Z",
+      "updatedAt": "2026-10-21T20:12:09.000Z",
+      "uid": "35240-1b2cdbbf-8eaf-4f29-b6d4-4b4df2a03492"
     }
   ],
   "auth": {
@@ -265,25 +239,25 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "DISCOVERYREAD SERVICEPROFILEREAD EVENTSREAD"
+        "value": "DISCOVERYREAD SERVICEPROFILEREAD EVENTSREAD",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://thingspace.verizon.com/api/m2m/v2/session/token"
+        "value": "https://thingspace.verizon.com/api/m2m/v2/session/token",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "client_credentials"
+        "value": "client_credentials",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "547a55f0-7273-4136-a34b-10fcbe78ee7d",
-    "name": "Verizon ThingSpace Connectivity Management Accounts API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Verizon ThingSpace Connectivity Management API provides device lifecycle management, account administration, session management, SMS messaging, and callback subscription services for IoT device deployments on Verizon's wireless network. Manage device activations, deactivations, SIM changes, service plan changes, and usage reporting for connected IoT devices at scale.\n\nContact Support:\n Name: Verizon ThingSpace Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thingspace.verizon.com/api/m2m/v2"
     }
-  }
+  ]
 }
