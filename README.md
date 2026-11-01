@@ -1,4 +1,4 @@
-# Verizon (verizon)
+# Verizon
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,198 +66,262 @@
 
 Verizon is a leading telecommunications company providing wireless, wireline, broadband, and global enterprise services. Verizon offers developer APIs for IoT device management via ThingSpace, 5G edge computing, TM Forum service management, dynamic network bandwidth, and communications platform APIs for contact center and SMS solutions.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/apis.yml)
+**Areas:** Wireless · Telecommunications · IoT · 5G · Enterprise · Network APIs · Fortune 100
 
-## Scope
+## Verizon on APIs.io
 
-- **Type:** Index
+Everything profiled for Verizon is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/verizon/](https://apis.io/providers/verizon/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (18)
 
-- Wireless
-- Telecommunications
-- IoT
-- 5G
-- Enterprise
-- Network APIs
+- [Verizon 5G Edge](https://apis.io/apis/verizon/verizon-5g-edge/) — Software Management Services API lets customers manage, schedule and distribute software updates to eligible 4G and 5G Internet of Things devices.
+- [Verizon Communications Platform as a Service (CPaaS)](https://apis.io/apis/verizon/communications-platform-as-a-service/) — Available exclusively for IP Contact Center (IPCC) customers, our Communications Platform as a Service (CPaaS) offering provides a set of APIs that you can…
+- [Verizon Inventory Management](https://apis.io/apis/verizon/verizon-inventory-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Incident Management](https://apis.io/apis/verizon/verizon-incident-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Change Management](https://apis.io/apis/verizon/verizon-change-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Event Management](https://apis.io/apis/verizon/verizon-event-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Problem Management](https://apis.io/apis/verizon/verizon-problem-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Order Management](https://apis.io/apis/verizon/verizon-order-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Billing Management](https://apis.io/apis/verizon/verizon-billing-management/) — Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information…
+- [Verizon Dynamic Bandwidth APIs](https://apis.io/apis/verizon/verizon-dynamic-bandwidth-apis/) — These innovative network provisioning API solutions can be deployed in the enterprises network eco-system to drive real-time network adjustments according…
+- [Dynamic Network Manager (DNM) Standardized APIs](https://apis.io/apis/verizon/dynamic-network-manager-dnm-standardized-apis/) — MEF-standardized Dynamic Network Manager APIs. Verizon documents the same API surface under four product families — Private IP, Internet Dedicated, E-Line…
+- [Secure Cloud Interconnect APIs Utilization](https://apis.io/apis/verizon/secure-cloud-interconnect-apis-utilization/) — SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection to the cloud.
+- [Secure Cloud Interconnect APIs Billing Usage](https://apis.io/apis/verizon/secure-cloud-interconnect-apis-billing-usage/) — SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection to the cloud.
+- [Verizon Accounts API](https://apis.io/apis/verizon/verizon-accounts-api/) — Account information and management
+- [Verizon Callbacks API](https://apis.io/apis/verizon/verizon-callbacks-api/) — Callback subscription management
+- [Verizon Devices API](https://apis.io/apis/verizon/verizon-devices-api/) — Device activation, deactivation, and management
+- [Verizon Session API](https://apis.io/apis/verizon/verizon-session-api/) — Session management and authentication
+- [Verizon SMS API](https://apis.io/apis/verizon/verizon-sms-api/) — SMS messaging to devices
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-19
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Verizon 5G Edge
+Event-driven and webhook contracts.
 
-Software Management Services API lets customers manage, schedule and distribute software updates to eligible 4G and 5G Internet of Things devices.
+- [Verizon Thingspace Callbacks Webhooks](https://apis.io/asyncapis/verizon/verizon-thingspace-callbacks-webhooks/)
 
-- **Human URL:** [https://www.verizon.com/business/5g-edge-portal/api-documentation.html](https://www.verizon.com/business/5g-edge-portal/api-documentation.html)
+#### GraphQL (1)
 
-#### Tags
+GraphQL schemas.
 
-- Wireless
+- [Moved to /providers/verizon/](https://apis.io/graphqls/verizon/verizon-graphql/)
 
-#### Properties
+#### MCP servers (1)
 
-- [Documentation](https://www.verizon.com/business/5g-edge-portal/api-documentation.html)
-- [Portal](https://www.verizon.com/business/5g-edge-portal/index.html)
-- [Partners](https://www.verizon.com/business/5g-edge-portal/partners.html)
-- [F A Q](https://www.verizon.com/business/5g-edge-portal/faq.html)
-- [Newsletter](https://www.verizon.com/business/solutions/5g/edge-computing/developer-form/)
-- [Terms of Service](https://www.verizon.com/business/5g-edge-portal/legal.html)
-- [Privacy Policy](https://www.verizon.com/about/privacy/)
-- [Login](https://mblogin.verizonwireless.com/account/business/login?appGroup=TSD&goto=https%3A%2F%2Fmblogin.verizonwireless.com%2Fvzauth%2Foauth2%2Fauthorize%3Fscope%3Dopenid%26response_type%3Did_token%26realm%3D%2Fvzwmb%26redirect_uri%3Dhttps%3A%2F%2Fwww.verizon.com%2Fbusiness%2F5g-edge-portal%2Fredirect%26nonce%3DYmMyOWFhNjItZDU0ZS00Mzg1LTg2NzYtYTYyMjYzYWU4ZWFiLTIxNTA0MCxodHRwczovL3d3dy52ZXJpem9uLmNvbS9idXNpbmVzcy81Zy1lZGdlLXBvcnRhbC9hY2NvdW50L2xvZ2luP2E9MC41NTIyNzE1NDg0MTc3OTk4%26client_id%3Dmdp_agent%26response_mode%3Dform_post&realm=%2Fvzwmb)
-- [Sign Up](https://www.verizon.com/business/5g-edge-portal/sign-up.html?adobe_mc=MCMID%3D30667738221820930504169506415661990520%7CMCORGID%3D7ED836675AB3A4860A495CAD%2540AdobeOrg%7CTS%3D1732034957&_gl=1*t9c1hx*_ga*MTYxNzc2Mjc2MS4xNzMyMDM0OTU3*_ga_12R1DX1LX7*MTczMjAzNDk1Ny4xLjAuMTczMjAzNDk1Ny42MC4wLjA.)
-- [Documentation](https://www.verizon.com/business/products/contact-center-cx/voice-api/)
+Model Context Protocol servers that expose the API to agents.
 
-### Verizon ThingSpace
+- [verizon-thingspace](https://apis.io/servers/verizon/verizon-thingspace/)
 
-ThingSpace gives organizations of all sizes all the tools to build IoT solutions or use end-to-end solutions to solve business problems.
+#### Agentic access (1)
 
-- **Human URL:** [https://thingspace.verizon.com](https://thingspace.verizon.com)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Verizon Agentic Access](https://apis.io/agentic-access/verizon/verizon-agentic-access/)
 
-- IoT
-- Device Management
-- Connectivity
-- Wireless
+#### JSON Schema (16)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://thingspace.verizon.com)
-- [API Reference](https://thingspace.verizon.com/resources/documentation/connectivity/API_Reference/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/openapi/verizon-thingspace-connectivity-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-account-information-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-information-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-id-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-list-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-activate-devices-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-deactivate-devices-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-send-sms-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-callback-summary-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-schema/thingspace-connectivity-device-request-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-account-information-structure.json)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-structure/thingspace-connectivity-device-information-structure.json)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/json-ld/verizon-thingspace-connectivity-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [SDK](https://github.com/sdks-io/verizon-apis-python-sdk)
-- [SDK](https://packagist.org/packages/sdksio/verizon-apis-sdk)
+- [AccountInformation](https://apis.io/schemas/verizon/thingspace-connectivity-account-information/)
+- [ActivateDevicesRequest](https://apis.io/schemas/verizon/thingspace-connectivity-activate-devices-request/)
+- [CallbackSummary](https://apis.io/schemas/verizon/thingspace-connectivity-callback-summary/)
+- [CarrierInformation](https://apis.io/schemas/verizon/thingspace-connectivity-carrier-information/)
+- [DeactivateDevicesRequest](https://apis.io/schemas/verizon/thingspace-connectivity-deactivate-devices-request/)
+- [DeviceId](https://apis.io/schemas/verizon/thingspace-connectivity-device-id/)
+- [DeviceInformation](https://apis.io/schemas/verizon/thingspace-connectivity-device-information/)
+- [DeviceListRequest](https://apis.io/schemas/verizon/thingspace-connectivity-device-list-request/)
+- [DeviceListResponse](https://apis.io/schemas/verizon/thingspace-connectivity-device-list-response/)
+- [DeviceRequestResponse](https://apis.io/schemas/verizon/thingspace-connectivity-device-request-response/)
+- [Feature](https://apis.io/schemas/verizon/thingspace-connectivity-feature/)
+- [IpPool](https://apis.io/schemas/verizon/thingspace-connectivity-ip-pool/)
+- [RegisterCallbackRequest](https://apis.io/schemas/verizon/thingspace-connectivity-register-callback-request/)
+- [SendSmsRequest](https://apis.io/schemas/verizon/thingspace-connectivity-send-sms-request/)
+- [SessionLoginRequest](https://apis.io/schemas/verizon/thingspace-connectivity-session-login-request/)
+- [SessionLoginResponse](https://apis.io/schemas/verizon/thingspace-connectivity-session-login-response/)
 
-### Verizon Communications Platform as a Service (CPaaS)
+#### JSON Structure (16)
 
-Available exclusively for IP Contact Center (IPCC) customers, our Communications Platform as a Service (CPaaS) offering provides a set of APIs that you can leverage to build customized solutions for inbound and outbound IP interactive voice response (IPIVR) and call detail reporting.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/](https://www.verizon.com/business/en-gb/products/contact-center-cx-solutions/communications-platform-as-a-service/)
+- [Thingspace Connectivity Account Information Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-account-information-structure/)
+- [Thingspace Connectivity Activate Devices Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-activate-devices-request-structure/)
+- [Thingspace Connectivity Callback Summary Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-callback-summary-structure/)
+- [Thingspace Connectivity Carrier Information Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-carrier-information-structure/)
+- [Thingspace Connectivity Deactivate Devices Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-deactivate-devices-request-structure/)
+- [Thingspace Connectivity Device Id Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-device-id-structure/)
+- [Thingspace Connectivity Device Information Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-device-information-structure/)
+- [Thingspace Connectivity Device List Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-device-list-request-structure/)
+- [Thingspace Connectivity Device List Response Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-device-list-response-structure/)
+- [Thingspace Connectivity Device Request Response Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-device-request-response-structure/)
+- [Thingspace Connectivity Feature Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-feature-structure/)
+- [Thingspace Connectivity Ip Pool Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-ip-pool-structure/)
+- [Thingspace Connectivity Register Callback Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-register-callback-request-structure/)
+- [Thingspace Connectivity Send Sms Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-send-sms-request-structure/)
+- [Thingspace Connectivity Session Login Request Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-session-login-request-structure/)
+- [Thingspace Connectivity Session Login Response Structure](https://apis.io/json-structure/verizon/thingspace-connectivity-session-login-response-structure/)
 
-### Verizon Inventory Management
+#### JSON-LD (1)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf)
+- [Verizon Thingspace Connectivity Context](https://apis.io/jsonld/verizon/verizon-thingspace-connectivity-context/)
 
-#### Properties
+#### Vocabulary (1)
 
-- [Documentation](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-inventory-management-tmf)
+The provider's domain terms, defined.
 
-### Verizon Incident Management
+- [Verizon Vocabulary](https://apis.io/vocabularies/verizon/verizon-vocabulary/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### Examples (16)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-incident-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-incident-management-tmf)
+Example requests and responses.
 
-### Verizon Change Management
+- [Thingspace Connectivity Account Information Example](https://apis.io/examples/verizon/thingspace-connectivity-account-information-example/)
+- [Thingspace Connectivity Activate Devices Request Example](https://apis.io/examples/verizon/thingspace-connectivity-activate-devices-request-example/)
+- [Thingspace Connectivity Callback Summary Example](https://apis.io/examples/verizon/thingspace-connectivity-callback-summary-example/)
+- [Thingspace Connectivity Carrier Information Example](https://apis.io/examples/verizon/thingspace-connectivity-carrier-information-example/)
+- [Thingspace Connectivity Deactivate Devices Request Example](https://apis.io/examples/verizon/thingspace-connectivity-deactivate-devices-request-example/)
+- [Thingspace Connectivity Device Id Example](https://apis.io/examples/verizon/thingspace-connectivity-device-id-example/)
+- [Thingspace Connectivity Device Information Example](https://apis.io/examples/verizon/thingspace-connectivity-device-information-example/)
+- [Thingspace Connectivity Device List Request Example](https://apis.io/examples/verizon/thingspace-connectivity-device-list-request-example/)
+- [Thingspace Connectivity Device List Response Example](https://apis.io/examples/verizon/thingspace-connectivity-device-list-response-example/)
+- [Thingspace Connectivity Device Request Response Example](https://apis.io/examples/verizon/thingspace-connectivity-device-request-response-example/)
+- [Thingspace Connectivity Feature Example](https://apis.io/examples/verizon/thingspace-connectivity-feature-example/)
+- [Thingspace Connectivity Ip Pool Example](https://apis.io/examples/verizon/thingspace-connectivity-ip-pool-example/)
+- [Thingspace Connectivity Register Callback Request Example](https://apis.io/examples/verizon/thingspace-connectivity-register-callback-request-example/)
+- [Thingspace Connectivity Send Sms Request Example](https://apis.io/examples/verizon/thingspace-connectivity-send-sms-request-example/)
+- [Thingspace Connectivity Session Login Request Example](https://apis.io/examples/verizon/thingspace-connectivity-session-login-request-example/)
+- [Thingspace Connectivity Session Login Response Example](https://apis.io/examples/verizon/thingspace-connectivity-session-login-response-example/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### Collections (5)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-change-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-change-management-tmf)
+Postman and Open Collection request collections.
 
-### Verizon Event Management
+- [Verizon ThingSpace Connectivity Management Accounts API](https://apis.io/collections/verizon/open-verizon-accounts-api/)
+- [Verizon ThingSpace Connectivity Management Accounts Callbacks API](https://apis.io/collections/verizon/open-verizon-callbacks-api/)
+- [Verizon ThingSpace Connectivity Management Accounts Devices API](https://apis.io/collections/verizon/open-verizon-devices-api/)
+- [Verizon ThingSpace Connectivity Management Accounts Session API](https://apis.io/collections/verizon/open-verizon-session-api/)
+- [Verizon ThingSpace Connectivity Management Accounts SMS API](https://apis.io/collections/verizon/open-verizon-sms-api/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### Overlays (5)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-event-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-event-management-tmf)
+OpenAPI overlays, including conversational phrasing for each operation.
 
-### Verizon Problem Management
+- [Verizon Accounts Api Overlay](https://apis.io/overlays/verizon/verizon-accounts-api-overlay/)
+- [Verizon Callbacks Api Overlay](https://apis.io/overlays/verizon/verizon-callbacks-api-overlay/)
+- [Verizon Devices Api Overlay](https://apis.io/overlays/verizon/verizon-devices-api-overlay/)
+- [Verizon Session Api Overlay](https://apis.io/overlays/verizon/verizon-session-api-overlay/)
+- [Verizon Sms Api Overlay](https://apis.io/overlays/verizon/verizon-sms-api-overlay/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### Governance rules (2)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-problem-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-problem-management-tmf)
+Spectral rulesets for the provider's contracts.
 
-### Verizon Order Management
+- [Verizon — jsonschema rules](https://apis.io/rules/verizon/verizon-jsonschema-spectral-rules/)
+- [Verizon API Rules](https://apis.io/rules/verizon/verizon-spectral-rules/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### Security (3)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-order-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-order-management-tmf)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Verizon Billing Management
+- [Verizon Authentication](https://apis.io/security/verizon/verizon-authentication/)
+- [Verizon Domain Security](https://apis.io/security/verizon/verizon-domain-security/)
+- [Verizon Vulnerability Disclosure](https://apis.io/security/verizon/verizon-vulnerability-disclosure/)
 
-Verizon provides customers a suite of TM Forum certified service management APIs and associated documentation that expose Verizons ITIL (Information Technology Infrastructure Library) functions. These APIs are bi-directional, helping to keep the information accessed from both Verizon and customer systems synchronized.
+#### OAuth scopes (1)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-billing-management-tmf](https://developers.verizon.com/#/apis/ns/products/service-management-apis/dep-billing-management-tmf)
+The permissions the API asks for.
 
-### Verizon Dynamic Bandwidth APIs
+- [Verizon Scopes](https://apis.io/scopes/verizon/verizon-scopes/)
 
-These innovative network provisioning API solutions can be deployed in the enterprises network eco-system to drive real-time network adjustments according to their changing business needs. Taking an agile approach to network provisioning, it can aid in dynamically allocating/de-allocating and scaling the bandwidth requirements as the need arises.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-bandwidth-apis](https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-bandwidth-apis)
+Published plans, tiers and prices.
 
-### Dynamic Network Manager (DNM) Standardized APIs
+- [Verizon Plans Pricing](https://apis.io/plans/verizon/verizon-plans-pricing/)
 
-MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs can work with multiple Payload Schemas, in this case the Private IP Payload Schema. The MEF-76 Specification describes APIs for service control functions (e.g. inventory, parameter change requests, notifications etc.).
+#### Rate limits (1)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1](https://developers.verizon.com/#/apis/ns/products/private-ip-apis/dynamic-network-manager-mef-1)
+Published request limits.
 
-### Secure Cloud Interconnect APIs Utilization
+- [Verizon Rate Limits](https://apis.io/rate-limits/verizon/verizon-rate-limits/)
 
-SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection to the cloud.
+#### FinOps (1)
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Utilization-API](https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Utilization-API)
+What the API costs to run, by operation.
 
-### Secure Cloud Interconnect APIs Billing Usage
+- [Verizon Finops](https://apis.io/finops/verizon/verizon-finops/)
 
-SCI supports APIs to fetch data consumption and bandwidth utilization measurements for the SCI connection to the cloud.
+## Where to find this API
 
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Billing-Usage-API](https://developers.verizon.com/#/apis/ns/products/secure-cloud-interconnect-apis/SCI-Billing-Usage-API)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Dynamic Network Manager (DNM) Standardized APIs
-
-MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs can work with multiple Payload Schemas, in this case the DNM APIs to support IDS. The MEF-76 Specification describes APIs for service control functions (e.g. inventory, parameter change requests, notifications etc.).
-
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/internet-dedicated-services-apis/dynamic-network-manager-mef-2](https://developers.verizon.com/#/apis/ns/products/internet-dedicated-services-apis/dynamic-network-manager-mef-2)
-
-### Dynamic Network Manager (DNM) Standardized APIs
-
-MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs can work with multiple Payload Schemas, in this case the DNM APIs to support E-Line. The MEF-76 Specification describes APIs for service control functions (e.g. inventory, parameter change requests, notifications etc.).
-
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/e-line-services-apis/dynamic-network-manager-mef-3](https://developers.verizon.com/#/apis/ns/products/e-line-services-apis/dynamic-network-manager-mef-3)
-
-### Dynamic Network Manager (DNM) Standardized APIs
-
-MEF API Standards distinguish between Envelope APIs and related Payload schemas. The Envelope APIs can work with multiple Payload Schemas, in this case the DNM APIs to support E-LAN . The MEF-76 Specification describes APIs for service control functions (e.g. inventory, parameter change requests, notifications etc.).
-
-- **Human URL:** [https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4](https://developers.verizon.com/#/apis/ns/products/e-lan-services-apis/dynamic-network-manager-mef-4)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/verizon)
 - [Website](https://www.verizon.com)
-- [Portal](https://developers.verizon.com/)
+- [Documentation](https://thingspace.verizon.com/documentation/api-documentation.html)
+- [Getting started](https://thingspace.verizon.com/documentation/apis/connectivity-management/getting-started.html)
+- [API reference](https://thingspace.verizon.com/documentation/apis/connectivity-management/api-reference.html)
 - [Support](https://developers.verizon.com/#/apis/ns/documentation/help)
-- [F A Q](https://developers.verizon.com/#/apis/ns/documentation/frequently-asked-questions)
-- [Login](https://secure.verizon.com/signin?goto=https://developers.verizon.com/apis/sec/v1/login)
-- [Sign Up](https://secure.verizon.com/account/register/start?goto=https%3A%2F%2Fdevelopers.verizon.com%2Fapis%2Fsec%2Fv1%2Flogin)
-- [Privacy Policy](https://www.verizon.com/about/privacy/)
-- [Terms of Service](https://www.verizon.com/about/terms-conditions/)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/rules/verizon-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/verizon/refs/heads/main/vocabulary/verizon-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [L L Ms Txt](https://developers.verizon.com/llms.txt)
+- [Blog](https://www.verizon.com/about/news)
+- [Security](https://www.verizon.com/solutions-and-services/report-security-vulnerability/)
+- [Terms of service](https://www.verizon.com/about/terms-conditions/)
+- [Privacy policy](https://www.verizon.com/about/privacy/)
+- [GitHub](https://github.com/Verizon)
+- [Status](https://www.verizon.com/support/service-outage-status/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 56.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 36.3 |
+| Contract governance | 31.8 |
+| Operational transparency | 60.5 |
+| Developer ergonomics | 83.9 |
+| Access clarity | 39.5 |
+
+**Agent readiness 34.1** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 49.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/verizon/](https://apis.io/providers/verizon/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Verizon: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/verizon/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
